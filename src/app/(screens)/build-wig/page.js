@@ -1,0 +1,218 @@
+"use client";
+import React, { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import {
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  color1,
+  image7,
+  image8,
+} from "@/app/assest";
+import {
+  MembershipSection,
+  Buttons,
+  HeaderBar,
+  WigProduct,
+  Heading,
+  MembershipCard,
+  Modal,
+} from "@/component";
+import RightSection from "@/component/Section/RightSection";
+
+const BuildAWigPage = () => {
+  const [showModal, setShowModal] = useState(false);
+  return (
+    <>
+      <main className="container mx-auto">
+        <div className="flex flex-col lg:flex-row gap-5 py-10">
+          <div className="flex basis-[70%] flex-col ">
+            <HeaderBar />
+
+            <div className="border-1 border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+              <div className="w-full lg:w-[60%] flex items-center flex-col">
+                <WigProduct />
+                <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] sm:block hidden ">
+                  PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
+                  DETAILS ARE ACCURATE + PRECISE. EXPECT 2-4 WEEKS OF PROCESSING
+                  TIME FOR THIS UNIT.
+                </p>
+                <div className="text-center hidden md:block">
+                  <p className="font-futura text-sm text-[#909090] font-medium">
+                    TOTAL DUE
+                  </p>
+                  <p className="font-futura text-base text-black font-medium">
+                    $680 USD
+                  </p>
+                </div>
+              </div>
+              <RightSidebarFirst setShowModal={setShowModal} />
+
+              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-8 w-[80%] sm:hidden block mx-auto ">
+                PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
+                DETAILS ARE ACCURATE + PRECISE. EXPECT 2-4 WEEKS OF PROCESSING
+                TIME FOR THIS UNIT.
+              </p>
+              <div className="text-center block md:hidden md:mt-0 mt-8">
+                <p className="font-futura text-[13px] text-[#909090] font-medium">
+                  TOTAL DUE
+                </p>
+                <p className="font-futura text-[13px] text-black font-medium">
+                  $680 USD
+                </p>
+              </div>
+            </div>
+
+            <Buttons text="ADD TO BAG" />
+          </div>
+
+          <RightSection />
+        </div>
+      </main>
+      {showModal && (
+        <div
+          className="fixed top-0 left-0 w-full h-full z-[9999] bg-[#00000080] flex items-center justify-center"
+          onClick={() => setShowModal(false)} 
+        >
+          <Modal />
+        </div>
+      )}
+    </>
+  );
+};
+
+export default BuildAWigPage;
+
+export const RightSidebarFirst = ({ setShowModal }) => {
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const router = useRouter();
+
+  const handleNext = (data) => {
+    setSelectedCard(data); 
+    router.push(`/build-wig${data.link}`); 
+  };
+
+  return (
+    <>
+      <div className="w-full lg:w-[40%] flex flex-col mt-5 lg:mt-0  lg:h-[700px]">
+        <Heading head="Select Icon Below" />
+        <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
+          <div className="flex flex-col gap-5  mx-auto ">
+            <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
+              BASIC MEMBERSHIP OPTIONS:
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
+              {BASIC_MEMBERSHIP.map((data, index) => (
+                <MembershipCard
+                  key={index}
+                  data={data}
+                  isSelected={selectedCard?.id === data.id}
+                  onSelect={() => {
+                    if (data.link === "#") {
+                      setShowModal(true);
+                    } else {
+                      handleNext(data);
+                    }
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-5 mx-auto ">
+            <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
+              PREMIUM MEMBERSHIP OPTIONS:
+            </p>
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
+              {PREMIUM_MEMBERSHIP.map((data, index) => (
+                <MembershipCard
+                  key={index}
+                  data={data}
+                  isSelected={selectedCard?.id === data.id}
+                  onSelect={() => {
+                    if (data.link === "#") {
+                      setShowModal(true);
+                    } else {
+                      handleNext(data);
+                    }
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const BASIC_MEMBERSHIP = [
+  {
+    id: 1,
+    image: image1,
+    text: "GAP SIZE",
+    small: "M",
+    link: "/gap",
+  },
+  {
+    id: 2,
+    image: image2,
+    text: "LENGTH",
+    small: "24”",
+    link: "/length",
+  },
+  {
+    id: 3,
+    image: image3,
+    text: "DENSITY",
+    small: "180%",
+    link: "/density",
+  },
+];
+const PREMIUM_MEMBERSHIP = [
+  {
+    id: 4,
+    image: image4,
+    text: "LACE",
+    small: "13X6",
+    link: "/lace",
+  },
+  {
+    id: 5,
+    image: image5,
+    text: "TEXTURE",
+    small: "SILKY",
+    link: "/texture",
+  },
+  {
+    id: 6,
+    image: color1,
+    text: "COLORS",
+    small: "OFFBLACK",
+    link: "/color",
+  },
+  {
+    id: 7,
+    image: image7,
+    text: "HAIRLINE",
+    small: "NATURAL",
+    link: "/hairline",
+  },
+  {
+    id: 8,
+    image: image8,
+    text: "STYLING",
+    small: "NONE",
+    link: "/extraStyle",
+  },
+  {
+    id: 9,
+    image: image8,
+    text: "ADD-ON",
+    small: "NONE",
+    link: "/addOn",
+  },
+];

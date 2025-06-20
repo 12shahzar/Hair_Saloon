@@ -1,0 +1,152 @@
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { image1, image4, image7 } from "@/app/assest";
+import {
+  MembershipSection,
+  Buttons,
+  HeaderBar,
+  WigProduct,
+  Heading,
+  BackBtn,
+  NextBtn,
+} from "@/component";
+import RightSection from "@/component/Section/RightSection";
+import { useDispatch } from "react-redux";
+import { confirmItem } from "@/util/util";
+
+const BuildAWigPage = () => {
+  const [selectedCapCard, setSelectedCapCard] = useState(null);
+  const dispatch = useDispatch();
+  const handleConfirm = () => {
+      confirmItem(dispatch, selectedCapCard); 
+    };
+  return (
+    <main className="container mx-auto">
+      <div className="flex flex-col lg:flex-row gap-5 py-10">
+        <div className="flex basis-[70%] flex-col ">
+          <HeaderBar />
+
+          <div className="border-1 border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+            <div className="w-full lg:w-1/2 flex items-center flex-col">
+              <WigProduct />
+              <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
+                PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
+                DETAILS ARE ACCURATE + PRECISE. EXPECT 2-4 WEEKS OF PROCESSING
+                TIME FOR THIS UNIT.
+              </p>
+              <div className="text-center md:block hidden">
+                <p className="font-futura text-sm text-[#909090] font-medium">
+                  TOTAL DUE
+                </p>
+                <p className="font-futura text-base text-black font-medium">
+                  $680 USD
+                </p>
+              </div>
+            </div>
+            <RightSidebarSecond
+              selectedCard={selectedCapCard}
+              setSelectedCard={setSelectedCapCard}
+            />
+            <div className="text-center block md:hidden md:mt-0 ">
+              <p className="font-futura text-[13px] text-[#909090] font-medium">
+                TOTAL DUE
+              </p>
+              <p className="font-futura text-[13px] text-black font-medium">
+                $680 USD
+              </p>
+            </div>
+          </div>
+
+          {selectedCapCard ? (
+            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
+          ) : (
+            <Buttons text="ADD TO BAG" disabled />
+          )}
+        </div>
+
+        <RightSection />
+      </div>
+    </main>
+  );
+};
+
+export default BuildAWigPage;
+
+export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
+  const router = useRouter();
+  const handleBack = () => {
+    router.push("/build-wig");
+  };
+  return (
+    <div className="w-full lg:w-1/2 flex flex-col  mt-5 lg:mt-0">
+      <Heading head="HD TOPPER SIZE" />
+      <div className="flex items-center justify-between">
+        <BackBtn onClick={handleBack} />
+      </div>
+
+      <MembershipSection
+        data={GAP_DATA}
+        selectedCard={selectedCard}
+        setSelectedCard={setSelectedCard}
+      />
+
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[80%] mx-auto">
+        PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME FOR 360 LACE &
+        FULL LACE.
+      </p>
+    </div>
+  );
+};
+
+const GAP_DATA = [
+  {
+    id: 1,
+    image: image4,
+    text: "LACE",
+    small: "4X4",
+  },
+  {
+    id: 2,
+    image: image4,
+    text: "LACE",
+    small: "5X5",
+  },
+  {
+    id: 3,
+    image: image4,
+    text: "LACE",
+    small: "6X6",
+  },
+  {
+    id: 4,
+    image: image4,
+    text: "LACE",
+    small: "7X7",
+  },
+  {
+    id: 5,
+    image: image4,
+    text: "LACE",
+    small: "13X4",
+  },
+  {
+    id: 6,
+    image: image4,
+    text: "LACE",
+    small: "13X6",
+  },
+  {
+    id: 7,
+    image: image4,
+    text: "LACE",
+    small: "360",
+  },
+  {
+    id: 8,
+    image: image4,
+    text: "LACE",
+    small: "FULL",
+  },
+];
