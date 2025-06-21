@@ -5,6 +5,7 @@ import NavLinkItem from "../smallComponent/NavLinkITem";
 import { Buttons } from "..";
 
 const RightSection = () => {
+  
   return (
     <div className="basis-[30%] flex-col gap-6 hidden lg:flex ">
       <div className="flex flex-col gap-2">

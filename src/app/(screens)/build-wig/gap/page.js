@@ -13,15 +13,21 @@ import {
   BackBtn,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
+   const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
+ const cartItems = useSelector((state) => state.wigCart.items);
 
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
  const handleConfirm = () => {
-    confirmItem(dispatch, selectedCapCard); 
+    confirmItem(dispatch, selectedCapCard,"cap"); 
+    router.push("/build-wig");
   };
 
   return (
@@ -43,7 +49,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>
@@ -58,16 +64,12 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {selectedCapCard ? (
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+       <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -116,23 +118,27 @@ const CAP_DATA = [
     image: image1,
     text: "CAP SIZE",
     small: "XS",
+    price:100
   },
   {
     id: 2,
     image: image1,
     text: "CAP SIZE",
     small: "S",
+    price:100
   },
   {
     id: 3,
     image: image1,
     text: "CAP SIZE",
     small: "M",
+    price:100
   },
   {
     id: 4,
     image: image1,
     text: "CAP SIZE",
     small: "L",
+    price:100
   },
 ];

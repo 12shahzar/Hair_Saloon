@@ -14,14 +14,21 @@ import {
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
 import { confirmItem } from "@/util/util";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
   const handleConfirm = () => {
-     confirmItem(dispatch, selectedCapCard); 
+     confirmItem(dispatch, selectedCapCard,"cap"); 
+     router.push("/build-wig");
    };
+    const cartItems = useSelector((state) => state.wigCart.items);
+
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
   return (
     <main className="container mx-auto">
       <div className="flex flex-col lg:flex-row gap-5 py-10">
@@ -41,7 +48,7 @@ const BuildAWigPage = () => {
                     TOTAL DUE
                   </p>
                   <p className="font-futura text-base text-black font-medium">
-                    $680 USD
+                    ${totalPrice} USD
                   </p>
                 </div>
             </div>
@@ -56,16 +63,12 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {selectedCapCard ? (
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+       <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -112,18 +115,21 @@ const CAP_DATA = [
     image: image7,
     text: "HAIRLINE",
     small: "NATURAL",
+    price:100
   },
   {
     id: 2,
     image: image7,
     text: "HAIRLINE",
     small: "PEAK",
+    price:100
   },
   {
     id: 3,
     image: image7,
     text: "HAIRLINE",
     small: "LAGOS",
+    price:100
   },
 
 ];

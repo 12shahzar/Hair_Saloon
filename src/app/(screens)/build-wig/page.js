@@ -21,9 +21,16 @@ import {
   Modal,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
+import { useSelector } from "react-redux";
 
 const BuildAWigPage = () => {
   const [showModal, setShowModal] = useState(false);
+     const cartItems = useSelector((state) => state.wigCart.items);
+  
+  
+  const totalPrice = cartItems.length
+    ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+    : 0;
   return (
     <>
       <main className="container mx-auto">
@@ -44,7 +51,7 @@ const BuildAWigPage = () => {
                     TOTAL DUE
                   </p>
                   <p className="font-futura text-base text-black font-medium">
-                    $680 USD
+                    ${totalPrice} USD
                   </p>
                 </div>
               </div>
@@ -60,7 +67,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-[13px] text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>

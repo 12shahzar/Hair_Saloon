@@ -13,14 +13,21 @@ import {
   NextBtn,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const [selectedCapCard, setSelectedCapCard] = useState(null);
+      const cartItems = useSelector((state) => state.wigCart.items);
+
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
   const dispatch = useDispatch();
+  const router = useRouter();
   const handleConfirm = () => {
-      confirmItem(dispatch, selectedCapCard); 
+      confirmItem(dispatch, selectedCapCard,"lace"); 
+      router.push("/build-wig");
     };
   return (
     <main className="container mx-auto">
@@ -41,7 +48,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>
@@ -54,16 +61,12 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {selectedCapCard ? (
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+         <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -106,47 +109,55 @@ const GAP_DATA = [
     image: image4,
     text: "LACE",
     small: "4X4",
+    price:100
   },
   {
     id: 2,
     image: image4,
     text: "LACE",
     small: "5X5",
+    price:100
   },
   {
     id: 3,
     image: image4,
     text: "LACE",
     small: "6X6",
+    price:100
   },
   {
     id: 4,
     image: image4,
     text: "LACE",
     small: "7X7",
+    price:100
   },
   {
     id: 5,
     image: image4,
     text: "LACE",
     small: "13X4",
+    price:100
   },
   {
     id: 6,
     image: image4,
     text: "LACE",
     small: "13X6",
+    price:100
   },
   {
     id: 7,
     image: image4,
     text: "LACE",
     small: "360",
+    price:100
   },
   {
     id: 8,
     image: image4,
     text: "LACE",
     small: "FULL",
+    price:100
   },
 ];

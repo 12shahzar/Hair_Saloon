@@ -27,14 +27,21 @@ import {
   NextBtn,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch()
+  const router = useRouter();
+   const cartItems = useSelector((state) => state.wigCart.items);
+
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
   const [selectedCapCard, setSelectedCapCard] = useState(null);
   const handleConfirm = () => {
      confirmItem(dispatch, selectedCapCard); 
+      router.push("/build-wig");
    };
   return (
     <main className="container mx-auto">
@@ -55,7 +62,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>
@@ -68,16 +75,12 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {selectedCapCard ? (
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+        <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -123,42 +126,49 @@ const COLOR_DATA = [
     image: color1,
     text: "COLOR",
     small: "JETBLACK",
+    price:100
   },
   {
     id: 2,
     image: color2,
     text: "COLOR",
     small: "OFFBLACK",
+    price:100
   },
   {
     id: 3,
     image: color3,
     text: "COLOR",
     small: "ESPRESSO",
+    price:100
   },
   {
     id: 4,
     image: color4,
     text: "COLOR",
     small: "ESPRESSO",
+    price:100
   },
   {
     id: 5,
     image: color5,
     text: "COLOR",
     small: "CHESTNUT",
+    price:100
   },
   {
     id: 6,
     image: color6,
     text: "COLOR",
     small: "COPPER",
+    price:100
   },
   {
     id: 7,
     image: color7,
     text: "COLOR",
     small: "AUBURN",
+    price:100
   },
 
   {
@@ -166,47 +176,55 @@ const COLOR_DATA = [
     image: color8,
     text: "COLOR",
     small: "HONEY",
+    price:100
   },
   {
     id: 9,
     image: color9,
     text: "COLOR",
     small: "GINGER",
+    price:100
   },
   {
     id: 10,
     image: color10,
     text: "COLOR",
     small: "SCARLETT",
+    price:100
   },
   {
     id: 11,
     image: color11,
     text: "COLOR",
     small: "BURGUNDY",
+    price:100
   },
   {
     id: 12,
     image: color12,
     text: "COLOR",
     small: "PLUM",
+    price:100
   },
   {
     id: 13,
     image: color12,
     text: "COLOR",
     small: "PLUM",
+    price:100
   },
   {
     id: 14,
     image: color1,
     text: "COLOR",
     small: "PLUM",
+    price:100
   },
   {
     id: 15,
     image: color2,
     text: "COLOR",
     small: "PLUM",
+    price:100
   },
 ];

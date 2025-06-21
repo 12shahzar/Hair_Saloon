@@ -1,11 +1,29 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
-import { back, search, tv, heart, head, menu, cart } from "@/app/assest";
+import {
+  back,
+  search,
+  tv,
+  heart,
+  head,
+  menu,
+  cart,
+  cardimage,
+  twitter,
+  insta,
+  facebook,
+  tittok,
+} from "@/app/assest";
+import { useDispatch, useSelector } from "react-redux";
+import { removeFromCart } from "@/redux/slices/cartSlices";
+import { Buttons, NavLinkItem } from "..";
 
 const HeaderBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const [isDropOpen, setisDropOpen] = useState(false);
+  const cartItems = useSelector((state) => state.wigCart.items);
+  const dispatch = useDispatch();
   return (
     <>
       <div className="border-1 border-black flex justify-between items-center py-4 w-full mb-8 px-4 custom-gradient">
@@ -56,7 +74,7 @@ const HeaderBar = () => {
             alt="Menu"
             width={15}
             height={12}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setisDropOpen(!isDropOpen)}
             className="cursor-pointer"
           />
         </div>
@@ -65,17 +83,69 @@ const HeaderBar = () => {
       {/* Menu Panel */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[#00000080] bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-5 w-[90%] h-[300px] overflow-auto">
-            <h1 className="text-xl font-futura text-center font-medium">PRICE LIST</h1>
-            <ul className="space-y-3 text-sm font-futura text-black">
-              
-              <li className="cursor-pointer">Profile</li>
-              <li className="cursor-pointer">Favorites</li>
-              <li className="cursor-pointer">Orders</li>
-              <li className="cursor-pointer">Settings</li>
-              <li className="cursor-pointer">Support</li>
-              <li className="cursor-pointer">Logout</li>
-            </ul>
+          <div className="bg-white p-5 w-full h-screen relative">
+            {/* Cross Icon */}
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-4 right-4 text-black text-2xl font-bold"
+            >
+              &times;
+            </button>
+
+            <h1 className="text-xl font-covered mb-5 text-center font-medium">
+              YOUR BAG
+            </h1>
+
+            <div className="grid grid-cols-2 gap-2">
+              {cartItems.map((item, index) => (
+                <Card key={index} item={item} dispatch={dispatch}/>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+        {isDropOpen && (
+        <div className="fixed inset-0 z-50 bg-[#00000080] bg-opacity-50 flex justify-center items-center">
+          <div className="bg-white p-5 w-full h-screen relative">
+            {/* Cross Icon */}
+            <button
+              onClick={() => setisDropOpen(false)}
+              className="absolute top-4 right-4 text-black text-2xl font-bold"
+            >
+              &times;
+            </button>
+
+         <div className=" p-4 flex flex-col gap-4 ">
+          <ul className="flex items-center justify-center gap-4">
+            {navLinks.map((item, index) => (
+              <NavLinkItem
+                classes="text-2xl font-covered"
+                key={index}
+                path={item.path}
+                text={item.text}
+              />
+            ))}
+          </ul>
+          <ul className="flex flex-col gap-5">
+            {subLinks.map((item, index) => (
+              <NavLinkItem
+                classes="font-futura text-lg font-medium"
+                key={index}
+                path={item.path}
+                text={item.text}
+              />
+            ))}
+          </ul>
+          <ul className="flex items-center justify-center gap-4">
+            <Image src={twitter} alt="Twitter" width={24} height={24} />
+            {/* <Image src={insta} alt="Instagram" width={28} height={28} /> */}
+            <Image src={facebook} alt="Facebook" width={30} height={30} />
+            <Image src={tittok} alt="TikTok" width={28} height={28} />
+          </ul>
+        </div>
+        <div className="absoulte bottom-0">
+        <Buttons text="SIGN OUT" />
+        </div>
           </div>
         </div>
       )}
@@ -84,3 +154,55 @@ const HeaderBar = () => {
 };
 
 export default HeaderBar;
+
+const Card = ({ item,dispatch }) => {
+  return (
+    <div className="border border-black flex flex-row gap-3 items-center p-2 relative">
+      <div className="w-[50px] h-[50px]">
+        <Image
+          src={item?.image || cardimage}
+          alt="cardimage"
+          width={100}
+          height={100}
+          objectFit="cover"
+        />
+      </div>
+
+      <div className="flex flex-col">
+        <p className="font-covered text-lg font-normal">NOIR</p>
+        <p className="font-futura text-[12px] text-[#EB1C24]">{item.text}</p>
+        <p className="font-futura text-[12px] text-[#909090] flex">
+          <span>{item.text}</span> : {item.small}
+        </p>
+        <p className="font-futura text-[12px] text-[#909090]">
+          $ {item.price} USD
+        </p>
+      </div>
+
+      {/* ❌ Cross icon for remove */}
+      <button
+        onClick={() => dispatch(removeFromCart(item.uniqueId))}
+        className="absolute top-[-8px] right-2 text-black text-2xl  font-bold"
+      >
+        &times;
+      </button>
+    </div>
+  );
+};
+
+const navLinks = [
+  { path: "#", text: "SHOP" },
+  { path: "#", text: "TOOLS" },
+  { path: "#", text: "BRAND" },
+];
+
+const subLinks = [
+  { path: "#", text: "ABOUT US" },
+  { path: "#", text: "CONTACT" },
+  { path: "#", text: "CARE & STORAGE" },
+  { path: "#", text: "BECOME A MEMBER" },
+  { path: "#", text: "FAQ" },
+  { path: "#", text: "PAYMENT + SHIPPING" },
+  { path: "#", text: "REVIEWS" },
+  { path: "#", text: "TERMS OF SERVICE" },
+];

@@ -13,14 +13,22 @@ import {
   NextBtn,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
+  const cartItems = useSelector((state) => state.wigCart.items);
+
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
  const handleConfirm = () => {
-     confirmItem(dispatch, selectedCapCard); 
+  console.log("SSSS",selectedCapCard)
+     confirmItem(dispatch, selectedCapCard,"density"); 
+     router.push("/build-wig");
    };
   return (
     <main className="container mx-auto">
@@ -28,7 +36,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border-2 border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-1/2 flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -41,7 +49,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>
@@ -54,16 +62,12 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {selectedCapCard ? (
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+       <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -121,41 +125,48 @@ const GAP_DATA = [
     image: image3,
     text: "DENSITY",
     small: "150",
+    price:100
   },
   {
     id: 2,
     image: image3,
     text: "DENSITY",
     small: "180",
+    price:100
   },
   {
     id: 3,
     image: image3,
     text: "DENSITY",
     small: "200",
+    price:100
   },
   {
     id: 4,
     image: image3,
     text: "DENSITY",
     small: "250",
+    price:100
   },
   {
     id: 5,
     image: image3,
     text: "DENSITY",
     small: "300",
+    price:100
   },
   {
     id: 6,
     image: image3,
     text: "DENSITY",
     small: "350",
+    price:100
   },
   {
     id: 7,
     image: image3,
     text: "DENSITY",
     small: "400",
+    price:100
   },
 ];

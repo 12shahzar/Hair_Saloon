@@ -13,15 +13,23 @@ import {
   Heading,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
+    const cartItems = useSelector((state) => state.wigCart.items);
 
+
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
 const handleConfirm = () => {
-    confirmItem(dispatch, selectedCapCard); 
+    confirmItem(dispatch, selectedCapCard,"length"); 
+    router.push("/build-wig");
+    
   };
   return (
     <main className="container mx-auto">
@@ -42,7 +50,7 @@ const handleConfirm = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>
@@ -55,16 +63,12 @@ const handleConfirm = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {selectedCapCard ? (
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+        <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -108,71 +112,83 @@ const GAP_DATA = [
     image: length,
     text: "LENGTH",
     small: "16”",
+    price:100
   },
   {
     id: 2,
     image: length,
     text: "LENGTH",
     small: "18”",
+    price:100
   },
   {
     id: 3,
     image: length,
     text: "LENGTH",
     small: "20”",
+    price:100
   },
   {
     id: 4,
     image: length,
     text: "LENGTH",
     small: "22”",
+    price:100
   },
   {
     id: 5,
     image: image2,
     text: "LENGTH",
     small: "24”",
+    price:100
   },
   {
     id: 6,
     image: image2,
     text: "LENGTH",
     small: "26”",
+    price:100
   },
   {
     id: 7,
     image: image2,
     text: "LENGTH",
     small: "28”",
+    price:100
   },
   {
     id: 8,
     image: image2,
     text: "LENGTH",
     small: "30”",
+    price:100
   },
   {
     id: 9,
     image: image2,
     text: "LENGTH",
     small: "32”",
+    price:100
   },
   {
     id: 10,
     image: image2,
     text: "LENGTH",
     small: "34”",
+    price:100
   },
   {
     id: 11,
     image: image2,
     text: "LENGTH",
     small: "36”",
+    price:100
   },
   {
     id: 12,
     image: image2,
     text: "LENGTH",
     small: "40”",
+    price:100
   },
 ];

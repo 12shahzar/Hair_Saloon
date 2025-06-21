@@ -27,13 +27,25 @@ import { style2 } from "@/app/assest";
 import { style3 } from "@/app/assest";
 import { style4 } from "@/app/assest";
 import Image from "next/image";
+import { confirmItem } from "@/util/util";
+import { useDispatch, useSelector } from "react-redux";
 
 const BuildAWigPage = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [basicSelected, setBasicSelected] = useState(null);
   const [premiumSelected, setPremiumSelected] = useState(null);
+  const cartItems = useSelector((state) => state.wigCart.items);
 
+const totalPrice = cartItems.length
+  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
+  : 0;
   const handleConfirm = () => {
-    console.log("Selected card data:", selectedCapCard);
+    console.log("Basic:", basicSelected);
+    console.log("Premium:", premiumSelected);
+
+     confirmItem(dispatch, basicSelected,"extraStyle"); 
+    router.push("/build-wig");
   };
   return (
     <main className="container mx-auto">
@@ -54,7 +66,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  $680 USD
+                  ${totalPrice} USD
                 </p>
               </div>
             </div>
@@ -73,22 +85,12 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $680 USD
+                ${totalPrice} USD
               </p>
             </div>
           </div>
 
-          {basicSelected && premiumSelected ? (
-            <Buttons
-              text="CONFIRM SELECTION"
-              onClick={() => {
-                console.log("Basic:", basicSelected);
-                console.log("Premium:", premiumSelected);
-              }}
-            />
-          ) : (
-            <Buttons text="ADD TO BAG" disabled />
-          )}
+          <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
         </div>
 
         <RightSection />
@@ -181,24 +183,28 @@ const BASIC_MEMBERSHIP = [
     image: style1,
     text: "STYLING",
     small: "BANGS",
+    price:100
   },
   {
     id: 2,
     image: style2,
     text: "STYLING",
     small: "CRIMPS",
+    price:100
   },
   {
     id: 3,
     image: style3,
     text: "STYLING",
     small: "FLATIRON",
+    price:100
   },
   {
     id: 4,
     image: style4,
     text: "DENSITY",
     small: "LAYERS",
+    price:100
   },
 ];
 const PREMIUM_MEMBERSHIP = [
@@ -207,17 +213,20 @@ const PREMIUM_MEMBERSHIP = [
     image: "L",
     text: "STYLING",
     small: "LEFT",
+    price:100
   },
   {
     id: 2,
     image: "M",
     text: "STYLING",
     small: "MIDDLE",
+    price:100
   },
   {
     id: 3,
     image: "R",
     text: "STYLING",
     small: "RIGHT",
+    price:100
   },
 ];
