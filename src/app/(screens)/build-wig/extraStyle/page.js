@@ -154,7 +154,7 @@ export const RightSidebarFirst = ({
                     isSelected ? "text-[#EB1C24]" : "text-black"
                   }`}
                 >
-                  {data.small}
+                  {data.small }
                 </p>
               </div>
             );
