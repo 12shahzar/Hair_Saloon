@@ -18,15 +18,12 @@ import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
-   const router = useRouter();
+  const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
- const cartItems = useSelector((state) => state.wigCart.items);
+  const [isCardSelected, setIsCardSelected] = useState(false);
 
-const totalPrice = cartItems.length
-  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
-  : 0;
- const handleConfirm = () => {
-    confirmItem(dispatch, selectedCapCard,"cap"); 
+  const handleConfirm = () => {
+    confirmItem(dispatch, selectedCapCard, "cap");
     router.push("/build-wig");
   };
 
@@ -49,7 +46,7 @@ const totalPrice = cartItems.length
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${totalPrice} USD
+                  ${selectedCapCard?.price || 0} USD
                 </p>
               </div>
             </div>
@@ -57,6 +54,7 @@ const totalPrice = cartItems.length
             <RightSidebarSecond
               selectedCard={selectedCapCard}
               setSelectedCard={setSelectedCapCard}
+              setIsCardSelected={setIsCardSelected}
             />
 
             <div className="text-center block md:hidden md:mt-0 mt-8">
@@ -64,12 +62,16 @@ const totalPrice = cartItems.length
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                ${totalPrice} USD
+                ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-       <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
+          <Buttons
+            text="CONFIRM SELECTION"
+            onClick={handleConfirm}
+            disabled={!isCardSelected}
+          />
         </div>
 
         <RightSection />
@@ -80,11 +82,16 @@ const totalPrice = cartItems.length
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
+export const RightSidebarSecond = ({
+  selectedCard,
+  setSelectedCard,
+  setIsCardSelected,
+}) => {
   const router = useRouter();
   const handleBack = () => {
     router.push("/build-wig");
   };
+
   return (
     <div className="w-full lg:w-[40%] flex flex-col  mt-5  lg:mt-0">
       <Heading head="HEAD CIRCUMFERENCE" />
@@ -95,9 +102,9 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
       <MembershipSection
         data={CAP_DATA}
         selectedCard={selectedCard}
-        setSelectedCard={setSelectedCard} // ✅ Correct
+        setSelectedCard={setSelectedCard}
+        setIsCardSelected={setIsCardSelected} // ✅ new prop
       />
-
       <div className="flex mx-auto gap-5 mt-8">
         {["XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
           <p
@@ -118,27 +125,27 @@ const CAP_DATA = [
     image: image1,
     text: "CAP SIZE",
     small: "XS",
-    price:100
+    price: 100,
   },
   {
     id: 2,
     image: image1,
     text: "CAP SIZE",
     small: "S",
-    price:100
+    price: 200,
   },
   {
     id: 3,
     image: image1,
     text: "CAP SIZE",
     small: "M",
-    price:100
+    price: 400,
   },
   {
     id: 4,
     image: image1,
     text: "CAP SIZE",
     small: "L",
-    price:100
+    price: 100,
   },
 ];

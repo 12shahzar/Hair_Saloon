@@ -1,9 +1,9 @@
 import React from "react";
 import { MembershipCard } from "..";
 
-const MembershipSection = ({ title, data, selectedCard, setSelectedCard }) => {
+const MembershipSection = ({ title, data, selectedCard, setSelectedCard, setIsCardSelected }) => {
   return (
-    <div className="flex flex-col gap-5  mx-auto ">
+    <div className="flex flex-col gap-5 mx-auto">
       <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
         {title}
       </p>
@@ -13,12 +13,16 @@ const MembershipSection = ({ title, data, selectedCard, setSelectedCard }) => {
             key={index}
             data={data}
             isSelected={selectedCard?.id === data.id}
-            onSelect={() => setSelectedCard(data)}
+            onSelect={() => {
+              setSelectedCard(data);
+              setIsCardSelected(true); // ✅ this is important
+            }}
           />
         ))}
       </div>
     </div>
   );
 };
+
 
 export default MembershipSection;

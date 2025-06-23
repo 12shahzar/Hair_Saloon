@@ -17,20 +17,15 @@ import RightSection from "@/component/Section/RightSection";
 import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
-
 const BuildAWigPage = () => {
-  const cartItems = useSelector((state) => state.wigCart.items);
-
-const totalPrice = cartItems.length
-  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
-  : 0;
   const [selectedCapCard, setSelectedCapCard] = useState(null);
- const dispatch = useDispatch();
- const router = useRouter();
- const handleConfirm = () => {
-     confirmItem(dispatch, selectedCapCard); 
-     router.push("/build-wig");
-   };
+  const [isCardSelected, setIsCardSelected] = useState(false);
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleConfirm = () => {
+    confirmItem(dispatch, selectedCapCard);
+    router.push("/build-wig");
+  };
   return (
     <main className="container mx-auto">
       <div className="flex flex-col lg:flex-row gap-5 py-10">
@@ -50,27 +45,31 @@ const totalPrice = cartItems.length
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${totalPrice} USD
+                  ${selectedCapCard?.price || 0} USD
                 </p>
               </div>
             </div>
             <RightSidebarSecond
               selectedCard={selectedCapCard}
               setSelectedCard={setSelectedCapCard}
+              setIsCardSelected={setIsCardSelected}
             />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[13px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                ${totalPrice} USD
+               ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-         
-            <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
-          
+
+          <Buttons
+            text="CONFIRM SELECTION"
+            onClick={handleConfirm}
+            disabled={!isCardSelected}
+          />
         </div>
 
         <RightSection />
@@ -87,25 +86,25 @@ const GAP_DATA = [
     image: addOn1,
     text: "ADD-ONs",
     small: "BLEACH",
-    price:100
+    price: 100,
   },
   {
     id: 2,
     image: addOn2,
     text: "ADD-ONs",
     small: "PLUCK",
-    price:100
+    price: 200,
   },
   {
-    id: 2,
+    id: 3,
     image: addOn3,
     text: "ADD-ONs",
     small: "TRIMLACE",
-    price:100
+    price: 300,
   },
 ];
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
+export const RightSidebarSecond = ({ selectedCard, setSelectedCard ,setIsCardSelected,}) => {
   const router = useRouter();
 
   const handleBack = () => {
@@ -126,7 +125,10 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
                   key={index}
                   data={data}
                   isSelected={selectedCard?.id === data.id}
-                  onSelect={() => setSelectedCard(data)}
+                   onSelect={() => {
+    setSelectedCard(data);
+    setIsCardSelected(true); // ✅ update this
+  }}
                 />
               ))}
             </div>

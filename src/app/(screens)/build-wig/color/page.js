@@ -33,12 +33,9 @@ import { confirmItem } from "@/util/util";
 const BuildAWigPage = () => {
   const dispatch = useDispatch()
   const router = useRouter();
-   const cartItems = useSelector((state) => state.wigCart.items);
 
-const totalPrice = cartItems.length
-  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
-  : 0;
   const [selectedCapCard, setSelectedCapCard] = useState(null);
+  const [isCardSelected, setIsCardSelected] = useState(false);
   const handleConfirm = () => {
      confirmItem(dispatch, selectedCapCard); 
       router.push("/build-wig");
@@ -62,25 +59,30 @@ const totalPrice = cartItems.length
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${totalPrice} USD
+                   ${selectedCapCard?.price || 0} USD
                 </p>
               </div>
             </div>
             <RightSidebarThird
               selectedCard={selectedCapCard}
               setSelectedCard={setSelectedCapCard}
+              setIsCardSelected={setIsCardSelected}
             />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[13px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                ${totalPrice} USD
+                ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-        <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
+        <Buttons
+                    text="CONFIRM SELECTION"
+                    onClick={handleConfirm}
+                    disabled={!isCardSelected}
+                  />
         </div>
 
         <RightSection />
@@ -91,7 +93,7 @@ const totalPrice = cartItems.length
 
 export default BuildAWigPage;
 
-export const RightSidebarThird = ({ selectedCard, setSelectedCard }) => {
+export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSelected,}) => {
   const router = useRouter(); // add this inside RightSidebarThird
 
   const handleBack = () => {
@@ -109,6 +111,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard }) => {
           data={COLOR_DATA}
           selectedCard={selectedCard}
           setSelectedCard={setSelectedCard}
+          setIsCardSelected={setIsCardSelected} 
         />
       </div>
 
@@ -133,21 +136,21 @@ const COLOR_DATA = [
     image: color2,
     text: "COLOR",
     small: "OFFBLACK",
-    price:100
+    price:200
   },
   {
     id: 3,
     image: color3,
     text: "COLOR",
     small: "ESPRESSO",
-    price:100
+    price:300
   },
   {
     id: 4,
     image: color4,
     text: "COLOR",
     small: "ESPRESSO",
-    price:100
+    price:400
   },
   {
     id: 5,

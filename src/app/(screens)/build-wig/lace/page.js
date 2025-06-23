@@ -18,17 +18,14 @@ import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
   const [selectedCapCard, setSelectedCapCard] = useState(null);
-      const cartItems = useSelector((state) => state.wigCart.items);
+  const [isCardSelected, setIsCardSelected] = useState(false);
 
-const totalPrice = cartItems.length
-  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
-  : 0;
   const dispatch = useDispatch();
   const router = useRouter();
   const handleConfirm = () => {
-      confirmItem(dispatch, selectedCapCard,"lace"); 
-      router.push("/build-wig");
-    };
+    confirmItem(dispatch, selectedCapCard, "lace");
+    router.push("/build-wig");
+  };
   return (
     <main className="container mx-auto">
       <div className="flex flex-col lg:flex-row gap-5 py-10">
@@ -48,25 +45,30 @@ const totalPrice = cartItems.length
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${totalPrice} USD
+                  ${selectedCapCard?.price || 0} USD
                 </p>
               </div>
             </div>
             <RightSidebarSecond
               selectedCard={selectedCapCard}
               setSelectedCard={setSelectedCapCard}
+              setIsCardSelected={setIsCardSelected}
             />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[13px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                ${totalPrice} USD
+                $${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-         <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
+          <Buttons
+            text="CONFIRM SELECTION"
+            onClick={handleConfirm}
+            disabled={!isCardSelected}
+          />
         </div>
 
         <RightSection />
@@ -77,7 +79,11 @@ const totalPrice = cartItems.length
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
+export const RightSidebarSecond = ({
+  selectedCard,
+  setSelectedCard,
+  setIsCardSelected,
+}) => {
   const router = useRouter();
   const handleBack = () => {
     router.push("/build-wig");
@@ -93,6 +99,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
         data={GAP_DATA}
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
+        setIsCardSelected={setIsCardSelected}
       />
 
       <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[80%] mx-auto">
@@ -109,55 +116,55 @@ const GAP_DATA = [
     image: image4,
     text: "LACE",
     small: "4X4",
-    price:100
+    price: 200,
   },
   {
     id: 2,
     image: image4,
     text: "LACE",
     small: "5X5",
-    price:100
+    price: 300,
   },
   {
     id: 3,
     image: image4,
     text: "LACE",
     small: "6X6",
-    price:100
+    price: 500,
   },
   {
     id: 4,
     image: image4,
     text: "LACE",
     small: "7X7",
-    price:100
+    price: 100,
   },
   {
     id: 5,
     image: image4,
     text: "LACE",
     small: "13X4",
-    price:100
+    price: 100,
   },
   {
     id: 6,
     image: image4,
     text: "LACE",
     small: "13X6",
-    price:100
+    price: 100,
   },
   {
     id: 7,
     image: image4,
     text: "LACE",
     small: "360",
-    price:100
+    price: 100,
   },
   {
     id: 8,
     image: image4,
     text: "LACE",
     small: "FULL",
-    price:100
+    price: 100,
   },
 ];

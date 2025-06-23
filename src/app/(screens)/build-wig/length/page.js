@@ -20,12 +20,8 @@ const BuildAWigPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
-    const cartItems = useSelector((state) => state.wigCart.items);
-
-
-const totalPrice = cartItems.length
-  ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
-  : 0;
+  const [isCardSelected, setIsCardSelected] = useState(false);
+  
 const handleConfirm = () => {
     confirmItem(dispatch, selectedCapCard,"length"); 
     router.push("/build-wig");
@@ -50,25 +46,30 @@ const handleConfirm = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${totalPrice} USD
+                  ${selectedCapCard?.price || 0} USD
                 </p>
               </div>
             </div>
-            <RightSidebarSecond
-              selectedCard={selectedCapCard}
-              setSelectedCard={setSelectedCapCard}
-            />
+          <RightSidebarSecond
+                       selectedCard={selectedCapCard}
+                       setSelectedCard={setSelectedCapCard}
+                       setIsCardSelected={setIsCardSelected}
+                     />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[13px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                ${totalPrice} USD
+                 ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-        <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
+            <Buttons
+                    text="CONFIRM SELECTION"
+                    onClick={handleConfirm}
+                  disabled={!isCardSelected}
+                  />
         </div>
 
         <RightSection />
@@ -79,7 +80,7 @@ const handleConfirm = () => {
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
+export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSelected, }) => {
   
   const router = useRouter();
 
@@ -96,6 +97,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
         data={GAP_DATA}
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
+        setIsCardSelected={setIsCardSelected}
       />
       <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[100%]">
         PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
@@ -119,7 +121,7 @@ const GAP_DATA = [
     image: length,
     text: "LENGTH",
     small: "18”",
-    price:100
+    price:200
   },
   {
     id: 3,

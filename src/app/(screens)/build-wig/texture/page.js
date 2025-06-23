@@ -18,14 +18,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch()
-     const cartItems = useSelector((state) => state.wigCart.items);
-  
-  
-  const totalPrice = cartItems.length
-    ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
-    : 0;
   const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
+  const [isCardSelected, setIsCardSelected] = useState(false);
   const handleConfirm = () => {
       confirmItem(dispatch, selectedCapCard,"texture"); 
        router.push("/build-wig");
@@ -49,7 +44,7 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${totalPrice} USD
+                  ${selectedCapCard?.price || 0} USD
                 </p>
               </div>
             </div>
@@ -57,18 +52,23 @@ const BuildAWigPage = () => {
             <RightSidebarSecond
               selectedCard={selectedCapCard}
               setSelectedCard={setSelectedCapCard}
+              setIsCardSelected={setIsCardSelected}
             />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[13px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                ${totalPrice} USD
+               ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-      <Buttons text="CONFIRM SELECTION" onClick={handleConfirm} />
+      <Buttons
+                  text="CONFIRM SELECTION"
+                  onClick={handleConfirm}
+                  disabled={!isCardSelected}
+                />
         </div>
 
         <RightSection />
@@ -79,7 +79,7 @@ const BuildAWigPage = () => {
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
+export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSelected, }) => {
   const router = useRouter();
   const handleBack = () => {
     router.push("/build-wig");
@@ -94,6 +94,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard }) => {
         data={GAP_DATA}
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
+        setIsCardSelected={setIsCardSelected}
       />
 
       <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[100%]">
@@ -117,6 +118,6 @@ const GAP_DATA = [
     image: image5,
     text: "TEXTURE",
     small: "KINKY",
-    price:100
+    price:200
   },
 ];
