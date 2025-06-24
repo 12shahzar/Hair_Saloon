@@ -25,9 +25,8 @@ import { useSelector } from "react-redux";
 
 const BuildAWigPage = () => {
   const [showModal, setShowModal] = useState(false);
-     const cartItems = useSelector((state) => state.wigCart.items);
-  
-  
+  const cartItems = useSelector((state) => state.wigCart.items);
+
   const totalPrice = cartItems.length
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
@@ -54,6 +53,36 @@ const BuildAWigPage = () => {
                     ${totalPrice} USD
                   </p>
                 </div>
+                <div className=" w-[80%] my-5  sm:block hidden">
+                  <p className="text-center text-xs text-[#EB1C24]  font-semibold   font-futura">
+                    Order Summary
+                  </p>
+                  <div className="overflow-y-auto scrollbar-hidden h-[100px]">
+                    {cartItems.length === 0 ? (
+                      <p>No Order</p>
+                    ) : (
+                      cartItems.map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-3 my-2"
+                        >
+                          <p className="text-xs text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">Service: </span>
+                            {item.text || "N/A"}
+                          </p>
+                          <p className="text-xs text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">Cap Size: </span>
+                            {item.small || "N/A"}
+                          </p>
+                          <p className="text-xs text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">Price: </span>$
+                            {item.price || 0}
+                          </p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
@@ -70,6 +99,37 @@ const BuildAWigPage = () => {
                   ${totalPrice} USD
                 </p>
               </div>
+
+              <div className=" w-[100%] my-5  sm:hidden block">
+                  <p className="text-center text-[9px] text-[#EB1C24]  font-semibold   font-futura">
+                    Order Summary
+                  </p>
+                  <div className="">
+                    {cartItems.length === 0 ? (
+                      <p className="text-[9px] font-futura">No Order</p>
+                    ) : (
+                      cartItems.map((item, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-3 my-2"
+                        >
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">Service: </span>
+                            {item.text || "N/A"}
+                          </p>
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">Cap Size: </span>
+                            {item.small || "N/A"}
+                          </p>
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">Price: </span>$
+                            {item.price || 0}
+                          </p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
             </div>
 
             <Buttons text="ADD TO BAG" />
@@ -81,7 +141,7 @@ const BuildAWigPage = () => {
       {showModal && (
         <div
           className="fixed top-0 left-0 w-full h-full z-[9999] bg-[#00000080] flex items-center justify-center"
-          onClick={() => setShowModal(false)} 
+          onClick={() => setShowModal(false)}
         >
           <Modal />
         </div>
@@ -98,8 +158,8 @@ export const RightSidebarFirst = ({ setShowModal }) => {
   const router = useRouter();
 
   const handleNext = (data) => {
-    setSelectedCard(data); 
-    router.push(`/build-wig${data.link}`); 
+    setSelectedCard(data);
+    router.push(`/build-wig${data.link}`);
   };
 
   return (
