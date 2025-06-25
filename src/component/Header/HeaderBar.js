@@ -26,7 +26,7 @@ const HeaderBar = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <div className="border-1 border-black flex justify-between items-center py-4 w-full mb-8 px-4 custom-gradient">
+      <div className="border-1 border-black flex justify-between items-center py-4 w-full mb-8 px-4 custom2">
         <div className="flex gap-5">
           <Image src={back} alt="Back" width={10} height={10} />
           <Image src={search} alt="Search icon" width={16} height={15} />
