@@ -30,6 +30,11 @@ const BuildAWigPage = () => {
   const totalPrice = cartItems.length
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
+
+    // Merge default cards with cart values
+
+
+
   return (
     <>
       <main className="container mx-auto">
@@ -61,22 +66,18 @@ const BuildAWigPage = () => {
                     {cartItems.length === 0 ? (
                       <p>No Order</p>
                     ) : (
-                      cartItems.map((item, index) => (
+                        cartItems.map((item, index) => (
                         <div
                           key={index}
                           className="flex items-center gap-3 my-2"
                         >
-                          <p className="text-xs text-[#EB1C24] font-semibold font-futura">
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
                             <span className="text-black">Service: </span>
                             {item.text || "N/A"}
                           </p>
-                          <p className="text-xs text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">Cap Size: </span>
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
+                            <span className="text-black">{item.text || null}: </span>
                             {item.small || "N/A"}
-                          </p>
-                          <p className="text-xs text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">Price: </span>$
-                            {item.price || 0}
                           </p>
                         </div>
                       ))
@@ -118,12 +119,8 @@ const BuildAWigPage = () => {
                             {item.text || "N/A"}
                           </p>
                           <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">Cap Size: </span>
+                            <span className="text-black">{item.text || null}: </span>
                             {item.small || "N/A"}
-                          </p>
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">Price: </span>$
-                            {item.price || 0}
                           </p>
                         </div>
                       ))
@@ -153,7 +150,22 @@ const BuildAWigPage = () => {
 export default BuildAWigPage;
 
 export const RightSidebarFirst = ({ setShowModal }) => {
+  const cartItems = useSelector((state) => state.wigCart.items);
   const [selectedCard, setSelectedCard] = useState(null);
+const mergedMembership = (defaultCards) => {
+  return defaultCards.map((card) => {
+    const match = cartItems.find(
+      (item) => item.text === card.text
+    );
+    return match
+      ? { ...card, small: match.small,image: match.image || card.image, } // override small if matched
+      : card;
+  });
+};
+
+const basicWithCartData = mergedMembership(BASIC_MEMBERSHIP);
+const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
+  
 
   const router = useRouter();
 
@@ -172,7 +184,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
               BASIC MEMBERSHIP OPTIONS:
             </p>
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
-              {BASIC_MEMBERSHIP.map((data, index) => (
+              {basicWithCartData.map((data, index) => (
                 <MembershipCard
                   key={index}
                   data={data}
@@ -194,7 +206,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
               PREMIUM MEMBERSHIP OPTIONS:
             </p>
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
-              {PREMIUM_MEMBERSHIP.map((data, index) => (
+              {premiumWithCartData.map((data, index) => (
                 <MembershipCard
                   key={index}
                   data={data}
@@ -220,7 +232,7 @@ const BASIC_MEMBERSHIP = [
   {
     id: 1,
     image: image1,
-    text: "GAP SIZE",
+    text: "CAP SIZE",
     small: "M",
     link: "/gap",
   },
@@ -257,7 +269,7 @@ const PREMIUM_MEMBERSHIP = [
   {
     id: 6,
     image: color1,
-    text: "COLORS",
+    text: "COLOR",
     small: "OFFBLACK",
     link: "/color",
   },
