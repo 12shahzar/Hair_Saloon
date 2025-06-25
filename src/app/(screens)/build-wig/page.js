@@ -87,13 +87,13 @@ const BuildAWigPage = () => {
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
-              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-8 w-[80%] sm:hidden block mx-auto ">
+              <p className="font-futura text-[10px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[80%] sm:hidden block mx-auto ">
                 PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
                 DETAILS ARE ACCURATE + PRECISE. EXPECT 2-4 WEEKS OF PROCESSING
                 TIME FOR THIS UNIT.
               </p>
               <div className="text-center block md:hidden md:mt-0 mt-8">
-                <p className="font-futura text-[13px] text-[#909090] font-medium">
+                <p className="font-futura text-[12px] text-[#909090] font-medium">
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-[13px] text-black font-medium">
@@ -103,22 +103,22 @@ const BuildAWigPage = () => {
 
               <div className=" w-[100%] my-5  sm:hidden block">
                   <p className="text-center text-[9px] text-[#EB1C24]  font-semibold   font-futura">
-                    Order Summary
+                    ORDER SUMMARY
                   </p>
-                  <div className="">
+                  <div className="flex flex-col items-center">
                     {cartItems.length === 0 ? (
                       <p className="text-[9px] font-futura">No Order</p>
                     ) : (
                       cartItems.map((item, index) => (
                         <div
                           key={index}
-                          className="flex items-center gap-3 my-2"
+                          className="flex items-center gap-3 my-2 text-center"
                         >
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">Service: </span>
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
+                            <span className="text-black">SERVICE: </span>
                             {item.text || "N/A"}
                           </p>
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
+                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
                             <span className="text-black">{item.text || null}: </span>
                             {item.small || "N/A"}
                           </p>
@@ -177,9 +177,9 @@ const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
   return (
     <>
       <div className="w-full lg:w-[40%] flex flex-col mt-5 lg:mt-0  lg:h-[700px]">
-        <Heading head="Select Icon Below" />
+        <Heading head="SELECT ICONS BELOW" />
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
-          <div className="flex flex-col gap-5  mx-auto ">
+          <div className="flex flex-col gap-5 mt-4  mx-auto ">
             <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
               BASIC MEMBERSHIP OPTIONS:
             </p>

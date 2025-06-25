@@ -7,6 +7,10 @@ import {
   color10,
   color11,
   color12,
+  color13,
+  color14,
+  color15,
+  color16,
   color2,
   color3,
   color4,
@@ -69,7 +73,7 @@ const BuildAWigPage = () => {
               setIsCardSelected={setIsCardSelected}
             />
             <div className="text-center block md:hidden md:mt-0 ">
-              <p className="font-futura text-[13px] text-[#909090] font-medium">
+              <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
@@ -102,7 +106,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
 
   return (
     <div className="w-full lg:w-1/2 flex flex-col mt-5 lg:mt-0 lg:h-[700px]">
-      <Heading head="STRAND SHAFT" />
+      <Heading head="SINGLE COLOR DYE" />
       <div className="flex items-center justify-between">
         <BackBtn onClick={handleBack} />
       </div>
@@ -115,9 +119,8 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         />
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[80%] mx-auto">
-        COLOR MATCH IS PROXIMATE, BUT NOT EXACT. EXPECT AN ADDITIONAL 2 WEEKS OF
-        PROCESSING TIME.
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
+       PLEASE EXPECT AN ADDITIONAL 1-2 WEEKS OF PROCESSING TIME.
       </p>
     </div>
   );
@@ -147,59 +150,60 @@ const COLOR_DATA = [
   },
   {
     id: 4,
-    image: color4,
+    image: color5,
     text: "COLOR",
-    small: "ESPRESSO",
+    small: "CHESTNUT",
     price:400
   },
   {
     id: 5,
-    image: color5,
-    text: "COLOR",
-    small: "CHESTNUT",
-    price:100
-  },
-  {
-    id: 6,
-    image: color6,
-    text: "COLOR",
-    small: "COPPER",
-    price:100
-  },
-  {
-    id: 7,
-    image: color7,
-    text: "COLOR",
-    small: "AUBURN",
-    price:100
-  },
-
-  {
-    id: 8,
     image: color8,
     text: "COLOR",
     small: "HONEY",
     price:100
   },
   {
-    id: 9,
+    id: 6,
+    image: color7,
+    text: "COLOR",
+    small: "AUBURN",
+    price:100
+  },
+  {
+    id: 7,
+    image: color6,
+    text: "COLOR",
+    small: "COPPER",
+    
+    price:100
+  },
+
+  {
+    id: 8,
     image: color9,
     text: "COLOR",
     small: "GINGER",
     price:100
   },
   {
+    id: 9,
+    image: color11,
+    text: "COLOR",
+    small: "SANGRA",
+    price:100
+  },
+  {
     id: 10,
     image: color10,
     text: "COLOR",
-    small: "SCARLETT",
+    small: "RUBY",
     price:100
   },
   {
     id: 11,
-    image: color11,
+    image: color16,
     text: "COLOR",
-    small: "BURGUNDY",
+    small: "RASPBERRY",
     price:100
   },
   {
@@ -211,23 +215,23 @@ const COLOR_DATA = [
   },
   {
     id: 13,
-    image: color12,
+    image: color13,
     text: "COLOR",
-    small: "PLUM",
+    small: "COBALT",
     price:100
   },
   {
     id: 14,
-    image: color1,
+    image: color14,
     text: "COLOR",
-    small: "PLUM",
+    small: "SLIME",
     price:100
   },
   {
     id: 15,
-    image: color2,
+    image: color15,
     text: "COLOR",
-    small: "PLUM",
+    small: "CITRINE",
     price:100
   },
 ];

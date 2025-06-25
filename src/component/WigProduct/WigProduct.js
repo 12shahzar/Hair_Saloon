@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const WigProduct = () => {
   const images = [imagehair1, imagehair2, imagehair3];
-  const [selectedImage, setSelectedImage] = useState(images[0]);
+  const [selectedImage, setSelectedImage] = useState(images[1]);
 
   return (
     <div>
@@ -22,29 +22,30 @@ const WigProduct = () => {
           alt="Selected Wig"
           width={230}
           height={375}
-          className="absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 z-10"
+          className="absolute left-1/2 top-[59%] -translate-x-1/2 -translate-y-1/2 z-10"
         />
       </div>
 
-      <div className="flex justify-center space-x-2 mb-4 mt-4">
-        {images.map((img, index) => (
-          <div
-            key={index}
-            className={`relative w-[50px] h-[70px] bg-cover bg-center flex items-center justify-center border-1 hover:border-black cursor-pointer ${
-              selectedImage === img ? "border-black" : "border-gray-300 "
-            }`}
-            style={{ backgroundImage: `url(${leaf.src})` }}
-            onClick={() => setSelectedImage(img)}
-          >
-            <Image
-              src={img}
-              alt={`Thumbnail ${index + 1}`}
-              width={40}
-              height={60}
-            />
-          </div>
-        ))}
-      </div>
+<div className="flex justify-center space-x-2 mb-3 mt-5">
+  {images.map((img, index) => (
+    <div
+      key={index}
+      className={`relative w-[54px] h-[74px] p-[4px] bg-cover bg-center flex items-center justify-center border hover:border-black cursor-pointer ${
+        selectedImage === img ? "border-black" : "border-transparent"
+      }`}
+      style={{ backgroundImage: `url(${leaf.src})` }}
+      onClick={() => setSelectedImage(img)}
+    >
+      <Image
+        src={img}
+        alt={`Thumbnail ${index + 1}`}
+        width={40}
+        height={60}
+      />
+    </div>
+  ))}
+</div>
+
     </div>
   );
 };

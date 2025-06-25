@@ -31,6 +31,10 @@ import color9 from "./images/color9.png";
 import color10 from "./images/color10.png";
 import color11 from "./images/color11.png";
 import color12 from "./images/color12.png";
+import color13 from "./images/color13.png";
+import color14 from "./images/color14.png";
+import color15 from "./images/color15.png";
+import color16 from "./images/color16.png";
 import length from "./images/length.png";
 import cart from "./images/cart.png";
 import menu from "./images/menu.png";
@@ -68,6 +72,10 @@ export {
   color10,
   color11,
   color12,
+  color13,
+  color14,
+  color15,
+  color16,
   Background,
   leftArrow,
   search,

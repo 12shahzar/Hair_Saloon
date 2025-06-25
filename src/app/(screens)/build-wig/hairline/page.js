@@ -57,7 +57,7 @@ const BuildAWigPage = () => {
             />
 
             <div className="text-center block md:hidden md:mt-0 mt-8">
-              <p className="font-futura text-[13px] text-[#909090] font-medium">
+              <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
@@ -92,7 +92,7 @@ export const RightSidebarSecond = ({
   };
   return (
     <div className="w-full lg:w-[40%] flex flex-col  mt-5  lg:mt-0">
-      <Heading head="HEAD CIRCUMFERENCE" />
+      <Heading head="VENTILLATION EFFECT" />
       <div className="flex items-center justify-between">
         <BackBtn onClick={handleBack} />
       </div>
@@ -105,7 +105,7 @@ export const RightSidebarSecond = ({
       />
 
       <div className="flex mx-auto gap-5 mt-8">
-        <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[100%]">
+        <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
           PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME.
         </p>
       </div>

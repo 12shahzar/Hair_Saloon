@@ -56,7 +56,7 @@ const BuildAWigPage = () => {
               setIsCardSelected={setIsCardSelected}
             />
             <div className="text-center block md:hidden md:mt-0 mt-8">
-              <p className="font-futura text-[13px] text-[#909090] font-medium">
+              <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
@@ -100,7 +100,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSel
       <div className="flex mx-auto flex-col gap-1 mt-8">
         {density_data.map((item, index) => (
           <p
-            className="text-[9px] sm:text-xs font-semibold text-[#EB1C24] font-futura"
+            className="text-[9px] sm:text-xs font-medium text-[#EB1C24] font-futura"
             key={index}
           >
             {item}

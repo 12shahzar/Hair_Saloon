@@ -56,7 +56,7 @@ const handleConfirm = () => {
                        setIsCardSelected={setIsCardSelected}
                      />
             <div className="text-center block md:hidden md:mt-0 ">
-              <p className="font-futura text-[13px] text-[#909090] font-medium">
+              <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
@@ -99,7 +99,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected}
       />
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-8 w-[100%]">
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
         PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
         30 INCHES. 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
         EXACT.

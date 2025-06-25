@@ -58,7 +58,7 @@ const BuildAWigPage = () => {
             />
 
             <div className="text-center block md:hidden md:mt-0 mt-8">
-              <p className="font-futura text-[13px] text-[#909090] font-medium">
+              <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">

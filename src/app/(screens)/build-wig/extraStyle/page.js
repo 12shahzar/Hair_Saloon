@@ -67,11 +67,11 @@ const BuildAWigPage = () => {
               setPremiumSelected={setPremiumSelected}
             />
 
-            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-8 w-[90%] sm:hidden block mx-auto ">
+            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
               PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME.
             </p>
             <div className="text-center block md:hidden md:mt-0 mt-8">
-              <p className="font-futura text-[13px] text-[#909090] font-medium">TOTAL DUE</p>
+              <p className="font-futura text-[12px] text-[#909090] font-medium">TOTAL DUE</p>
               <p className="font-futura text-[13px] text-black font-medium">${totalPrice} USD</p>
             </div>
           </div>
@@ -125,7 +125,7 @@ export const RightSidebarFirst = ({
 
       {/* PREMIUM MEMBERSHIP */}
       <div className="flex flex-col gap-5 mx-auto mt-8">
-        <Heading head="PREMIUM TREATMENTS" />
+        <Heading head="PART SELECTION" />
         <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
           {PREMIUM_MEMBERSHIP.map((data, index) => {
             const isSelected = premiumSelected?.id === data.id;
@@ -170,7 +170,7 @@ const BASIC_MEMBERSHIP = [
   { id: 1, image: style1, text: "STYLING", small: "BANGS", price: 100 },
   { id: 2, image: style2, text: "STYLING", small: "CRIMPS", price: 100 },
   { id: 3, image: style3, text: "STYLING", small: "FLATIRON", price: 100 },
-  { id: 4, image: style4, text: "DENSITY", small: "LAYERS", price: 100 },
+  { id: 4, image: style4, text: "STYLING", small: "LAYERS", price: 100 },
 ];
 
 const PREMIUM_MEMBERSHIP = [

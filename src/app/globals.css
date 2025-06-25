@@ -36,3 +36,7 @@
 .font-futura {
   font-family: var(--font-futura);
 }
+.font-custom {
+  font-weight: 450; /* ✅ No quotes */
+}
+
