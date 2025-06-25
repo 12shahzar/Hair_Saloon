@@ -22,7 +22,14 @@
   );
   backdrop-filter: blur(15px);
 }
-
+.custom2{
+   background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.11) 11%,
+    rgba(255, 255, 255, 0.2) 20%
+  );
+  backdrop-filter: blur(5px);
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
