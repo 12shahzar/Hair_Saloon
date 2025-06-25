@@ -1,4 +1,4 @@
-"use-client";
+"use client";
 import { imagehair1, imagehair2, imagehair3, leaf } from "@/app/assest";
 import Image from "next/image";
 import { useState } from "react";
@@ -10,7 +10,7 @@ const WigProduct = () => {
   return (
     <div>
       <div
-        className="relative w-[250px] h-[350px] bg-cover bg-center flex items-center justify-center "
+        className="relative w-[250px] h-[350px] bg-cover bg-center flex items-center justify-center"
         style={{ backgroundImage: `url(${leaf.src})` }}
       >
         <p className="absolute top-[-20px] left-1/2 transform -translate-x-1/2 text-5xl sm:text-6xl font-covered text-[#EB1C24] z-20">
@@ -26,15 +26,18 @@ const WigProduct = () => {
         />
       </div>
 
-<div className="flex justify-center space-x-2 mb-3 mt-5">
-  {images.map((img, index) => (
+      <div className="flex justify-center space-x-2 mb-3 mt-5">
+{images.map((img, index) => (
+  <div
+    key={index}
+    className={`border py-[2px] cursor-pointer  ${
+      selectedImage === img ? "border-black" : "border-transparent"
+    }`}
+    onClick={() => setSelectedImage(img)}
+  >
     <div
-      key={index}
-      className={`relative w-[54px] h-[74px] p-[4px] bg-cover bg-center flex items-center justify-center border hover:border-black cursor-pointer ${
-        selectedImage === img ? "border-black" : "border-transparent"
-      }`}
+      className="relative w-[54px] h-[74px] bg-cover bg-center flex items-center justify-center "
       style={{ backgroundImage: `url(${leaf.src})` }}
-      onClick={() => setSelectedImage(img)}
     >
       <Image
         src={img}
@@ -43,10 +46,14 @@ const WigProduct = () => {
         height={60}
       />
     </div>
-  ))}
-</div>
+    {/* <p className="text-xs text-center mt-1">Style {index + 1}</p> */}
+  </div>
+))}
 
+
+      </div>
     </div>
   );
 };
+
 export default WigProduct;
