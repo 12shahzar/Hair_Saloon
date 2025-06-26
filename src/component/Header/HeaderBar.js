@@ -83,16 +83,16 @@ const HeaderBar = () => {
       {/* Menu Panel */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[#00000080] bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-5 pt-10 w-full h-screen relative">
+          <div className="bg-white px-5 pt-10 w-full h-screen relative">
             {/* Cross Icon */}
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="absolute top-4 right-4 text-black text-2xl font-bold"
+              className="absolute top-[33px] right-4 text-black text-2xl font-bold"
             >
               &times;
             </button>
 
-            <h1 className="text-xl font-covered mb-5 text-center font-medium">
+            <h1 className="text-xl font-covered mb-5  text-center font-medium">
               YOUR BAG
             </h1>
 
