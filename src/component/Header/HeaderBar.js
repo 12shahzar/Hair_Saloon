@@ -87,7 +87,7 @@ const HeaderBar = () => {
             {/* Cross Icon */}
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="absolute top-[33px] right-4 text-black text-2xl font-bold"
+              className="absolute top-[50px] right-4 text-black text-2xl font-bold"
             >
               &times;
             </button>
