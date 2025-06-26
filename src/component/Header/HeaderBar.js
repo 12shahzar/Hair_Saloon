@@ -83,7 +83,7 @@ const HeaderBar = () => {
       {/* Menu Panel */}
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 bg-[#00000080] bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-5 w-full h-screen relative">
+          <div className="bg-white p-5 pt-10 w-full h-screen relative">
             {/* Cross Icon */}
             <button
               onClick={() => setIsMenuOpen(false)}
