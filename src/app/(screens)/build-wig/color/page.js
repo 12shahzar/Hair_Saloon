@@ -46,7 +46,7 @@ const BuildAWigPage = () => {
    };
   return (
     <main className="container mx-auto">
-      <div className="flex flex-col lg:flex-row gap-5 py-10">
+      <div className="flex flex-col lg:flex-row gap-5 py-5">
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
@@ -105,11 +105,12 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
   };
 
   return (
-    <div className="w-full lg:w-1/2 flex flex-col mt-5 lg:mt-0 lg:h-[700px]">
-      <Heading head="SINGLE COLOR DYE" />
-      <div className="flex items-center justify-between">
+    <div className="w-full lg:w-1/2 flex flex-col mt-3 lg:mt-0 lg:h-[700px]">
+        <div className="flex items-center justify-between mb-3">
         <BackBtn onClick={handleBack} />
       </div>
+      <Heading head="SINGLE COLOR DYE" />
+    
       <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
         <MembershipSection
           data={COLOR_DATA}

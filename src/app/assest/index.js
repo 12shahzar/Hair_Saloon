@@ -1,4 +1,5 @@
 import Background from "./images/background.png";
+import background from "./images/background.jpg";
 import leftArrow from "./images/leftArrow.png";
 import search from "./images/search.png";
 import heart from "./images/heart.png";
@@ -77,6 +78,7 @@ export {
   color15,
   color16,
   Background,
+  background,
   leftArrow,
   search,
   heart,

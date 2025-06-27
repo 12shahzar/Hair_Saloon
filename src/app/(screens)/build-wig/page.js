@@ -38,7 +38,7 @@ const BuildAWigPage = () => {
   return (
     <>
       <main className="container mx-auto">
-        <div className="flex flex-col lg:flex-row gap-5 py-10">
+        <div className="flex flex-col lg:flex-row gap-5 py-5">
           <div className="flex basis-[70%] flex-col ">
             <HeaderBar />
 
@@ -176,10 +176,10 @@ const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
 
   return (
     <>
-      <div className="w-full lg:w-[40%] flex flex-col mt-5 lg:mt-0  lg:h-[700px]">
+      <div className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0  lg:h-[700px]">
         <Heading head="SELECT ICONS BELOW" />
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
-          <div className="flex flex-col gap-5 mt-4  mx-auto ">
+          <div className="flex flex-col gap-3 mt-4  mx-auto ">
             <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
               BASIC MEMBERSHIP OPTIONS:
             </p>
@@ -201,7 +201,7 @@ const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
             </div>
           </div>
 
-          <div className="flex flex-col gap-5 mx-auto ">
+          <div className="flex flex-col gap-3 mt-6 mx-auto ">
             <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
               PREMIUM MEMBERSHIP OPTIONS:
             </p>

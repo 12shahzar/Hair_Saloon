@@ -26,7 +26,7 @@ const HeaderBar = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <div className="border-1 border-black flex justify-between items-center py-4 w-full mb-8 px-4 custom2">
+      <div className="border-1 border-black flex justify-between items-center py-4 w-full mb-5 px-4 custom2">
         <div className="flex gap-5">
           <Image src={back} alt="Back" width={10} height={10} />
           <Image src={search} alt="Search icon" width={16} height={15} />
@@ -64,16 +64,16 @@ const HeaderBar = () => {
           <Image
             src={cart}
             alt="Cart"
-            width={20}
-            height={20}
+            width={23}
+            height={23}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="cursor-pointer"
           />
           <Image
             src={menu}
             alt="Menu"
-            width={15}
-            height={12}
+            width={20}
+            height={14}
             onClick={() => setisDropOpen(!isDropOpen)}
             className="cursor-pointer"
           />

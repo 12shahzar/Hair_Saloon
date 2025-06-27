@@ -28,7 +28,7 @@ const BuildAWigPage = () => {
 
   return (
     <main className="container mx-auto">
-      <div className="flex flex-col lg:flex-row gap-5 py-10">
+      <div className="flex flex-col lg:flex-row gap-5 py-5">
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
@@ -91,11 +91,12 @@ export const RightSidebarSecond = ({
     router.push("/build-wig");
   };
   return (
-    <div className="w-full lg:w-[40%] flex flex-col  mt-5  lg:mt-0">
-      <Heading head="VENTILLATION EFFECT" />
-      <div className="flex items-center justify-between">
+    <div className="w-full lg:w-[40%] flex flex-col  mt-3  lg:mt-0">
+        <div className="flex items-center justify-between mb-3">
         <BackBtn onClick={handleBack} />
       </div>
+      <Heading head="VENTILLATION EFFECT" />
+    
 
       <MembershipSection
         data={CAP_DATA}

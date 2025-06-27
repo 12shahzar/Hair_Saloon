@@ -1,5 +1,5 @@
 import React from "react";
-import { Background } from "../assest";
+import { background, Background } from "../assest";
 
 const Layout = ({ children }) => {
   return (

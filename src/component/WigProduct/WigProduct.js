@@ -26,7 +26,7 @@ const WigProduct = () => {
         />
       </div>
 
-      <div className="flex justify-center space-x-2 mb-3 mt-5">
+      <div className="flex justify-center space-x-2 mb-3 mt-2">
 {images.map((img, index) => (
   <div
     key={index}
@@ -44,6 +44,7 @@ const WigProduct = () => {
         alt={`Thumbnail ${index + 1}`}
         width={40}
         height={60}
+        className="absolute left-1/2 top-[66%] -translate-x-1/2 -translate-y-1/2 z-10"
       />
     </div>
     {/* <p className="text-xs text-center mt-1">Style {index + 1}</p> */}

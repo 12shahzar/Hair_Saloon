@@ -6,7 +6,7 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
   return (
     <div
       onClick={onSelect}
-      className={`border relative pt-1 w-[70px] h-[90px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+      className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
         border-black bg-white
       `}
     >
@@ -16,7 +16,7 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
       </p>
 
       {/* Center Image */}
-      <div className="w-[58px] h-[56px] md:w-[50px] md:h-[45px]">
+      <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
         <Image
           src={data.image}
           alt="Card image"
