@@ -98,7 +98,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         setIsCardSelected={setIsCardSelected}
       />
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
         HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER.
       </p>
     </div>

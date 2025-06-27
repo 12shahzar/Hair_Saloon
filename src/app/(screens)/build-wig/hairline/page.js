@@ -140,7 +140,7 @@ export const RightSidebarSecond = ({
              </div>
 
       <div className="flex mx-auto gap-5 mt-8">
-        <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+        <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
           PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME.
         </p>
       </div>

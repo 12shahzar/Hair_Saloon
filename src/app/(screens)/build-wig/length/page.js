@@ -100,7 +100,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected}
       />
-     <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+     <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
   {selectedCard?.para || "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER 30 INCHES. 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT."}
 </p>
 

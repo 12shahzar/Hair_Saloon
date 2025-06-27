@@ -120,7 +120,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         />
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
+      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
        PLEASE EXPECT AN ADDITIONAL 1-2 WEEKS OF PROCESSING TIME.
       </p>
     </div>

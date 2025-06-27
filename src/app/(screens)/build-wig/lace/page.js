@@ -103,7 +103,7 @@ export const RightSidebarSecond = ({
         setIsCardSelected={setIsCardSelected}
       />
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
+      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
         PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME FOR 360 LACE &
         FULL LACE.
       </p>
