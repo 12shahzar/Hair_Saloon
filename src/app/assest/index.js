@@ -48,8 +48,10 @@ import style1 from "./images/style1.png"
 import style2 from "./images/style2.png"
 import style3 from "./images/style3.png"
 import style4 from "./images/style4.png"
+import length2 from "./images/length2.png"
 export {
   leaf,
+  length2,
   style1,
   style2,
   style3,

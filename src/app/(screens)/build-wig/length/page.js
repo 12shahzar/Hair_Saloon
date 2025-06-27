@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { image1, image2, length } from "@/app/assest";
+import { image1, image2, length, length2 } from "@/app/assest";
 import {
   MembershipSection,
   Buttons,
@@ -81,7 +81,7 @@ const handleConfirm = () => {
 export default BuildAWigPage;
 
 export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSelected, }) => {
-  
+  console.log(selectedCard)
   const router = useRouter();
 
   const handleBack = () => {
@@ -100,11 +100,10 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected}
       />
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
-        PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES. 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.
-      </p>
+     <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+  {selectedCard?.para || "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER 30 INCHES. 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT."}
+</p>
+
     </div>
   );
 };
@@ -115,83 +114,120 @@ const GAP_DATA = [
     image: length,
     text: "LENGTH",
     small: "16”",
-    price:100
+    price:100,
+    para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 2,
     image: length,
     text: "LENGTH",
     small: "18”",
-    price:200
+    price:200,
+      para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 3,
     image: length,
     text: "LENGTH",
     small: "20”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 4,
     image: length,
     text: "LENGTH",
     small: "22”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 5,
     image: image2,
     text: "LENGTH",
     small: "24”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 6,
     image: image2,
     text: "LENGTH",
     small: "26”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 7,
     image: image2,
     text: "LENGTH",
     small: "28”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 8,
     image: image2,
     text: "LENGTH",
     small: "30”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 9,
-    image: image2,
+    image: length2,
     text: "LENGTH",
     small: "32”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 10,
-    image: image2,
+    image: length2,
     text: "LENGTH",
     small: "34”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
   {
     id: 11,
-    image: image2,
+    image: length2,
     text: "LENGTH",
     small: "36”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
+    
   },
   {
     id: 12,
-    image: image2,
+    image: length2,
     text: "LENGTH",
     small: "40”",
-    price:100
+    price:100,
+     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
+        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
+        EXACT.`,
   },
 ];

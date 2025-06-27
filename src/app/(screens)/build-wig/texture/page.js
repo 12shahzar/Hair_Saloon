@@ -89,7 +89,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
        <div className="flex items-center justify-between mb-3">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="STRAND SHAFT" />
+      <Heading head="HAIR TYPE" />
      
       <MembershipSection
         data={GAP_DATA}

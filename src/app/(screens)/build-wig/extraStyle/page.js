@@ -126,7 +126,7 @@ export const RightSidebarFirst = ({
       {/* PREMIUM MEMBERSHIP */}
       <div className="flex flex-col gap-5 mx-auto mt-8">
         <Heading head="PART SELECTION" />
-        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 mx-auto justify-evenly">
           {PREMIUM_MEMBERSHIP.map((data, index) => {
             const isSelected = premiumSelected?.id === data.id;
             const isDisabled = !basicSelected;
@@ -137,8 +137,8 @@ export const RightSidebarFirst = ({
                 onClick={() => {
                   if (!isDisabled) setPremiumSelected(data);
                 }}
-                className={`border relative pt-1 w-[70px] h-[90px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer border-black ${
-                  isDisabled ? "opacity-50 cursor-not-allowed" : ""
+                className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col bg-white items-center text-center cursor-pointer border-black ${
+                  isDisabled ? " cursor-not-allowed" : ""
                 }`}
               >
                 <p className="text-[10px] md:text-sm text-black font-covered">{data.text}</p>
@@ -174,6 +174,7 @@ const BASIC_MEMBERSHIP = [
 ];
 
 const PREMIUM_MEMBERSHIP = [
+  { id: 1, image: "F", text: "STYLING", small: "FREE", price: 100 },,
   { id: 1, image: "L", text: "STYLING", small: "LEFT", price: 100 },
   { id: 2, image: "M", text: "STYLING", small: "MIDDLE", price: 100 },
   { id: 3, image: "R", text: "STYLING", small: "RIGHT", price: 100 },

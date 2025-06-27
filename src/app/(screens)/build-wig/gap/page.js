@@ -97,7 +97,7 @@ export const RightSidebarSecond = ({
          <div className="flex items-center justify-between mb-3">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="HEAD CIRCUMFERENCE" />
+      <Heading head="CUSTOM SIZING" />
    
 
       <MembershipSection
@@ -106,8 +106,60 @@ export const RightSidebarSecond = ({
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected} // ✅ new prop
       />
-      <div className="flex mx-auto gap-5 mt-8">
-        {["XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
+    
+
+        <div className="mt-5">
+
+       
+        <Heading head="FLEXIBLE SIZING" />
+        
+    <div className="flex justify-center gap-3 mt-6">
+  {CAP_DATA_2.map((data, index) => {
+    const isSelected = selectedCard?.id === data.id;
+
+    return (
+      <div
+        key={index}
+        onClick={() => handleNext(data)}
+        className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+          border-black bg-white
+          ${isSelected ? "ring-2 ring-[#EB1C24]" : ""}
+        `}
+      >
+        {/* Top Label */}
+        <p className="text-[10px] md:text-sm text-black font-covered">
+          {data.text}
+        </p>
+
+        {/* Center Image */}
+        <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+          <Image
+            src={data.image}
+            alt="Card image"
+            width={100}
+            height={100}
+            className="object-contain w-full h-full"
+          />
+        </div>
+
+        {/* Bottom Value */}
+        <p
+          className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+            isSelected ? "text-[#EB1C24]" : "text-black"
+          }`}
+        >
+          {data.small}
+        </p>
+      </div>
+    );
+  })}
+</div>
+
+      
+       </div>
+
+         <div className="flex mx-auto gap-5 mt-8">
+        {["XXS: 19”" , "XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
           <p
             key={idx}
             className="text-[9px] font-medium text-[#EB1C24] font-futura"
@@ -115,6 +167,7 @@ export const RightSidebarSecond = ({
             {text}
           </p>
         ))}
+    
       </div>
     </div>
   );
@@ -149,4 +202,22 @@ const CAP_DATA = [
     small: "L",
     price: 100,
   },
+];
+
+const CAP_DATA_2 = [
+  {
+    id: 5,
+    image: image1,
+    text: "CAP SIZE",
+    small: "XXS/XS/S",
+    price: 100,
+  },
+  {
+    id: 6,
+    image: image1,
+    text: "CAP SIZE",
+    small: "S/M/L",
+    price: 200,
+  },
+
 ];

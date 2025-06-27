@@ -197,7 +197,7 @@ const COLOR_DATA = [
     id: 10,
     image: color10,
     text: "COLOR",
-    small: "RUBY",
+    small: "CHERRY",
     price:100
   },
   {
@@ -223,9 +223,9 @@ const COLOR_DATA = [
   },
   {
     id: 14,
-    image: color14,
+    image: color11,
     text: "COLOR",
-    small: "SLIME",
+   small: "TEAL",
     price:100
   },
   {
@@ -233,6 +233,13 @@ const COLOR_DATA = [
     image: color15,
     text: "COLOR",
     small: "CITRINE",
+    price:100
+  },
+    {
+    id: 16,
+    image: color14,
+    text: "COLOR",
+    small: "SLIME",
     price:100
   },
 ];

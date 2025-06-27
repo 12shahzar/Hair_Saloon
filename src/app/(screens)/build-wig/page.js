@@ -22,6 +22,7 @@ import {
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 
 const BuildAWigPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -31,9 +32,7 @@ const BuildAWigPage = () => {
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
 
-    // Merge default cards with cart values
-
-
+  // Merge default cards with cart values
 
   return (
     <>
@@ -42,7 +41,7 @@ const BuildAWigPage = () => {
           <div className="flex basis-[70%] flex-col ">
             <HeaderBar />
 
-            <div className="border-1 border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+            <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-3 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
               <div className="w-full lg:w-[60%] flex items-center flex-col">
                 <WigProduct />
                 <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] sm:block hidden ">
@@ -58,25 +57,24 @@ const BuildAWigPage = () => {
                     ${totalPrice} USD
                   </p>
                 </div>
-                <div className=" w-[80%] my-5  sm:block hidden">
-                  <p className="text-center text-xs text-[#EB1C24]  font-semibold   font-futura">
-                    Order Summary
-                  </p>
+                <div className=" w-[90%] my-5  sm:block hidden">
                   <div className="overflow-y-auto scrollbar-hidden h-[100px]">
                     {cartItems.length === 0 ? (
                       <p>No Order</p>
                     ) : (
-                        cartItems.map((item, index) => (
+                      cartItems.map((item, index) => (
                         <div
                           key={index}
-                          className="flex items-center gap-3 my-2"
+                          className="flex items-center gap-1 my-2"
                         >
                           <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
                             <span className="text-black">Service: </span>
                             {item.text || "N/A"}
                           </p>
                           <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">{item.text || null}: </span>
+                            <span className="text-black">
+                              {item.text || null}:{" "}
+                            </span>
                             {item.small || "N/A"}
                           </p>
                         </div>
@@ -87,46 +85,45 @@ const BuildAWigPage = () => {
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
-              <p className="font-futura text-[10px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[80%] sm:hidden block mx-auto ">
-                PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
-                DETAILS ARE ACCURATE + PRECISE. EXPECT 2-4 WEEKS OF PROCESSING
-                TIME FOR THIS UNIT.
+              <p className="font-futura text-[10px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
+                PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. <br /> WE ENSURE
+                ALL DETAILS ARE ACCURATE + PRECISE. <br /> EXPECT 6-8 WEEKS OF
+                PROCESSING TIME FOR THIS UNIT.
               </p>
               <div className="text-center block md:hidden md:mt-0 mt-8">
                 <p className="font-futura text-[12px] text-[#909090] font-medium">
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-[13px] text-black font-medium">
-                  ${totalPrice} USD
+                  ${totalPrice > 0 ? totalPrice : 760} USD
                 </p>
               </div>
 
               <div className=" w-[100%] my-5  sm:hidden block">
-                  <p className="text-center text-[9px] text-[#EB1C24]  font-semibold   font-futura">
-                    ORDER SUMMARY
-                  </p>
-                  <div className="flex flex-col items-center">
-                    {cartItems.length === 0 ? (
-                      <p className="text-[9px] font-futura">No Order</p>
-                    ) : (
-                      cartItems.map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-3 my-2 text-center"
-                        >
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
-                            <span className="text-black">SERVICE: </span>
-                            {item.text || "N/A"}
-                          </p>
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
-                            <span className="text-black">{item.text || null}: </span>
-                            {item.small || "N/A"}
-                          </p>
-                        </div>
-                      ))
-                    )}
-                  </div>
+                <div className="flex flex-col items-center">
+                  {cartItems.length === 0 ? (
+                    <p className="text-[9px] font-futura">No Order</p>
+                  ) : (
+                    cartItems.map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-3 my-1 text-center"
+                      >
+                        <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
+                          <span className="text-black">SERVICE: </span>
+                          {item.text || "N/A"}
+                        </p>
+                        <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
+                          <span className="text-black">
+                            {item.text || null}:{" "}
+                          </span>
+                          {item.small || "N/A"}
+                        </p>
+                      </div>
+                    ))
+                  )}
                 </div>
+              </div>
             </div>
 
             <Buttons text="ADD TO BAG" />
@@ -152,20 +149,17 @@ export default BuildAWigPage;
 export const RightSidebarFirst = ({ setShowModal }) => {
   const cartItems = useSelector((state) => state.wigCart.items);
   const [selectedCard, setSelectedCard] = useState(null);
-const mergedMembership = (defaultCards) => {
-  return defaultCards.map((card) => {
-    const match = cartItems.find(
-      (item) => item.text === card.text
-    );
-    return match
-      ? { ...card, small: match.small,image: match.image || card.image, } // override small if matched
-      : card;
-  });
-};
+  const mergedMembership = (defaultCards) => {
+    return defaultCards.map((card) => {
+      const match = cartItems.find((item) => item.text === card.text);
+      return match
+        ? { ...card, small: match.small, image: match.image || card.image } // override small if matched
+        : card;
+    });
+  };
 
-const basicWithCartData = mergedMembership(BASIC_MEMBERSHIP);
-const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
-  
+  const basicWithCartData = mergedMembership(BASIC_MEMBERSHIP);
+  const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
 
   const router = useRouter();
 
@@ -183,21 +177,45 @@ const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
             <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
               BASIC MEMBERSHIP OPTIONS:
             </p>
-            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
-              {basicWithCartData.map((data, index) => (
-                <MembershipCard
-                  key={index}
-                  data={data}
-                  isSelected={selectedCard?.id === data.id}
-                  onSelect={() => {
-                    if (data.link === "#") {
-                      setShowModal(true);
-                    } else {
-                      handleNext(data);
-                    }
-                  }}
-                />
-              ))}
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto justify-evenly">
+              {basicWithCartData.map((data, index) => {
+                const isSelected = selectedCard?.id === data.id;
+
+                return (
+                  <div
+                    key={index}
+                    onClick={() => handleNext(data)}
+                    className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+        border-black bg-white
+      `}
+                  >
+                    {/* Top Label */}
+                    <p className="text-[10px] md:text-sm text-black font-covered">
+                      {data.text}
+                    </p>
+
+                    {/* Center Image */}
+                    <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                      <Image
+                        src={data.image}
+                        alt="Card image"
+                        width={100}
+                        height={100}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+
+                    {/* Bottom Value */}
+                    <p
+                      className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+                        isSelected ? "text-[#EB1C24]" : "text-black"
+                      }`}
+                    >
+                      {data.small}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -205,21 +223,45 @@ const premiumWithCartData = mergedMembership(PREMIUM_MEMBERSHIP);
             <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
               PREMIUM MEMBERSHIP OPTIONS:
             </p>
-            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-8 mx-auto justify-evenly">
-              {premiumWithCartData.map((data, index) => (
-                <MembershipCard
-                  key={index}
-                  data={data}
-                  isSelected={selectedCard?.id === data.id}
-                  onSelect={() => {
-                    if (data.link === "#") {
-                      setShowModal(true);
-                    } else {
-                      handleNext(data);
-                    }
-                  }}
-                />
-              ))}
+            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto justify-evenly">
+              {premiumWithCartData.map((data, index) => {
+                const isSelected = selectedCard?.id === data.id;
+
+                return (
+                  <div
+                    key={index}
+                    onClick={() => handleNext(data)}
+                    className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+        border-black bg-white
+      `}
+                  >
+                    {/* Top Label */}
+                    <p className="text-[10px] md:text-sm text-black font-covered">
+                      {data.text}
+                    </p>
+
+                    {/* Center Image */}
+                    <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                      <Image
+                        src={data.image}
+                        alt="Card image"
+                        width={100}
+                        height={100}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+
+                    {/* Bottom Value */}
+                    <p
+                      className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+                        isSelected ? "text-[#EB1C24]" : "text-black"
+                      }`}
+                    >
+                      {data.small}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -247,7 +289,7 @@ const BASIC_MEMBERSHIP = [
     id: 3,
     image: image3,
     text: "DENSITY",
-    small: "180%",
+    small: "200%",
     link: "/density",
   },
 ];

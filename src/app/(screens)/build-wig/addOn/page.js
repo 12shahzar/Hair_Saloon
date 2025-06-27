@@ -99,7 +99,7 @@ const GAP_DATA = [
     id: 3,
     image: addOn3,
     text: "ADD-ON",
-    small: "TRIMLACE",
+    small: "CLIPENDX",
     price: 300,
   },
 ];

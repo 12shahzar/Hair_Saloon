@@ -7,7 +7,7 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
     <div
       onClick={onSelect}
       className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
-        border-black bg-white
+       ${isSelected ? "border-[#EB1C24]" : "border-black"}  bg-white
       `}
     >
       {/* Top Label */}

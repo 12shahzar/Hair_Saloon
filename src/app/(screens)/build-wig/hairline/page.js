@@ -98,12 +98,46 @@ export const RightSidebarSecond = ({
       <Heading head="VENTILLATION EFFECT" />
     
 
-      <MembershipSection
-        data={CAP_DATA}
-        selectedCard={selectedCard}
-        setSelectedCard={setSelectedCard}
-        setIsCardSelected={setIsCardSelected}
-      />
+   <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto mt-6 justify-evenly">
+               {CAP_DATA.map((data, index) => {
+                 const isSelected = selectedCard?.id === data.id;
+ 
+                 return (
+                   <div
+                     key={index}
+                     onClick={() => handleNext(data)}
+                     className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+         border-black bg-white
+       `}
+                   >
+                     {/* Top Label */}
+                     <p className="text-[10px] md:text-sm text-black font-covered">
+                       {data.text}
+                     </p>
+ 
+                     {/* Center Image */}
+                     <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                       <Image
+                         src={data.image}
+                         alt="Card image"
+                         width={100}
+                         height={100}
+                         className="object-contain w-full h-full"
+                       />
+                     </div>
+ 
+                     {/* Bottom Value */}
+                     <p
+                       className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+                         isSelected ? "text-[#EB1C24]" : "text-black"
+                       }`}
+                     >
+                       {data.small}
+                     </p>
+                   </div>
+                 );
+               })}
+             </div>
 
       <div className="flex mx-auto gap-5 mt-8">
         <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
