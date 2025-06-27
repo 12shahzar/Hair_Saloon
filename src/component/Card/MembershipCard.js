@@ -11,7 +11,7 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
       `}
     >
       {/* Top Label */}
-      <p className="text-[9px] md:text-sm text-black font-covered">
+      <p className="text-[10px] md:text-sm text-black font-covered">
         {data.text}
       </p>
 
@@ -28,7 +28,7 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
 
       {/* Bottom Value */}
       <p
-        className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium  ${
+        className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium  ${
         isSelected ? "text-[#EB1C24]" : "text-black"
       }`}
       >
