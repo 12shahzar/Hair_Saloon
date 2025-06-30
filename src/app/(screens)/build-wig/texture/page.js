@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { image1, image5, image7 } from "@/app/assest";
 import {
@@ -11,6 +11,7 @@ import {
   Heading,
   BackBtn,
   NextBtn,
+  useScrollOnPathChange,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
 import { confirmItem } from "@/util/util";
@@ -84,8 +85,10 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
   const handleBack = () => {
     router.push("/build-wig");
   };
+    const cardRef = useRef();
+  useScrollOnPathChange(cardRef);
   return (
-    <div className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
+    <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
        <div className="flex items-center justify-between mb-3">
         <BackBtn onClick={handleBack} />
       </div>

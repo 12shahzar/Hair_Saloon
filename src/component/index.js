@@ -8,6 +8,7 @@ import Heading from "./smallComponent/Heading.jsx"
 import NextBtn from "./smallComponent/NextBtn";
 import BackBtn from "./smallComponent/BackBtn";
 import Modal from "./Section/Modal";
+import useScrollOnPathChange from "./Section/useScrollOnPathChange";
 export {
   MembershipCard,
   MembershipSection,
@@ -19,6 +20,7 @@ export {
   NextBtn,
   BackBtn,
   Modal,
+  useScrollOnPathChange
 };
 
 
