@@ -101,7 +101,7 @@ export const RightSidebarSecond = ({
       <Heading head="VENTILLATION EFFECT" />
     
 
-   <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto mt-6 justify-evenly">
+   {/* <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto mt-6 justify-evenly">
                {CAP_DATA.map((data, index) => {
                  const isSelected = selectedCard?.id === data.id;
  
@@ -113,12 +113,12 @@ export const RightSidebarSecond = ({
          border-black bg-white
        `}
                    >
-                     {/* Top Label */}
+                     
                      <p className="text-[10px] md:text-sm text-black font-covered">
                        {data.text}
                      </p>
  
-                     {/* Center Image */}
+                    
                      <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
                        <Image
                          src={data.image}
@@ -129,7 +129,7 @@ export const RightSidebarSecond = ({
                        />
                      </div>
  
-                     {/* Bottom Value */}
+                     
                      <p
                        className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
                          isSelected ? "text-[#EB1C24]" : "text-black"
@@ -140,7 +140,14 @@ export const RightSidebarSecond = ({
                    </div>
                  );
                })}
-             </div>
+             </div> */}
+                   <MembershipSection
+                     data={CAP_DATA}
+                     selectedCard={selectedCard}
+                     setSelectedCard={setSelectedCard}
+                     setIsCardSelected={setIsCardSelected} 
+                     className="flex items-center"
+                   />
 
       <div className="flex mx-auto gap-5 mt-8">
         <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
