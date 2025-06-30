@@ -7,7 +7,7 @@ const MembershipSection = ({ title, data, selectedCard, setSelectedCard, setIsCa
       <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
         {title}
       </p>
-      <div className={`grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-8 mx-auto justify-evenly ${className}`}>
+      <div className={`mx-auto justify-evenly  xl:grid-cols-3 gap-3 md:gap-8 ${className}`}>
         {data.map((data, index) => (
           <MembershipCard
             key={index}

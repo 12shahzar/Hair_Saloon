@@ -100,6 +100,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSel
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected}
+        className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
       <div className="flex mx-auto flex-col gap-1 mt-8">
         {density_data.map((item, index) => (

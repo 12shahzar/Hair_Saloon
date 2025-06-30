@@ -99,6 +99,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected}
+         className="flex items-center"
       />
 
       <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">

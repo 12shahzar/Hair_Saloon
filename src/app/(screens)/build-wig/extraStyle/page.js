@@ -36,11 +36,10 @@ const BuildAWigPage = () => {
   const handleConfirm = () => {
     if (basicSelected.length === 0 || !premiumSelected) return;
 
-     const finalObject = {
+    const finalObject = {
       text: "STYLING",
       // small: selectedCapCards.map((c) => c.small).join(", "),
-      small:
-        basicSelected.length === 1 ? basicSelected[0].small : "MIXED",
+      small: basicSelected.length === 1 ? basicSelected[0].small : "MIXED",
 
       price: totalPrice,
       image: basicSelected[0]?.image,
@@ -139,53 +138,70 @@ export const RightSidebarFirst = ({
             <MembershipCard
               key={index}
               data={data}
-              isSelected={basicSelected.some(item => item.id === data.id)}
-onSelect={() => {
-  const isAlreadySelected = basicSelected.some(item => item.id === data.id);
-  const isBangs = data.small === "BANGS";
-  const otherSelected = basicSelected.find(item => item.id !== data.id);
+              isSelected={basicSelected.some((item) => item.id === data.id)}
+              onSelect={() => {
+                const isAlreadySelected = basicSelected.some(
+                  (item) => item.id === data.id
+                );
+                const isBangs = data.small === "BANGS";
+                const otherSelected = basicSelected.find(
+                  (item) => item.id !== data.id
+                );
 
-  let updatedSelection = [];
+                let updatedSelection = [];
 
-  if (isAlreadySelected) {
-    // If deselecting, just remove this item
-    updatedSelection = basicSelected.filter(item => item.id !== data.id);
-  } else {
-    if (isBangs) {
-      // If BANGS selected first, allow one more later
-      if (basicSelected.length === 0) {
-        updatedSelection = [data];
-      } else if (basicSelected.length === 1 && basicSelected[0].small !== "BANGS") {
-        // BANGS can't be added after other
-        return;
-      } else if (basicSelected.length === 1 && basicSelected[0].small === "BANGS") {
-        updatedSelection = [...basicSelected, data];
-      } else {
-        return;
-      }
-    } else {
-      const bangsSelected = basicSelected.some(item => item.small === "BANGS");
+                if (isAlreadySelected) {
+                  // If deselecting, just remove this item
+                  updatedSelection = basicSelected.filter(
+                    (item) => item.id !== data.id
+                  );
+                } else {
+                  if (isBangs) {
+                    // If BANGS selected first, allow one more later
+                    if (basicSelected.length === 0) {
+                      updatedSelection = [data];
+                    } else if (
+                      basicSelected.length === 1 &&
+                      basicSelected[0].small !== "BANGS"
+                    ) {
+                      // BANGS can't be added after other
+                      return;
+                    } else if (
+                      basicSelected.length === 1 &&
+                      basicSelected[0].small === "BANGS"
+                    ) {
+                      updatedSelection = [...basicSelected, data];
+                    } else {
+                      return;
+                    }
+                  } else {
+                    const bangsSelected = basicSelected.some(
+                      (item) => item.small === "BANGS"
+                    );
 
-      if (bangsSelected && basicSelected.length === 1) {
-        // Add second (non-bangs) only
-        updatedSelection = [...basicSelected, data];
-      } else {
-        // Any other non-bangs replaces current
-        updatedSelection = [data];
-      }
-    }
-  }
+                    if (bangsSelected && basicSelected.length === 1) {
+                      // Add second (non-bangs) only
+                      updatedSelection = [...basicSelected, data];
+                    } else {
+                      // Any other non-bangs replaces current
+                      updatedSelection = [data];
+                    }
+                  }
+                }
 
-  setBasicSelected(updatedSelection);
+                setBasicSelected(updatedSelection);
 
-  // Handle FREE premium for BANGS
-  const hasBangs = updatedSelection.some(item => item.small === "BANGS");
-  if (hasBangs) {
-    const freeOption = PREMIUM_MEMBERSHIP.find(item => item.small === "FREE");
-    if (freeOption) setPremiumSelected(freeOption);
-  }
-}}
-
+                // Handle FREE premium for BANGS
+                const hasBangs = updatedSelection.some(
+                  (item) => item.small === "BANGS"
+                );
+                if (hasBangs) {
+                  const freeOption = PREMIUM_MEMBERSHIP.find(
+                    (item) => item.small === "FREE"
+                  );
+                  if (freeOption) setPremiumSelected(freeOption);
+                }
+              }}
             />
           ))}
         </div>

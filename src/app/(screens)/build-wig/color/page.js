@@ -119,6 +119,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
           selectedCard={selectedCard}
           setSelectedCard={setSelectedCard}
           setIsCardSelected={setIsCardSelected} 
+         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
         />
       </div>
 
