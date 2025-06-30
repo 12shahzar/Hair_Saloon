@@ -19,12 +19,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { confirmItem } from "@/util/util";
 
 const BuildAWigPage = () => {
-  const [selectedCapCard, setSelectedCapCard] = useState(null);
-  const [isCardSelected, setIsCardSelected] = useState(false);
+  const [selectedCapCards, setSelectedCapCards] = useState([]);
+
   const dispatch = useDispatch();
   const router = useRouter();
+
   const handleConfirm = () => {
-    confirmItem(dispatch, selectedCapCard);
+    if (selectedCapCards.length === 0) return;
+
+    const finalObject = {
+      text: "ADD-ON",
+      // small: selectedCapCards.map((c) => c.small).join(", "),
+      small:
+        selectedCapCards.length === 1 ? selectedCapCards[0].small : "MIXED",
+
+      price: selectedCapCards.reduce((sum, c) => sum + c.price, 0),
+      image: selectedCapCards[0]?.image,
+    };
+
+    confirmItem(dispatch, finalObject);
     router.push("/build-wig");
   };
   return (
@@ -46,30 +59,28 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-base text-black font-medium">
-                  ${selectedCapCard?.price || 0} USD
+                  ${selectedCapCards.reduce((sum, c) => sum + c.price, 0)} USD
                 </p>
               </div>
             </div>
             <RightSidebarSecond
-              selectedCard={selectedCapCard}
-              setSelectedCard={setSelectedCapCard}
-              setIsCardSelected={setIsCardSelected}
+              selectedCapCards={selectedCapCards}
+              setSelectedCapCards={setSelectedCapCards}
             />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-               ${selectedCapCard?.price || 0} USD
+                ${selectedCapCards.reduce((sum, c) => sum + c.price, 0)} USD
               </p>
             </div>
           </div>
 
-
           <Buttons
             text="CONFIRM SELECTION"
             onClick={handleConfirm}
-            disabled={!isCardSelected}
+            disabled={selectedCapCards.length === 0}
           />
         </div>
 
@@ -105,7 +116,10 @@ const GAP_DATA = [
   },
 ];
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard ,setIsCardSelected,}) => {
+export const RightSidebarSecond = ({
+  selectedCapCards,
+  setSelectedCapCards,
+}) => {
   const router = useRouter();
 
   const handleBack = () => {
@@ -113,26 +127,37 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard ,setIsCardSel
   };
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
+
+  const toggleCard = (card) => {
+    setSelectedCapCards((prev) => {
+      const exists = prev.find((item) => item.id === card.id);
+      if (exists) {
+        return prev.filter((item) => item.id !== card.id);
+      } else if (prev.length < 3) {
+        return [...prev, card];
+      }
+      return prev;
+    });
+  };
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-       <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between mb-3">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="CUSTOMIZATION KIT" />
-     
+
       <div className="flex flex-col gap-5  mx-auto mt-5 ">
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
           <div className="flex flex-col gap-5  mx-auto ">
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 mx-auto justify-evenly">
-              {GAP_DATA.map((data, index) => (
+              {GAP_DATA.map((data) => (
                 <MembershipCard
-                  key={index}
+                  key={data.id}
                   data={data}
-                  isSelected={selectedCard?.id === data.id}
-                   onSelect={() => {
-    setSelectedCard(data);
-    setIsCardSelected(true); // ✅ update this
-  }}
+                  isSelected={selectedCapCards.some(
+                    (item) => item.id === data.id
+                  )}
+                  onSelect={() => toggleCard(data)}
                 />
               ))}
             </div>
