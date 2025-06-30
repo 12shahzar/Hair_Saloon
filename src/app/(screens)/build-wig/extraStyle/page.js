@@ -134,76 +134,75 @@ export const RightSidebarFirst = ({
       <div className="flex flex-col gap-5 mx-auto mt-5">
         <Heading head="SALON TREATMENTS" />
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 g:gap-8 mx-auto justify-evenly">
-          {BASIC_MEMBERSHIP.map((data, index) => (
-            <MembershipCard
-              key={index}
-              data={data}
-              isSelected={basicSelected.some((item) => item.id === data.id)}
-              onSelect={() => {
-                const isAlreadySelected = basicSelected.some(
-                  (item) => item.id === data.id
-                );
-                const isBangs = data.small === "BANGS";
-                const otherSelected = basicSelected.find(
-                  (item) => item.id !== data.id
-                );
+       {BASIC_MEMBERSHIP.map((data, index) => (
+  <MembershipCard
+    key={index}
+    data={data}
+    isSelected={basicSelected.some((item) => item.id === data.id)}
+    onSelect={() => {
+      const isAlreadySelected = basicSelected.some(
+        (item) => item.id === data.id
+      );
+      const isBangs = data.small === "BANGS";
 
-                let updatedSelection = [];
+      let updatedSelection = [];
 
-                if (isAlreadySelected) {
-                  // If deselecting, just remove this item
-                  updatedSelection = basicSelected.filter(
-                    (item) => item.id !== data.id
-                  );
-                } else {
-                  if (isBangs) {
-                    // If BANGS selected first, allow one more later
-                    if (basicSelected.length === 0) {
-                      updatedSelection = [data];
-                    } else if (
-                      basicSelected.length === 1 &&
-                      basicSelected[0].small !== "BANGS"
-                    ) {
-                      // BANGS can't be added after other
-                      return;
-                    } else if (
-                      basicSelected.length === 1 &&
-                      basicSelected[0].small === "BANGS"
-                    ) {
-                      updatedSelection = [...basicSelected, data];
-                    } else {
-                      return;
-                    }
-                  } else {
-                    const bangsSelected = basicSelected.some(
-                      (item) => item.small === "BANGS"
-                    );
+      if (isBangs) {
+        if (isAlreadySelected) {
+          // Allow deselection of BANGS
+          updatedSelection = basicSelected.filter(
+            (item) => item.id !== data.id
+          );
+        } else if (basicSelected.length === 0) {
+          // Select BANGS first
+          updatedSelection = [data];
+        } else if (
+          basicSelected.length === 1 &&
+          basicSelected[0].small === "BANGS"
+        ) {
+          // Add another with BANGS
+          updatedSelection = [...basicSelected, data];
+        } else {
+          updatedSelection = [data];
+        }
+      } else {
+        const bangsSelected = basicSelected.some(
+          (item) => item.small === "BANGS"
+        );
 
-                    if (bangsSelected && basicSelected.length === 1) {
-                      // Add second (non-bangs) only
-                      updatedSelection = [...basicSelected, data];
-                    } else {
-                      // Any other non-bangs replaces current
-                      updatedSelection = [data];
-                    }
-                  }
-                }
+        if (isAlreadySelected) {
+          // Deselect current item
+          updatedSelection = basicSelected.filter(
+            (item) => item.id !== data.id
+          );
+        } else if (bangsSelected && basicSelected.length === 1) {
+          // Add non-bangs alongside BANGS
+          updatedSelection = [...basicSelected, data];
+        } else {
+          // Replace all with new non-bangs
+          updatedSelection = [data];
+        }
+      }
 
-                setBasicSelected(updatedSelection);
+      setBasicSelected(updatedSelection);
 
-                // Handle FREE premium for BANGS
-                const hasBangs = updatedSelection.some(
-                  (item) => item.small === "BANGS"
-                );
-                if (hasBangs) {
-                  const freeOption = PREMIUM_MEMBERSHIP.find(
-                    (item) => item.small === "FREE"
-                  );
-                  if (freeOption) setPremiumSelected(freeOption);
-                }
-              }}
-            />
-          ))}
+      // Handle FREE premium item when BANGS is selected
+      const hasBangs = updatedSelection.some(
+        (item) => item.small === "BANGS"
+      );
+      if (hasBangs) {
+        const freeOption = PREMIUM_MEMBERSHIP.find(
+          (item) => item.small === "FREE"
+        );
+        if (freeOption) setPremiumSelected(freeOption);
+      } else {
+        // Optional: clear FREE item if BANGS is removed
+        setPremiumSelected(null);
+      }
+    }}
+  />
+))}
+
         </div>
       </div>
 
