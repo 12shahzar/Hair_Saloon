@@ -11,6 +11,7 @@ import {
   color14,
   color15,
   color16,
+  color17,
   color2,
   color3,
   color4,
@@ -226,7 +227,7 @@ const COLOR_DATA = [
   },
   {
     id: 14,
-    image: color11,
+    image: color17,
     text: "COLOR",
    small: "TEAL",
     price:100

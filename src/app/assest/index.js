@@ -36,6 +36,7 @@ import color13 from "./images/color13.png";
 import color14 from "./images/color14.png";
 import color15 from "./images/color15.png";
 import color16 from "./images/color16.png";
+import color17 from "./images/color17.png";
 import length from "./images/length.png";
 import cart from "./images/cart.png";
 import menu from "./images/menu.png";
@@ -63,6 +64,7 @@ export {
   cart,
   menu,
   length,
+  color17,
   color1,
   color2,
   color3,
