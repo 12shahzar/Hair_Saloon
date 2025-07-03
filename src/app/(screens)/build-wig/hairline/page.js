@@ -91,67 +91,30 @@ export const RightSidebarSecond = ({
   const handleBack = () => {
     router.push("/build-wig");
   };
-   const cardRef = useRef();
+  const cardRef = useRef();
   useScrollOnPathChange(cardRef);
   return (
-    <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col  mt-3  lg:mt-0">
-        <div className="flex items-center justify-between mb-3">
+    <div
+      ref={cardRef}
+      className="w-full lg:w-[40%] flex flex-col  mt-3  lg:mt-0"
+    >
+      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="VENTILLATION EFFECT" />
-    
 
-   {/* <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto mt-6 justify-evenly">
-               {CAP_DATA.map((data, index) => {
-                 const isSelected = selectedCard?.id === data.id;
- 
-                 return (
-                   <div
-                     key={index}
-                     onClick={() => handleNext(data)}
-                     className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
-         border-black bg-white
-       `}
-                   >
-                     
-                     <p className="text-[10px] md:text-sm text-black font-covered">
-                       {data.text}
-                     </p>
- 
-                    
-                     <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
-                       <Image
-                         src={data.image}
-                         alt="Card image"
-                         width={100}
-                         height={100}
-                         className="object-contain w-full h-full"
-                       />
-                     </div>
- 
-                     
-                     <p
-                       className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
-                         isSelected ? "text-[#EB1C24]" : "text-black"
-                       }`}
-                     >
-                       {data.small}
-                     </p>
-                   </div>
-                 );
-               })}
-             </div> */}
-                   <MembershipSection
-                     data={CAP_DATA}
-                     selectedCard={selectedCard}
-                     setSelectedCard={setSelectedCard}
-                     setIsCardSelected={setIsCardSelected} 
-                     className="flex items-center"
-                   />
+      <MembershipSection
+        data={CAP_DATA}
+        selectedCard={selectedCard}
+        setSelectedCard={setSelectedCard}
+        setIsCardSelected={setIsCardSelected}
+        className="flex items-center"
+      />
 
       <div className="flex mx-auto gap-5 mt-8">
-        <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
-          PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME.
+        <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+          {selectedCard?.para ||
+            "PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME. "}
         </p>
       </div>
     </div>
@@ -165,6 +128,7 @@ const CAP_DATA = [
     text: "HAIRLINE",
     small: "NATURAL",
     price: 100,
+    para: "HAIRLINE IS ROUNDED & SOFT.",
   },
   {
     id: 2,
@@ -172,6 +136,7 @@ const CAP_DATA = [
     text: "HAIRLINE",
     small: "PEAK",
     price: 200,
+    para: "HAIRLINE HAS A WIDOW’S PEAK.",
   },
   {
     id: 3,
@@ -179,5 +144,8 @@ const CAP_DATA = [
     text: "HAIRLINE",
     small: "LAGOS",
     price: 300,
+    para: "NATURAL HAIRLINE WITH LOW TEMPLES ON BOTH SIDES.",
   },
 ];
+
+// lagos + peak: HAIRLINE HAS A WIDOW’S PEAK WITH LOW TEMPLES ON BOTH SIDES.

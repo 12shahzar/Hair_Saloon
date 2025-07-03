@@ -3,10 +3,8 @@ import { MembershipCard } from "..";
 
 const MembershipSection = ({ title, data, selectedCard, setSelectedCard, setIsCardSelected,className }) => {
   return (
-    <div className="flex flex-col gap-5 mx-auto">
-      <p className="text-[8px] sm:text-sm font-medium font-futura text-black text-center">
-        {title}
-      </p>
+    <div className="flex flex-col gap-5 mx-auto mt-2">
+      
       <div className={`mx-auto justify-evenly  xl:grid-cols-3 gap-3 md:gap-8 ${className}`}>
         {data.map((data, index) => (
           <MembershipCard

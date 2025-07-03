@@ -50,8 +50,12 @@ import style2 from "./images/style2.png"
 import style3 from "./images/style3.png"
 import style4 from "./images/style4.png"
 import length2 from "./images/length2.png"
+import Vectotmenu1 from "./images/Vectormenu1.png"
+import Vectotmenu2 from "./images/Vectormenu2.png"
 export {
   leaf,
+  Vectotmenu1,
+  Vectotmenu2,
   length2,
   style1,
   style2,

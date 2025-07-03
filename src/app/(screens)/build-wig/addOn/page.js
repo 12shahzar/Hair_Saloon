@@ -99,6 +99,7 @@ const GAP_DATA = [
     text: "ADD-ON",
     small: "BLEACH",
     price: 100,
+    para:"KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 2,
@@ -106,15 +107,18 @@ const GAP_DATA = [
     text: "ADD-ON",
     small: "PLUCK",
     price: 200,
+    para:"HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 3,
     image: addOn3,
     text: "ADD-ON",
-    small: "CLIPENDX",
+    small: "CLIPENDS",
     price: 300,
+    para:"ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH."
   },
 ];
+
 
 export const RightSidebarSecond = ({
   selectedCapCards,
@@ -141,12 +145,12 @@ export const RightSidebarSecond = ({
   };
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="CUSTOMIZATION KIT" />
 
-      <div className="flex flex-col gap-5  mx-auto mt-5 ">
+      <div className="flex flex-col gap-5  mx-auto mt-2 ">
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
           <div className="flex flex-col gap-5  mx-auto ">
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5 mx-auto justify-evenly">
@@ -165,8 +169,9 @@ export const RightSidebarSecond = ({
         </div>
       </div>
 
-      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
-        PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME.
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+        {/* */}
+         {selectedCapCards[selectedCapCards.length - 1]?.para || "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME."}
       </p>
     </div>
   );

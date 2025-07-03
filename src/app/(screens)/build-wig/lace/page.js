@@ -60,7 +60,7 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                $${selectedCapCard?.price || 0} USD
+                ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export const RightSidebarSecond = ({
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-         <div className="flex items-center justify-between mb-3">
+         <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="HD TOPPER SIZE" />
@@ -107,9 +107,9 @@ export const RightSidebarSecond = ({
         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
 
-      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
-        PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME FOR 360 LACE &
-        FULL LACE.
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
+        {/*  */}
+        {selectedCard?.para || "PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME FOR 360 LACE & FULL LACE."}
       </p>
     </div>
   );
@@ -122,6 +122,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "4X4",
     price: 200,
+    para:"GLUELESS CLOSURE UNIT MEASURING 4 INCHES EAR TO EAR + 4 INCHES FRONT TO BACK."
   },
   {
     id: 2,
@@ -129,6 +130,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "5X5",
     price: 300,
+    para:"GLUELESS CLOSURE UNIT MEASURING 5 INCHES EAR TO EAR + 5 INCHES FRONT TO BACK."
   },
   {
     id: 3,
@@ -136,6 +138,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "6X6",
     price: 500,
+    para:"GLUELESS CLOSURE UNIT MEASURING 6 INCHES EAR TO EAR + 6 INCHES FRONT TO BACK."
   },
   {
     id: 4,
@@ -143,6 +146,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "7X7",
     price: 100,
+    para:"GLUELESS CLOSURE UNIT MEASURING 7 INCHES EAR TO EAR + 7 INCHES FRONT TO BACK."
   },
   {
     id: 5,
@@ -150,6 +154,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "13X4",
     price: 100,
+    para:"FRONTAL UNIT MEASURING 13 INCHES EAR TO EAR + 4 INCHES FRONT TO BACK."
   },
   {
     id: 6,
@@ -157,6 +162,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "13X6",
     price: 100,
+    para:"FRONTAL UNIT MEASURING 13 INCHES EAR TO EAR + 6 INCHES FRONT TO BACK."
   },
   {
     id: 7,
@@ -164,6 +170,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "360",
     price: 100,
+    para:"FRONTAL UNIT WITH LACE AROUND THE PERIMETER. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 8,
@@ -171,5 +178,7 @@ const GAP_DATA = [
     text: "LACE",
     small: "FULL",
     price: 100,
+    para:"HD LACE THROUGHOUT THE ENTIRE CAP. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
 ];
+

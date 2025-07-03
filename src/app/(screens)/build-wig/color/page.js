@@ -109,7 +109,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col mt-3 lg:mt-0 lg:h-[700px]">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="SINGLE COLOR DYE" />
@@ -124,8 +124,8 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         />
       </div>
 
-      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
-       PLEASE EXPECT AN ADDITIONAL 1-2 WEEKS OF PROCESSING TIME.
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
+       {selectedCard?.para || "COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."}
       </p>
     </div>
   );
@@ -137,50 +137,57 @@ const COLOR_DATA = [
     image: color1,
     text: "COLOR",
     small: "JETBLACK",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 2,
     image: color2,
     text: "COLOR",
     small: "OFFBLACK",
-    price:200
+    price:200,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT."
   },
   {
     id: 3,
     image: color3,
     text: "COLOR",
     small: "ESPRESSO",
-    price:300
+    price:300,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 4,
     image: color5,
     text: "COLOR",
     small: "CHESTNUT",
-    price:400
+    price:400,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 5,
     image: color8,
     text: "COLOR",
     small: "HONEY",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 6,
     image: color7,
     text: "COLOR",
     small: "AUBURN",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+
   },
   {
     id: 7,
     image: color6,
     text: "COLOR",
     small: "COPPER",
-    
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
 
   {
@@ -188,62 +195,71 @@ const COLOR_DATA = [
     image: color9,
     text: "COLOR",
     small: "GINGER",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 9,
     image: color11,
     text: "COLOR",
     small: "SANGRA",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 10,
     image: color10,
     text: "COLOR",
     small: "CHERRY",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 11,
     image: color16,
     text: "COLOR",
     small: "RASPBERRY",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 12,
     image: color12,
     text: "COLOR",
     small: "PLUM",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 13,
     image: color13,
     text: "COLOR",
     small: "COBALT",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 14,
     image: color17,
     text: "COLOR",
    small: "TEAL",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
   {
     id: 15,
     image: color15,
     text: "COLOR",
     small: "CITRINE",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
     {
     id: 16,
     image: color14,
     text: "COLOR",
     small: "SLIME",
-    price:100
+    price:100,
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
 ];

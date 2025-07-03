@@ -94,7 +94,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
 
   return (
     <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col  mt-3 lg:mt-0">
-         <div className="flex items-center justify-between mb-3">
+         <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="HAIR MEASUREMENTS" />
@@ -106,7 +106,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         setIsCardSelected={setIsCardSelected}
         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
-     <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+     <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
   {selectedCard?.para || "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER 30 INCHES. 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT."}
 </p>
 
@@ -121,9 +121,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "16”",
     price:100,
-    para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+    para :`  3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 2,
@@ -131,9 +129,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "18”",
     price:200,
-      para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+      para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 3,
@@ -141,9 +137,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "20”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 4,
@@ -151,9 +145,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "22”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 5,
@@ -161,9 +153,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "24”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 6,
@@ -171,9 +161,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "26”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 7,
@@ -181,9 +169,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "28”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
   },
   {
     id: 8,
@@ -191,9 +177,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "30”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
   },
   {
     id: 9,
@@ -201,9 +185,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "32”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
   },
   {
     id: 10,
@@ -211,9 +193,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "34”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
   },
   {
     id: 11,
@@ -221,9 +201,7 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "36”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
     
   },
   {
@@ -232,8 +210,6 @@ const GAP_DATA = [
     text: "LENGTH",
     small: "40”",
     price:100,
-     para :` PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME FOR LENGTHS OVER
-        30 INCHES . 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT
-        EXACT.`,
+     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
   },
 ];

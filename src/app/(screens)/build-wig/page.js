@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   image1,
@@ -54,13 +54,13 @@ const BuildAWigPage = () => {
                     TOTAL DUE
                   </p>
                   <p className="font-futura text-base text-black font-medium">
-                    ${totalPrice} USD
+                    ${totalPrice > 0 ? totalPrice : 860} USD
                   </p>
                 </div>
                 <div className=" w-[90%] my-5  sm:block hidden">
                   <div className="overflow-y-auto scrollbar-hidden h-[100px]">
                     {cartItems.length === 0 ? (
-                      <p>No Order</p>
+                      <p></p>
                     ) : (
                       cartItems.map((item, index) => (
                         <div
@@ -85,7 +85,7 @@ const BuildAWigPage = () => {
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
-              <p className="font-futura text-[10px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
+              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
                 PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. <br /> WE ENSURE
                 ALL DETAILS ARE ACCURATE + PRECISE. <br /> EXPECT 6-8 WEEKS OF
                 PROCESSING TIME FOR THIS UNIT.
@@ -95,14 +95,14 @@ const BuildAWigPage = () => {
                   TOTAL DUE
                 </p>
                 <p className="font-futura text-[13px] text-black font-medium">
-                  ${totalPrice > 0 ? totalPrice : 760} USD
+                  ${totalPrice > 0 ? totalPrice : 860} USD
                 </p>
               </div>
 
               <div className=" w-[100%] my-5  sm:hidden block">
                 <div className="flex flex-col items-center">
                   {cartItems.length === 0 ? (
-                    <p className="text-[9px] font-futura">No Order</p>
+                    <p className="text-[9px] font-futura"></p>
                   ) : (
                     cartItems.map((item, index) => (
                       <div
@@ -167,6 +167,17 @@ export const RightSidebarFirst = ({ setShowModal }) => {
     setSelectedCard(data);
     router.push(`/build-wig${data.link}`);
   };
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      const allItems = [...BASIC_MEMBERSHIP, ...PREMIUM_MEMBERSHIP];
+      const matched = allItems.find((card) =>
+        cartItems.some((item) => item.text === card.text)
+      );
+      if (matched) {
+        setSelectedCard(matched);
+      }
+    }
+  }, [cartItems]);
 
   return (
     <>
@@ -185,7 +196,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                   <div
                     key={index}
                     onClick={() => handleNext(data)}
-                    className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+                    className={`border relative pt-[0.5px] w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
         border-black bg-white
       `}
                   >
@@ -207,7 +218,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
                         isSelected ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
@@ -231,7 +242,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                   <div
                     key={index}
                     onClick={() => handleNext(data)}
-                    className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+                    className={`border relative  w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
         border-black bg-white
       `}
                   >
@@ -253,7 +264,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
                         isSelected ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >

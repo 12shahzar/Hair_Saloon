@@ -30,7 +30,7 @@ const WigProduct = () => {
         {images.map((img, index) => (
           <div
             key={index}
-            className={`border py-[2px] cursor-pointer  ${
+            className={`border-2 py-[2px] cursor-pointer  ${
               selectedImage === img ? "border-black" : "border-transparent"
             }`}
             onClick={() => setSelectedImage(img)}

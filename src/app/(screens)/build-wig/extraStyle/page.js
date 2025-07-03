@@ -126,12 +126,12 @@ export const RightSidebarFirst = ({
       ref={cardRef}
       className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0 lg:h-[700px]"
     >
-      <div className="flex items-center justify-between mb-3">
+      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
 
       {/* BASIC MEMBERSHIP */}
-      <div className="flex flex-col gap-5 mx-auto mt-5">
+      <div className="flex flex-col gap-2 mx-auto mt-5">
         <Heading head="SALON TREATMENTS" />
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 g:gap-8 mx-auto justify-evenly">
        {BASIC_MEMBERSHIP.map((data, index) => (
@@ -192,7 +192,7 @@ export const RightSidebarFirst = ({
       );
       if (hasBangs) {
         const freeOption = PREMIUM_MEMBERSHIP.find(
-          (item) => item.small === "FREE"
+          (item) => item.small === "MIDDLE"
         );
         if (freeOption) setPremiumSelected(freeOption);
       } else {
@@ -207,9 +207,9 @@ export const RightSidebarFirst = ({
       </div>
 
       {/* PREMIUM MEMBERSHIP */}
-      <div className="flex flex-col gap-5 mx-auto mt-8">
+      <div className="flex flex-col gap-2 mx-auto mt-8">
         <Heading head="PART SELECTION" />
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 mx-auto justify-evenly">
+        <div className="flex items-center gap-3 mx-auto justify-evenly">
           {PREMIUM_MEMBERSHIP.map((data, index) => {
             const isSelected = premiumSelected?.id === data.id;
             const isDisabled = !basicSelected;
@@ -220,7 +220,7 @@ export const RightSidebarFirst = ({
                 onClick={() => {
                   if (!isDisabled) setPremiumSelected(data);
                 }}
-                className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col bg-white items-center text-center cursor-pointer ${
+                className={`border relative  w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col bg-white items-center text-center cursor-pointer ${
                   isSelected ? "border-[#EB1C24]" : "border-black"
                 }  bg-white`}
               >
@@ -237,7 +237,7 @@ export const RightSidebarFirst = ({
                   </p>
                 </div>
                 <p
-                  className={`absolute bottom-[-7px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
+                  className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
                     isSelected ? "text-[#EB1C24]" : "text-black"
                   }`}
                 >
@@ -260,8 +260,20 @@ const BASIC_MEMBERSHIP = [
 ];
 
 const PREMIUM_MEMBERSHIP = [
-  { id: 1, image: "F", text: "STYLING", small: "FREE", price: 0 },
-  { id: 2, image: "L", text: "STYLING", small: "LEFT", price: 100 },
-  { id: 3, image: "M", text: "STYLING", small: "MIDDLE", price: 100 },
-  { id: 4, image: "R", text: "STYLING", small: "RIGHT", price: 100 },
+  { id: 1, image: "L", text: "STYLING", small: "LEFT", price: 100 },
+  { id: 2, image: "M", text: "STYLING", small: "MIDDLE", price: 100 },
+  { id: 3, image: "R", text: "STYLING", small: "RIGHT", price: 100 },
 ];
+
+
+// bangs: CURTAIN BANGS WITH FACE FRAMING LAYERS. 
+
+// crimps: TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+
+// flat iron: HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+
+// layers: BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+
+// bangs + flat iron: CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+
+// bangs + layers: CURTAIN BANGS WITH BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.

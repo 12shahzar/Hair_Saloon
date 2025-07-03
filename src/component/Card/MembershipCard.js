@@ -6,8 +6,8 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
   return (
     <div
       onClick={onSelect}
-      className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
-       ${isSelected ? "border-[#EB1C24]" : "border-black"}  bg-white
+      className={`border relative  w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+       ${isSelected ? "border-[#EB1C24]" : "border-black"}  bg-white mb-3 sm:mb-0
       `}
     >
       {/* Top Label */}
@@ -28,7 +28,7 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
 
       {/* Bottom Value */}
       <p
-        className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium  ${
+        className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium  ${
         isSelected ? "text-[#EB1C24]" : "text-black"
       }`}
       >

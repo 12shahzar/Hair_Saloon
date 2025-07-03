@@ -90,7 +90,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSel
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="HAIR VOLUME" />
@@ -105,7 +105,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSel
       <div className="flex mx-auto flex-col gap-1 mt-8">
         {density_data.map((item, index) => (
           <p
-            className="text-[10px] sm:text-xs font-medium text-[#EB1C24] font-futura"
+            className="text-[9px] sm:text-xs font-medium text-[#EB1C24] font-futura"
             key={index}
           >
             {item}
@@ -131,49 +131,49 @@ const GAP_DATA = [
     id: 1,
     image: image3,
     text: "DENSITY",
-    small: "150",
+    small: "150%",
     price: 100,
   },
   {
     id: 2,
     image: image3,
     text: "DENSITY",
-    small: "180",
+    small: "180%",
     price: 200,
   },
   {
     id: 3,
     image: image3,
     text: "DENSITY",
-    small: "200",
+    small: "200%",
     price: 300,
   },
   {
     id: 4,
     image: image3,
     text: "DENSITY",
-    small: "250",
+    small: "250%",
     price: 500,
   },
   {
     id: 5,
     image: image3,
     text: "DENSITY",
-    small: "300",
+    small: "300%",
     price: 100,
   },
   {
     id: 6,
     image: image3,
     text: "DENSITY",
-    small: "350",
+    small: "350%",
     price: 100,
   },
   {
     id: 7,
     image: image3,
     text: "DENSITY",
-    small: "400",
+    small: "400%",
     price: 100,
   },
 ];

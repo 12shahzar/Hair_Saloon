@@ -89,7 +89,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-       <div className="flex items-center justify-between mb-3">
+       <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
       <Heading head="HAIR TYPE" />
@@ -102,8 +102,8 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
          className="flex items-center"
       />
 
-      <p className="font-futura text-[10px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
-        HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER.
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+        {selectedCard?.para || "HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER."}
       </p>
     </div>
   );
@@ -115,7 +115,8 @@ const GAP_DATA = [
     image: image5,
     text: "TEXTURE",
     small: "SILKY",
-    price:100
+    price:100,
+    para:"HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER."
   },
 
   {
@@ -123,6 +124,7 @@ const GAP_DATA = [
     image: image5,
     text: "TEXTURE",
     small: "KINKY",
-    price:200
+    price:200,
+    para:"HAIR STRANDS ARE COARSE WITH LOW TO MEDIUM GLOSS & LUSTRE."
   },
 ];
