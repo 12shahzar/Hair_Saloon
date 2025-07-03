@@ -81,7 +81,26 @@ const BuildAWigPage = () => {
             />
 
             <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
-              PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME.
+              {(() => {
+  const hasBangs = basicSelected.some(item => item.small === "BANGS");
+  const other = basicSelected.find(item => item.small !== "BANGS");
+
+  if (basicSelected.length === 1) {
+    return basicSelected[0].para;
+  }
+
+  if (hasBangs && other) {
+    if (other.small === "FLATIRON") {
+      return "CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+    }
+    if (other.small === "LAYERS") {
+      return "CURTAIN BANGS WITH BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+    }
+  }
+
+  return "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME.";
+})()}
+
             </p>
             <div className="text-center block md:hidden md:mt-0 mt-8">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
@@ -253,10 +272,10 @@ export const RightSidebarFirst = ({
 };
 
 const BASIC_MEMBERSHIP = [
-  { id: 1, image: style1, text: "STYLING", small: "BANGS", price: 100 },
-  { id: 2, image: style2, text: "STYLING", small: "CRIMPS", price: 100 },
-  { id: 3, image: style3, text: "STYLING", small: "FLATIRON", price: 100 },
-  { id: 4, image: style4, text: "STYLING", small: "LAYERS", price: 100 },
+  { id: 1, image: style1, text: "STYLING", small: "BANGS", price: 100,para:"CURTAIN BANGS WITH FACE FRAMING LAYERS." },
+  { id: 2, image: style2, text: "STYLING", small: "CRIMPS", price: 100,para:"TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME." },
+  { id: 3, image: style3, text: "STYLING", small: "FLATIRON", price: 100,para:"HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME." },
+  { id: 4, image: style4, text: "STYLING", small: "LAYERS", price: 100,para:"BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME." },
 ];
 
 const PREMIUM_MEMBERSHIP = [
@@ -266,13 +285,13 @@ const PREMIUM_MEMBERSHIP = [
 ];
 
 
-// bangs: CURTAIN BANGS WITH FACE FRAMING LAYERS. 
+// bangs:  
 
-// crimps: TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+// crimps: 
 
-// flat iron: HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+// flat iron: 
 
-// layers: BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
+// layers: 
 
 // bangs + flat iron: CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
 

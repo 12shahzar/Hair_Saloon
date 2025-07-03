@@ -32,8 +32,6 @@ const BuildAWigPage = () => {
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
 
-  // Merge default cards with cart values
-
   return (
     <>
       <main className="container mx-auto">
@@ -191,7 +189,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto justify-evenly">
               {basicWithCartData.map((data, index) => {
                 const isSelected = selectedCard?.id === data.id;
-
+                const isInCart = cartItems.some((item) => item.small === data.small);
                 return (
                   <div
                     key={index}
@@ -219,7 +217,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                     {/* Bottom Value */}
                     <p
                       className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
-                        isSelected ? "text-[#EB1C24]" : "text-black"
+                        isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
                       {data.small}
@@ -237,7 +235,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto justify-evenly">
               {premiumWithCartData.map((data, index) => {
                 const isSelected = selectedCard?.id === data.id;
-
+                const isInCart = cartItems.some((item) => item.small === data.small);
                 return (
                   <div
                     key={index}
@@ -265,7 +263,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                     {/* Bottom Value */}
                     <p
                       className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
-                        isSelected ? "text-[#EB1C24]" : "text-black"
+                        isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
                       {data.small}

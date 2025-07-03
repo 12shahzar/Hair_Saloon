@@ -60,19 +60,19 @@ const HeaderBar = () => {
           />
         </div>
 
-        <div className="gap-3 flex md:hidden">
+        <div className="gap-5 flex md:hidden">
           <Image
             src={cart}
             alt="Cart"
-            width={30}
-            height={30}
+            width={25}
+            height={25}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="cursor-pointer"
           />
           <Image
             src={menu}
             alt="Menu"
-            width={26}
+            width={20}
             height={5}
             onClick={() => setisDropOpen(!isDropOpen)}
             className="cursor-pointer"
