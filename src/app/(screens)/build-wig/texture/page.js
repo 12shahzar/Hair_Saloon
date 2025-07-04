@@ -32,7 +32,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-1/2 flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -92,7 +92,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
        <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="HAIR TYPE" />
+      <Heading head="HAIR TYPE" className="mt-5"/>
      
       <MembershipSection
         data={GAP_DATA}
@@ -102,8 +102,8 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
          className="flex items-center"
       />
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
-        {selectedCard?.para || "HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER."}
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4 w-[100%]">
+        {selectedCard?.para }
       </p>
     </div>
   );

@@ -34,7 +34,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border-1 border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden  custom-gradient">
+          <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden  custom-gradient">
             <div className="w-full lg:w-[60%] flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -58,7 +58,7 @@ const BuildAWigPage = () => {
               setIsCardSelected={setIsCardSelected}
             />
 
-            <div className="text-center block md:hidden md:mt-0 mt-8">
+            <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
@@ -99,7 +99,7 @@ export const RightSidebarSecond = ({
          <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="CUSTOM SIZING" />
+      <Heading head="CUSTOM SIZING" className="mt-5"/>
    
 
       <MembershipSection
@@ -124,7 +124,7 @@ export const RightSidebarSecond = ({
       
        </div>
 
-         <div className="flex mx-auto gap-5 mt-8">
+         <div className="flex mx-auto gap-5 my-4">
         {["XXS: 19”" , "XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
           <p
             key={idx}

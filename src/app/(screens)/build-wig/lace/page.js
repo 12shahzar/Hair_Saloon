@@ -33,7 +33,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border-1 border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-1/2 flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -96,7 +96,7 @@ export const RightSidebarSecond = ({
          <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="HD TOPPER SIZE" />
+      <Heading head="HD TOPPER SIZE" className="mt-5"/>
    
 
       <MembershipSection
@@ -107,9 +107,9 @@ export const RightSidebarSecond = ({
         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4 w-[80%] mx-auto">
         {/*  */}
-        {selectedCard?.para || "PLEASE EXPECT AN ADDITIONAL 3-5 DAYS OF PROCESSING TIME FOR 360 LACE & FULL LACE."}
+        {selectedCard?.para }
       </p>
     </div>
   );

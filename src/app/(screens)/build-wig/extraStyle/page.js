@@ -55,7 +55,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-[60%] flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] sm:block hidden ">
@@ -80,29 +80,32 @@ const BuildAWigPage = () => {
               setPremiumSelected={setPremiumSelected}
             />
 
-            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
+            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium my-4 w-[90%] sm:hidden block mx-auto ">
               {(() => {
-  const hasBangs = basicSelected.some(item => item.small === "BANGS");
-  const other = basicSelected.find(item => item.small !== "BANGS");
+                const hasBangs = basicSelected.some(
+                  (item) => item.small === "BANGS"
+                );
+                const other = basicSelected.find(
+                  (item) => item.small !== "BANGS"
+                );
 
-  if (basicSelected.length === 1) {
-    return basicSelected[0].para;
-  }
+                if (basicSelected.length === 1) {
+                  return basicSelected[0].para;
+                }
 
-  if (hasBangs && other) {
-    if (other.small === "FLATIRON") {
-      return "CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
-    }
-    if (other.small === "LAYERS") {
-      return "CURTAIN BANGS WITH BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
-    }
-  }
+                if (hasBangs && other) {
+                  if (other.small === "FLATIRON") {
+                    return "CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+                  }
+                  if (other.small === "LAYERS") {
+                    return "CURTAIN BANGS WITH BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+                  }
+                }
 
-  return "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME.";
-})()}
-
+                return "";
+              })()}
             </p>
-            <div className="text-center block md:hidden md:mt-0 mt-8">
+            <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
@@ -151,77 +154,76 @@ export const RightSidebarFirst = ({
 
       {/* BASIC MEMBERSHIP */}
       <div className="flex flex-col gap-2 mx-auto mt-5">
-        <Heading head="SALON TREATMENTS" />
-        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 g:gap-8 mx-auto justify-evenly">
-       {BASIC_MEMBERSHIP.map((data, index) => (
-  <MembershipCard
-    key={index}
-    data={data}
-    isSelected={basicSelected.some((item) => item.id === data.id)}
-    onSelect={() => {
-      const isAlreadySelected = basicSelected.some(
-        (item) => item.id === data.id
-      );
-      const isBangs = data.small === "BANGS";
+        <Heading head="SALON TREATMENTS" className="mt-5"/>
+        <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-8 mx-auto justify-evenly">
+          {BASIC_MEMBERSHIP.map((data, index) => (
+            <MembershipCard
+              key={index}
+              data={data}
+              isSelected={basicSelected.some((item) => item.id === data.id)}
+              onSelect={() => {
+                const isAlreadySelected = basicSelected.some(
+                  (item) => item.id === data.id
+                );
+                const isBangs = data.small === "BANGS";
 
-      let updatedSelection = [];
+                let updatedSelection = [];
 
-      if (isBangs) {
-        if (isAlreadySelected) {
-          // Allow deselection of BANGS
-          updatedSelection = basicSelected.filter(
-            (item) => item.id !== data.id
-          );
-        } else if (basicSelected.length === 0) {
-          // Select BANGS first
-          updatedSelection = [data];
-        } else if (
-          basicSelected.length === 1 &&
-          basicSelected[0].small === "BANGS"
-        ) {
-          // Add another with BANGS
-          updatedSelection = [...basicSelected, data];
-        } else {
-          updatedSelection = [data];
-        }
-      } else {
-        const bangsSelected = basicSelected.some(
-          (item) => item.small === "BANGS"
-        );
+                if (isBangs) {
+                  if (isAlreadySelected) {
+                    // Allow deselection of BANGS
+                    updatedSelection = basicSelected.filter(
+                      (item) => item.id !== data.id
+                    );
+                  } else if (basicSelected.length === 0) {
+                    // Select BANGS first
+                    updatedSelection = [data];
+                  } else if (
+                    basicSelected.length === 1 &&
+                    basicSelected[0].small === "BANGS"
+                  ) {
+                    // Add another with BANGS
+                    updatedSelection = [...basicSelected, data];
+                  } else {
+                    updatedSelection = [data];
+                  }
+                } else {
+                  const bangsSelected = basicSelected.some(
+                    (item) => item.small === "BANGS"
+                  );
 
-        if (isAlreadySelected) {
-          // Deselect current item
-          updatedSelection = basicSelected.filter(
-            (item) => item.id !== data.id
-          );
-        } else if (bangsSelected && basicSelected.length === 1) {
-          // Add non-bangs alongside BANGS
-          updatedSelection = [...basicSelected, data];
-        } else {
-          // Replace all with new non-bangs
-          updatedSelection = [data];
-        }
-      }
+                  if (isAlreadySelected) {
+                    // Deselect current item
+                    updatedSelection = basicSelected.filter(
+                      (item) => item.id !== data.id
+                    );
+                  } else if (bangsSelected && basicSelected.length === 1) {
+                    // Add non-bangs alongside BANGS
+                    updatedSelection = [...basicSelected, data];
+                  } else {
+                    // Replace all with new non-bangs
+                    updatedSelection = [data];
+                  }
+                }
 
-      setBasicSelected(updatedSelection);
+                setBasicSelected(updatedSelection);
 
-      // Handle FREE premium item when BANGS is selected
-      const hasBangs = updatedSelection.some(
-        (item) => item.small === "BANGS"
-      );
-      if (hasBangs) {
-        const freeOption = PREMIUM_MEMBERSHIP.find(
-          (item) => item.small === "MIDDLE"
-        );
-        if (freeOption) setPremiumSelected(freeOption);
-      } else {
-        // Optional: clear FREE item if BANGS is removed
-        setPremiumSelected(null);
-      }
-    }}
-  />
-))}
-
+                // Handle FREE premium item when BANGS is selected
+                const hasBangs = updatedSelection.some(
+                  (item) => item.small === "BANGS"
+                );
+                if (hasBangs) {
+                  const freeOption = PREMIUM_MEMBERSHIP.find(
+                    (item) => item.small === "MIDDLE"
+                  );
+                  if (freeOption) setPremiumSelected(freeOption);
+                } else {
+                  // Optional: clear FREE item if BANGS is removed
+                  setPremiumSelected(null);
+                }
+              }}
+            />
+          ))}
         </div>
       </div>
 
@@ -272,10 +274,38 @@ export const RightSidebarFirst = ({
 };
 
 const BASIC_MEMBERSHIP = [
-  { id: 1, image: style1, text: "STYLING", small: "BANGS", price: 100,para:"CURTAIN BANGS WITH FACE FRAMING LAYERS." },
-  { id: 2, image: style2, text: "STYLING", small: "CRIMPS", price: 100,para:"TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME." },
-  { id: 3, image: style3, text: "STYLING", small: "FLATIRON", price: 100,para:"HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME." },
-  { id: 4, image: style4, text: "STYLING", small: "LAYERS", price: 100,para:"BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME." },
+  {
+    id: 1,
+    image: style1,
+    text: "STYLING",
+    small: "BANGS",
+    price: 100,
+    para: "CURTAIN BANGS WITH FACE FRAMING LAYERS.",
+  },
+  {
+    id: 2,
+    image: style2,
+    text: "STYLING",
+    small: "CRIMPS",
+    price: 100,
+    para: "TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+  },
+  {
+    id: 3,
+    image: style3,
+    text: "STYLING",
+    small: "FLATIRON",
+    price: 100,
+    para: "HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+  },
+  {
+    id: 4,
+    image: style4,
+    text: "STYLING",
+    small: "LAYERS",
+    price: 100,
+    para: "BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+  },
 ];
 
 const PREMIUM_MEMBERSHIP = [
@@ -284,14 +314,13 @@ const PREMIUM_MEMBERSHIP = [
   { id: 3, image: "R", text: "STYLING", small: "RIGHT", price: 100 },
 ];
 
+// bangs:
 
-// bangs:  
+// crimps:
 
-// crimps: 
+// flat iron:
 
-// flat iron: 
-
-// layers: 
+// layers:
 
 // bangs + flat iron: CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
 

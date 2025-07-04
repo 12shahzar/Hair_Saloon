@@ -34,7 +34,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-1/2 flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -56,7 +56,7 @@ const BuildAWigPage = () => {
               setSelectedCard={setSelectedCapCard}
               setIsCardSelected={setIsCardSelected}
             />
-            <div className="text-center block md:hidden md:mt-0 mt-8">
+            <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
@@ -93,7 +93,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSel
         <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="HAIR VOLUME" />
+      <Heading head="HAIR VOLUME" className="mt-5"/>
     
       <MembershipSection
         data={GAP_DATA}
@@ -102,7 +102,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSel
         setIsCardSelected={setIsCardSelected}
         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
-      <div className="flex mx-auto flex-col gap-1 mt-8">
+      <div className="flex mx-auto flex-col gap-1 my-4 ">
         {density_data.map((item, index) => (
           <p
             className="text-[9px] sm:text-xs font-medium text-[#EB1C24] font-futura"

@@ -112,7 +112,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="SINGLE COLOR DYE" />
+      <Heading head="SINGLE COLOR DYE" className="mt-5"/>
     
       <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
         <MembershipSection
@@ -124,8 +124,8 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         />
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[80%] mx-auto">
-       {selectedCard?.para || "COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."}
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4  w-[80%] mx-auto">
+       {selectedCard?.para }
       </p>
     </div>
   );
@@ -136,7 +136,7 @@ const COLOR_DATA = [
     id: 1,
     image: color1,
     text: "COLOR",
-    small: "JETBLACK",
+    small: "JET BLACK",
     price:100,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
@@ -144,7 +144,7 @@ const COLOR_DATA = [
     id: 2,
     image: color2,
     text: "COLOR",
-    small: "OFFBLACK",
+    small: "OFF BLACK",
     price:200,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT."
   },

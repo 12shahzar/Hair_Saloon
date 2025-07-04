@@ -46,7 +46,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border border-black flex flex-col lg:flex-row py-10 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-1/2 flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -113,7 +113,7 @@ const GAP_DATA = [
     id: 3,
     image: addOn3,
     text: "ADD-ON",
-    small: "CLIPENDS",
+    small: "CLIP ENDS",
     price: 300,
     para:"ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH."
   },
@@ -148,7 +148,7 @@ export const RightSidebarSecond = ({
       <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="CUSTOMIZATION KIT" />
+      <Heading head="CUSTOMIZATION KIT" className="mt-5"/>
 
       <div className="flex flex-col gap-5  mx-auto mt-2 ">
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
@@ -169,9 +169,9 @@ export const RightSidebarSecond = ({
         </div>
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-8 w-[100%]">
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4 w-[100%]">
         {/* */}
-         {selectedCapCards[selectedCapCards.length - 1]?.para || "PLEASE EXPECT AN ADDITIONAL 5-7 DAYS OF PROCESSING TIME."}
+         {selectedCapCards[selectedCapCards.length - 1]?.para }
       </p>
     </div>
   );

@@ -39,12 +39,12 @@ const BuildAWigPage = () => {
           <div className="flex basis-[70%] flex-col ">
             <HeaderBar />
 
-            <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-3 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+            <div className="border-1 border-black flex flex-col lg:flex-row pt-10  px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
               <div className="w-full lg:w-[60%] flex items-center flex-col">
                 <WigProduct />
                 <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] sm:block hidden ">
                   PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
-                  DETAILS ARE ACCURATE + PRECISE. EXPECT 2-4 WEEKS OF PROCESSING
+                  DETAILS ARE ACCURATE + PRECISE. EXPECT 2 - 4 WEEKS OF PROCESSING
                   TIME FOR THIS UNIT.
                 </p>
                 <div className="text-center hidden md:block">
@@ -85,7 +85,7 @@ const BuildAWigPage = () => {
 
               <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
                 PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. <br /> WE ENSURE
-                ALL DETAILS ARE ACCURATE + PRECISE. <br /> EXPECT 6-8 WEEKS OF
+                ALL DETAILS ARE ACCURATE + PRECISE. <br /> EXPECT 6 - 8 WEEKS OF
                 PROCESSING TIME FOR THIS UNIT.
               </p>
               <div className="text-center block md:hidden md:mt-0 mt-8">
@@ -145,6 +145,7 @@ const BuildAWigPage = () => {
 export default BuildAWigPage;
 
 export const RightSidebarFirst = ({ setShowModal }) => {
+  
   const cartItems = useSelector((state) => state.wigCart.items);
   const [selectedCard, setSelectedCard] = useState(null);
   const mergedMembership = (defaultCards) => {
@@ -216,7 +217,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-4px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >

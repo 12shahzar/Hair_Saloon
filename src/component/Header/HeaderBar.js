@@ -32,8 +32,8 @@ const HeaderBar = () => {
           <Image src={search} alt="Search icon" width={16} height={15} />
         </div>
 
-        <p className="font-futura text-sm sm:text-lg">
-          {"BUILD-A-WIG >"} <span className="text-[#EB1C24]">NOIR</span>
+        <p className="font-futura  text-sm sm:text-lg">
+          {"BUILD-A-WIG >"} <span className="text-[#EB1C24] font-semibold">NOIR</span>
         </p>
 
         <div className="gap-3 hidden md:flex">
