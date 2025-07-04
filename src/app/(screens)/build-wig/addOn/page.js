@@ -37,7 +37,7 @@ const BuildAWigPage = () => {
       image: selectedCapCards[0]?.image,
     };
 
-    confirmItem(dispatch, finalObject);
+    confirmItem(dispatch, finalObject,"addOn");
     router.push("/build-wig");
   };
   return (

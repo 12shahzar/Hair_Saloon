@@ -23,7 +23,7 @@ const BuildAWigPage = () => {
   const [selectedCapCard, setSelectedCapCard] = useState(null);
   const [isCardSelected, setIsCardSelected] = useState(false);
   const handleConfirm = () => {
-    confirmItem(dispatch, selectedCapCard, "cap");
+    confirmItem(dispatch, selectedCapCard, "hairline");
     router.push("/build-wig");
   };
 

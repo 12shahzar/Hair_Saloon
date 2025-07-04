@@ -285,6 +285,7 @@ const BASIC_MEMBERSHIP = [
     image: image1,
     text: "CAP SIZE",
     small: "M",
+    uniqueId:"cap_3",
     link: "/gap",
   },
   {
@@ -292,6 +293,7 @@ const BASIC_MEMBERSHIP = [
     image: image2,
     text: "LENGTH",
     small: "24”",
+    uniqueId:"length_5",
     link: "/length",
   },
   {
@@ -299,6 +301,7 @@ const BASIC_MEMBERSHIP = [
     image: image3,
     text: "DENSITY",
     small: "200%",
+    uniqueId:"density_3",
     link: "/density",
   },
 ];
@@ -308,6 +311,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image4,
     text: "LACE",
     small: "13X6",
+    uniqueId:"lace_6",
     link: "/lace",
   },
   {
@@ -315,6 +319,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image5,
     text: "TEXTURE",
     small: "SILKY",
+    uniqueId:"texture_1",
     link: "/texture",
   },
   {
@@ -322,6 +327,7 @@ const PREMIUM_MEMBERSHIP = [
     image: color1,
     text: "COLOR",
     small: "OFFBLACK",
+    uniqueId:"color_2",
     link: "/color",
   },
   {
@@ -329,6 +335,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image7,
     text: "HAIRLINE",
     small: "NATURAL",
+    uniqueId:"hairline_1",
     link: "/hairline",
   },
   {
@@ -336,6 +343,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image8,
     text: "STYLING",
     small: "NONE",
+    uniqueId:"extraStyle_0",
     link: "/extraStyle",
   },
   {
@@ -343,6 +351,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image8,
     text: "ADD-ON",
     small: "NONE",
+    uniqueId:"addOn_0",
     link: "/addOn",
   },
 ];
