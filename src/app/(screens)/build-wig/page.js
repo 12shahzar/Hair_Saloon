@@ -23,14 +23,16 @@ import {
 import RightSection from "@/component/Section/RightSection";
 import { useSelector } from "react-redux";
 import Image from "next/image";
+import isEqual from "lodash.isequal"; // install lodash.isequal
 
 const BuildAWigPage = () => {
   const [showModal, setShowModal] = useState(false);
- const [showOrder, setOrder] = useState(false);
-const cartItems = useSelector((state) => state.wigCart.items);
+  const [showOrder, setOrder] = useState(false);
+  const cartItems = useSelector((state) => state.wigCart.items);
 
-// Default cart items (example, adjust as needed)
-const defaultCartItems = [ {
+  // Default cart items (example, adjust as needed)
+  const defaultCartItems = [
+    {
       id: 1,
       image: image1,
       text: "CAP SIZE",
@@ -78,14 +80,23 @@ const defaultCartItems = [ {
       text: "HAIRLINE",
       small: "NATURAL",
       uniqueId: "hairline_1",
-    },];
+    },
+  ];
 
 useEffect(() => {
-  const isDifferent = JSON.stringify(cartItems) !== JSON.stringify(defaultCartItems);
-  if (isDifferent) {
-    setOrder(true);
-  }
+  const extractEssentials = (arr) =>
+    arr.map((item) => ({ text: item.text, small: item.small }));
+
+  const simplifiedCart = extractEssentials(cartItems);
+  const simplifiedDefault = extractEssentials(defaultCartItems);
+
+  const isDifferent = !isEqual(simplifiedCart, simplifiedDefault);
+  setOrder(isDifferent);
 }, [cartItems]);
+
+  console.log('====================================');
+  console.log(showOrder);
+  console.log('====================================');
   const totalPrice = cartItems.length
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
