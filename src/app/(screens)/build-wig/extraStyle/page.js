@@ -55,7 +55,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-4 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-[60%] flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] sm:block hidden ">
@@ -80,7 +80,7 @@ const BuildAWigPage = () => {
               setPremiumSelected={setPremiumSelected}
             />
 
-            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium my-4 w-[90%] sm:hidden block mx-auto ">
+            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-6 mb-4 w-[90%] sm:hidden block mx-auto ">
               {(() => {
                 const hasBangs = basicSelected.some(
                   (item) => item.small === "BANGS"
@@ -153,7 +153,7 @@ export const RightSidebarFirst = ({
       </div>
 
       {/* BASIC MEMBERSHIP */}
-      <div className="flex flex-col gap-2 mx-auto mt-5">
+      <div className="flex flex-col gap-2 mx-auto ">
         <Heading head="SALON TREATMENTS" className="mt-5"/>
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-8 mx-auto justify-evenly">
           {BASIC_MEMBERSHIP.map((data, index) => (

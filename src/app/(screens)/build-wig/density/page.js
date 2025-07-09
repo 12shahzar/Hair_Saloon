@@ -34,7 +34,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border border-black flex flex-col lg:flex-row pt-10 pb-4 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-1/2 flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">

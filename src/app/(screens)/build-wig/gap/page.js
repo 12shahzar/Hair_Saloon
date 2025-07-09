@@ -34,7 +34,7 @@ const BuildAWigPage = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden  custom-gradient">
+          <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-4 px-5 mb-2 lg:h-[800px] overflow-hidden  custom-gradient">
             <div className="w-full lg:w-[60%] flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">
@@ -95,7 +95,7 @@ export const RightSidebarSecond = ({
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
   return (
-    <div  ref={cardRef} className="w-full lg:w-[40%] flex flex-col  mt-3  lg:mt-0">
+    <div  ref={cardRef} className="w-full lg:w-[40%] flex flex-col    lg:mt-0">
          <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>

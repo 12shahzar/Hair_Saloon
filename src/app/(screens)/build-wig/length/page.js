@@ -34,7 +34,7 @@ const handleConfirm = () => {
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
 
-          <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-7 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
+          <div className="border-1 border-black flex flex-col lg:flex-row pt-10 pb-4 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-[60%] flex items-center flex-col">
               <WigProduct />
               <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] md:block hidden">

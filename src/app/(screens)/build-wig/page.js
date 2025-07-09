@@ -26,8 +26,66 @@ import Image from "next/image";
 
 const BuildAWigPage = () => {
   const [showModal, setShowModal] = useState(false);
-  const cartItems = useSelector((state) => state.wigCart.items);
+ const [showOrder, setOrder] = useState(false);
+const cartItems = useSelector((state) => state.wigCart.items);
 
+// Default cart items (example, adjust as needed)
+const defaultCartItems = [ {
+      id: 1,
+      image: image1,
+      text: "CAP SIZE",
+      small: "M",
+      uniqueId: "cap_3",
+    },
+    {
+      id: 2,
+      image: image2,
+      text: "LENGTH",
+      small: "24”",
+      uniqueId: "length_5",
+    },
+    {
+      id: 3,
+      image: image3,
+      text: "DENSITY",
+      small: "200%",
+      uniqueId: "density_3",
+    },
+    {
+      id: 4,
+      image: image4,
+      text: "LACE",
+      small: "13X6",
+      uniqueId: "lace_6",
+    },
+    {
+      id: 5,
+      image: image5,
+      text: "TEXTURE",
+      small: "SILKY",
+      uniqueId: "texture_1",
+    },
+    {
+      id: 6,
+      image: color1,
+      text: "COLOR",
+      small: "OFFBLACK",
+      uniqueId: "color_2",
+    },
+    {
+      id: 7,
+      image: image7,
+      text: "HAIRLINE",
+      small: "NATURAL",
+      uniqueId: "hairline_1",
+    },];
+
+useEffect(() => {
+  const isDifferent = JSON.stringify(cartItems) !== JSON.stringify(defaultCartItems);
+  if (isDifferent) {
+    setOrder(true);
+  }
+}, [cartItems]);
   const totalPrice = cartItems.length
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
@@ -42,10 +100,10 @@ const BuildAWigPage = () => {
             <div className="border-1 border-black flex flex-col lg:flex-row pt-10  px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
               <div className="w-full lg:w-[60%] flex items-center flex-col">
                 <WigProduct />
-                <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-5 w-[80%] sm:block hidden ">
+                <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my- w-[80%] sm:block hidden ">
                   PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. WE ENSURE ALL
-                  DETAILS ARE ACCURATE + PRECISE. EXPECT 2 - 4 WEEKS OF PROCESSING
-                  TIME FOR THIS UNIT.
+                  DETAILS ARE ACCURATE + PRECISE. EXPECT 2 - 4 WEEKS OF
+                  PROCESSING TIME FOR THIS UNIT.
                 </p>
                 <div className="text-center hidden md:block">
                   <p className="font-futura text-sm text-[#909090] font-medium">
@@ -83,12 +141,12 @@ const BuildAWigPage = () => {
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
-              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-8 w-[90%] sm:hidden block mx-auto ">
+              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium my-6 w-[90%] sm:hidden block mx-auto ">
                 PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. <br /> WE ENSURE
                 ALL DETAILS ARE ACCURATE + PRECISE. <br /> EXPECT 6 - 8 WEEKS OF
                 PROCESSING TIME FOR THIS UNIT.
               </p>
-              <div className="text-center block md:hidden md:mt-0 mt-8">
+              <div className="text-center block md:hidden md:mt-0 ">
                 <p className="font-futura text-[12px] text-[#909090] font-medium">
                   TOTAL DUE
                 </p>
@@ -97,11 +155,9 @@ const BuildAWigPage = () => {
                 </p>
               </div>
 
-              <div className=" w-[100%] my-5  sm:hidden block">
+              <div className=" w-[100%] my-2  sm:hidden block">
                 <div className="flex flex-col items-center">
-                  {cartItems.length === 0 ? (
-                    <p className="text-[9px] font-futura"></p>
-                  ) : (
+                  {showOrder &&
                     cartItems.map((item, index) => (
                       <div
                         key={index}
@@ -118,8 +174,7 @@ const BuildAWigPage = () => {
                           {item.small || "N/A"}
                         </p>
                       </div>
-                    ))
-                  )}
+                    ))}
                 </div>
               </div>
             </div>
@@ -145,7 +200,6 @@ const BuildAWigPage = () => {
 export default BuildAWigPage;
 
 export const RightSidebarFirst = ({ setShowModal }) => {
-  
   const cartItems = useSelector((state) => state.wigCart.items);
   const [selectedCard, setSelectedCard] = useState(null);
   const mergedMembership = (defaultCards) => {
@@ -190,7 +244,9 @@ export const RightSidebarFirst = ({ setShowModal }) => {
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto justify-evenly">
               {basicWithCartData.map((data, index) => {
                 const isSelected = selectedCard?.id === data.id;
-                const isInCart = cartItems.some((item) => item.small === data.small);
+                const isInCart = cartItems.some(
+                  (item) => item.small === data.small
+                );
                 return (
                   <div
                     key={index}
@@ -236,7 +292,9 @@ export const RightSidebarFirst = ({ setShowModal }) => {
             <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-6 mx-auto justify-evenly">
               {premiumWithCartData.map((data, index) => {
                 const isSelected = selectedCard?.id === data.id;
-                const isInCart = cartItems.some((item) => item.small === data.small);
+                const isInCart = cartItems.some(
+                  (item) => item.small === data.small
+                );
                 return (
                   <div
                     key={index}
@@ -286,7 +344,7 @@ const BASIC_MEMBERSHIP = [
     image: image1,
     text: "CAP SIZE",
     small: "M",
-    uniqueId:"cap_3",
+    uniqueId: "cap_3",
     link: "/gap",
   },
   {
@@ -294,7 +352,7 @@ const BASIC_MEMBERSHIP = [
     image: image2,
     text: "LENGTH",
     small: "24”",
-    uniqueId:"length_5",
+    uniqueId: "length_5",
     link: "/length",
   },
   {
@@ -302,7 +360,7 @@ const BASIC_MEMBERSHIP = [
     image: image3,
     text: "DENSITY",
     small: "200%",
-    uniqueId:"density_3",
+    uniqueId: "density_3",
     link: "/density",
   },
 ];
@@ -312,7 +370,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image4,
     text: "LACE",
     small: "13X6",
-    uniqueId:"lace_6",
+    uniqueId: "lace_6",
     link: "/lace",
   },
   {
@@ -320,7 +378,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image5,
     text: "TEXTURE",
     small: "SILKY",
-    uniqueId:"texture_1",
+    uniqueId: "texture_1",
     link: "/texture",
   },
   {
@@ -328,7 +386,7 @@ const PREMIUM_MEMBERSHIP = [
     image: color1,
     text: "COLOR",
     small: "OFFBLACK",
-    uniqueId:"color_2",
+    uniqueId: "color_2",
     link: "/color",
   },
   {
@@ -336,7 +394,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image7,
     text: "HAIRLINE",
     small: "NATURAL",
-    uniqueId:"hairline_1",
+    uniqueId: "hairline_1",
     link: "/hairline",
   },
   {
@@ -344,7 +402,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image8,
     text: "STYLING",
     small: "NONE",
-    uniqueId:"extraStyle_0",
+    uniqueId: "extraStyle_0",
     link: "/extraStyle",
   },
   {
@@ -352,7 +410,7 @@ const PREMIUM_MEMBERSHIP = [
     image: image8,
     text: "ADD-ON",
     small: "NONE",
-    uniqueId:"addOn_0",
+    uniqueId: "addOn_0",
     link: "/addOn",
   },
 ];
