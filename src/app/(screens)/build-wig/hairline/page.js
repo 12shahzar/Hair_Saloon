@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
   MembershipSection,
@@ -13,7 +13,7 @@ import {
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
 import { confirmItem } from "@/util/util";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { image7 } from "@/app/assest";
 
 const BuildAWigPage = () => {
@@ -98,6 +98,17 @@ export const RightSidebarSecond = ({
   const handleBack = () => {
     router.push("/build-wig");
   };
+    const cartItems = useSelector((state) => state.wigCart.items);
+ useEffect(() => {
+  const matchedCard = CAP_DATA.find((card) =>
+    cartItems.some((item) => item.id === card.id && item.text === card.text)
+  );
+
+  if (matchedCard) {
+    setSelectedCards([matchedCard]); // ✅ Fix here
+    setIsCardSelected(true);
+  }
+}, [cartItems]);
 
   const showCustomPara =
     selectedCards.some((c) => c.small === "LAGOS") &&

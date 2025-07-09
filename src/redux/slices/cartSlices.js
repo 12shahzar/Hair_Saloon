@@ -13,14 +13,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   items: [
     {
-      id: 1,
+      id: 3,
       image: image1,
       text: "CAP SIZE",
       small: "M",
       uniqueId: "cap_3",
     },
     {
-      id: 2,
+      id: 5,
       image: image2,
       text: "LENGTH",
       small: "24”",
@@ -34,28 +34,28 @@ const initialState = {
       uniqueId: "density_3",
     },
     {
-      id: 4,
+      id: 6,
       image: image4,
       text: "LACE",
       small: "13X6",
       uniqueId: "lace_6",
     },
     {
-      id: 5,
+      id: 1,
       image: image5,
       text: "TEXTURE",
       small: "SILKY",
       uniqueId: "texture_1",
     },
     {
-      id: 6,
+      id: 2,
       image: color1,
       text: "COLOR",
       small: "OFFBLACK",
       uniqueId: "color_2",
     },
     {
-      id: 7,
+      id: 1,
       image: image7,
       text: "HAIRLINE",
       small: "NATURAL",

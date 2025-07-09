@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { image1, image5, image7 } from "@/app/assest";
 import {
@@ -18,14 +18,14 @@ import { confirmItem } from "@/util/util";
 import { useDispatch, useSelector } from "react-redux";
 
 const BuildAWigPage = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
   const [isCardSelected, setIsCardSelected] = useState(false);
   const handleConfirm = () => {
-      confirmItem(dispatch, selectedCapCard,"texture"); 
-       router.push("/build-wig");
-    };
+    confirmItem(dispatch, selectedCapCard, "texture");
+    router.push("/build-wig");
+  };
   return (
     <main className="container mx-auto">
       <div className="flex flex-col lg:flex-row gap-5 py-5">
@@ -60,16 +60,16 @@ const BuildAWigPage = () => {
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-               ${selectedCapCard?.price || 0} USD
+                ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-      <Buttons
-                  text="CONFIRM SELECTION"
-                  onClick={handleConfirm}
-                  disabled={!isCardSelected}
-                />
+          <Buttons
+            text="CONFIRM SELECTION"
+            onClick={handleConfirm}
+            disabled={!isCardSelected}
+          />
         </div>
 
         <RightSection />
@@ -80,30 +80,45 @@ const BuildAWigPage = () => {
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSelected, }) => {
+export const RightSidebarSecond = ({
+  selectedCard,
+  setSelectedCard,
+  setIsCardSelected,
+}) => {
   const router = useRouter();
   const handleBack = () => {
     router.push("/build-wig");
   };
-    const cardRef = useRef();
+  const cartItems = useSelector((state) => state.wigCart.items);
+  useEffect(() => {
+    const matchedCard = GAP_DATA.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+
+    if (matchedCard) {
+      setSelectedCard(matchedCard); // ✅ Select the matched card
+      setIsCardSelected(true); // ✅ Enable confirm button
+    }
+  }, [cartItems]);
+  const cardRef = useRef();
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-       <div className="flex items-center justify-between  ml-[25px] md:ml-0">
+      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="HAIR TYPE" className="mt-5"/>
-     
+      <Heading head="HAIR TYPE" className="mt-5" />
+
       <MembershipSection
         data={GAP_DATA}
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
         setIsCardSelected={setIsCardSelected}
-         className="flex items-center"
+        className="flex items-center"
       />
 
       <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4 w-[100%]">
-        {selectedCard?.para }
+        {selectedCard?.para}
       </p>
     </div>
   );
@@ -115,8 +130,8 @@ const GAP_DATA = [
     image: image5,
     text: "TEXTURE",
     small: "SILKY",
-    price:100,
-    para:"HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER."
+    price: 100,
+    para: "HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER.",
   },
 
   {
@@ -124,7 +139,7 @@ const GAP_DATA = [
     image: image5,
     text: "TEXTURE",
     small: "KINKY",
-    price:200,
-    para:"HAIR STRANDS ARE COARSE WITH LOW TO MEDIUM GLOSS & LUSTRE."
+    price: 200,
+    para: "HAIR STRANDS ARE COARSE WITH LOW TO MEDIUM GLOSS & LUSTRE.",
   },
 ];

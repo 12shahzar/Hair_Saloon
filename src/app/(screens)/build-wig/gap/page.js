@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { image1 } from "@/app/assest";
 import {
@@ -22,6 +22,7 @@ const BuildAWigPage = () => {
   const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
   const [isCardSelected, setIsCardSelected] = useState(false);
+  
 
   const handleConfirm = () => {
     confirmItem(dispatch, selectedCapCard, "cap");
@@ -83,49 +84,68 @@ const BuildAWigPage = () => {
 
 export default BuildAWigPage;
 
+
+
 export const RightSidebarSecond = ({
   selectedCard,
   setSelectedCard,
   setIsCardSelected,
 }) => {
+  const cartItems = useSelector((state) => state.wigCart.items);
   const router = useRouter();
+  const cardRef = useRef();
+  useScrollOnPathChange(cardRef);
+
   const handleBack = () => {
     router.push("/build-wig");
   };
-  const cardRef = useRef();
-  useScrollOnPathChange(cardRef);
+
+
+ useEffect(() => {
+  const allOptions = [...CAP_DATA, ...CAP_DATA_2];
+  console.log(allOptions);
+  
+  const matchedCard = allOptions.find((card) =>
+  cartItems.some((item) => item.id === card.id && item.text === card.text)
+);
+
+  if (matchedCard) {
+    setSelectedCard(matchedCard);      // ✅ Select the matched card
+    setIsCardSelected(true);           // ✅ Enable confirm button
+  }
+}, [cartItems]);
+
+
+
   return (
-    <div  ref={cardRef} className="w-full lg:w-[40%] flex flex-col    lg:mt-0">
-         <div className="flex items-center justify-between  ml-[25px] md:ml-0">
+    <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col lg:mt-0">
+      <div className="flex items-center justify-between ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="CUSTOM SIZING" className="mt-5"/>
-   
+
+      <Heading head="CUSTOM SIZING" className="mt-5" />
 
       <MembershipSection
         data={CAP_DATA}
         selectedCard={selectedCard}
         setSelectedCard={setSelectedCard}
-        setIsCardSelected={setIsCardSelected} 
-        className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
-      />
-    
-
-      <div className="mt-5">     
-      <Heading head="FLEXIBLE SIZING" />
-      <MembershipSection
-        data={CAP_DATA_2}
-        selectedCard={selectedCard}
-        setSelectedCard={setSelectedCard}
-        setIsCardSelected={setIsCardSelected} 
-        className="flex items-center"
+        setIsCardSelected={setIsCardSelected}
+        className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3"
       />
 
-      
-       </div>
+      <div className="mt-5">
+        <Heading head="FLEXIBLE SIZING" />
+        <MembershipSection
+          data={CAP_DATA_2}
+          selectedCard={selectedCard}
+          setSelectedCard={setSelectedCard}
+          setIsCardSelected={setIsCardSelected}
+          className="flex items-center"
+        />
+      </div>
 
-         <div className="flex mx-auto gap-5 my-4">
-        {["XXS: 19”" , "XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
+      <div className="flex mx-auto gap-5 my-4">
+        {["XXS: 19”", "XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
           <p
             key={idx}
             className="text-[9px] font-medium text-[#EB1C24] font-futura"
@@ -133,11 +153,11 @@ export const RightSidebarSecond = ({
             {text}
           </p>
         ))}
-    
       </div>
     </div>
   );
 };
+
 
 const CAP_DATA = [
   {
@@ -188,45 +208,3 @@ const CAP_DATA_2 = [
 
 ];
 
-
-{/*         
-    <div className="flex justify-center gap-3 mt-6">
-  {CAP_DATA_2.map((data, index) => {
-    const isSelected = selectedCard?.id === data.id;
-
-    return (
-      <div
-        key={index}
-        onClick={() => handleNext(data)}
-        className={`border relative pt-1 w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
-          border-black bg-white
-          ${isSelected ? "ring-2 ring-[#EB1C24]" : ""}
-        `}
-      >
-       
-        <p className="text-[10px] md:text-sm text-black font-covered">
-          {data.text}
-        </p>
-
-   
-        <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
-          <Image
-            src={data.image}
-            alt="Card image"
-            width={100}
-            height={100}
-            className="object-contain w-full h-full"
-          />
-        </div>
-
-        <p
-          className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[9px] md:text-xs font-futura font-medium ${
-            isSelected ? "text-[#EB1C24]" : "text-black"
-          }`}
-        >
-          {data.small}
-        </p>
-      </div>
-    );
-  })}
-</div> */}

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { image1, image2, length, length2 } from "@/app/assest";
 import {
@@ -82,9 +82,19 @@ const handleConfirm = () => {
 export default BuildAWigPage;
 
 export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSelected, }) => {
-  console.log(selectedCard)
+  
   const router = useRouter();
-
+    const cartItems = useSelector((state) => state.wigCart.items); 
+      useEffect(() => {
+        const matchedCard = GAP_DATA.find((card) =>
+        cartItems.some((item) => item.id === card.id && item.text === card.text)
+      );
+      
+        if (matchedCard) {
+          setSelectedCard(matchedCard);      // ✅ Select the matched card
+          setIsCardSelected(true);           // ✅ Enable confirm button
+        }
+      }, [cartItems]);
   const handleBack = () => {
     router.push("/build-wig");
   };

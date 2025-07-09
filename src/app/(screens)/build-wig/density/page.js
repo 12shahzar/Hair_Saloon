@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { image1, image2, image3 } from "@/app/assest";
 import {
@@ -81,20 +81,35 @@ const BuildAWigPage = () => {
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard, setIsCardSelected, }) => {
+export const RightSidebarSecond = ({
+  selectedCard,
+  setSelectedCard,
+  setIsCardSelected,
+}) => {
   const router = useRouter();
   const handleBack = () => {
     router.push("/build-wig");
   };
-      const cardRef = useRef();
+  const cartItems = useSelector((state) => state.wigCart.items);
+  useEffect(() => {
+    const matchedCard = GAP_DATA.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+
+    if (matchedCard) {
+      setSelectedCard(matchedCard); // ✅ Select the matched card
+      setIsCardSelected(true); // ✅ Enable confirm button
+    }
+  }, [cartItems]);
+  const cardRef = useRef();
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-        <div className="flex items-center justify-between  ml-[25px] md:ml-0">
+      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
-      <Heading head="HAIR VOLUME" className="mt-5"/>
-    
+      <Heading head="HAIR VOLUME" className="mt-5" />
+
       <MembershipSection
         data={GAP_DATA}
         selectedCard={selectedCard}

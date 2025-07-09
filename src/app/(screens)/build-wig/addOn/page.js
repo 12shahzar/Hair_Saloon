@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { addOn1, addOn2, addOn3, image1, image5, image7 } from "@/app/assest";
 import {
@@ -125,12 +125,24 @@ export const RightSidebarSecond = ({
   setSelectedCapCards,
 }) => {
   const router = useRouter();
-
+  const cartItems = useSelector((state) => state.wigCart.items);
   const handleBack = () => {
     router.push("/build-wig");
   };
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
+
+  useEffect(() => {
+   
+    const matchedCard = GAP_DATA.find((card) =>
+    cartItems.some((item) => item.id === card.id && item.text === card.text)
+  );
+  
+    if (matchedCard) {
+      setSelectedCapCards(matchedCard);      // ✅ Select the matched card
+      setIsCardSelected(true);           // ✅ Enable confirm button
+    }
+  }, [cartItems]);
 
   const toggleCard = (card) => {
     setSelectedCapCards((prev) => {

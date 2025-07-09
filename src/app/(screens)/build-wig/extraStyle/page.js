@@ -15,7 +15,8 @@ import {
 import RightSection from "@/component/Section/RightSection";
 import { style1, style2, style3, style4 } from "@/app/assest";
 import { confirmItem } from "@/util/util";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Image from "next/image";
 
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ const BuildAWigPage = () => {
               setBasicSelected={setBasicSelected}
               premiumSelected={premiumSelected}
               setPremiumSelected={setPremiumSelected}
+              setIsCardSelected={setIsCardSelected}
             />
 
             <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
@@ -135,95 +137,141 @@ export const RightSidebarFirst = ({
   setBasicSelected,
   premiumSelected,
   setPremiumSelected,
+  setIsCardSelected,
 }) => {
   const router = useRouter();
+  const cardRef = useRef();
+  useScrollOnPathChange(cardRef);
+  const cartItems = useSelector((state) => state.wigCart.items);
+
+  useEffect(() => {
+    const matchedBasic = BASIC_MEMBERSHIP.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+
+    const matchedPremium = PREMIUM_MEMBERSHIP.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+
+    if (matchedBasic) {
+      setBasicSelected([{ ...matchedBasic }]);
+    }
+
+    if (matchedPremium) {
+      setPremiumSelected({ ...matchedPremium });
+    }
+
+    if (matchedBasic && (matchedPremium || matchedBasic.small === "BANGS")) {
+      setIsCardSelected(true);
+    }
+  }, [cartItems]);
 
   const handleBack = () => {
     router.push("/build-wig");
   };
-  const cardRef = useRef();
-  useScrollOnPathChange(cardRef);
+
   return (
     <div
       ref={cardRef}
       className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0 lg:h-[700px]"
     >
-      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
+      <div className="flex items-center justify-between ml-[25px] md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
 
       {/* BASIC MEMBERSHIP */}
-      <div className="flex flex-col gap-2 mx-auto ">
-        <Heading head="SALON TREATMENTS" className="mt-5"/>
+      <div className="flex flex-col gap-2 mx-auto">
+        <Heading head="SALON TREATMENTS" className="mt-5" />
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-8 mx-auto justify-evenly">
-          {BASIC_MEMBERSHIP.map((data, index) => (
-            <MembershipCard
-              key={index}
-              data={data}
-              isSelected={basicSelected.some((item) => item.id === data.id)}
-              onSelect={() => {
-                const isAlreadySelected = basicSelected.some(
-                  (item) => item.id === data.id
-                );
-                const isBangs = data.small === "BANGS";
+          {BASIC_MEMBERSHIP.map((data, index) => {
+            const isSelected = basicSelected.some(
+              (item) => item.id === data.id
+            );
 
-                let updatedSelection = [];
+            return (
+              <div
+                key={index}
+                onClick={() => {
+                  const isAlreadySelected = basicSelected.some(
+                    (item) => item.id === data.id
+                  );
+                  const isBangs = data.small === "BANGS";
+                  let updatedSelection = [];
 
-                if (isBangs) {
-                  if (isAlreadySelected) {
-                    // Allow deselection of BANGS
-                    updatedSelection = basicSelected.filter(
-                      (item) => item.id !== data.id
-                    );
-                  } else if (basicSelected.length === 0) {
-                    // Select BANGS first
-                    updatedSelection = [data];
-                  } else if (
-                    basicSelected.length === 1 &&
-                    basicSelected[0].small === "BANGS"
-                  ) {
-                    // Add another with BANGS
-                    updatedSelection = [...basicSelected, data];
+                  if (isBangs) {
+                    if (isAlreadySelected) {
+                      updatedSelection = basicSelected.filter(
+                        (item) => item.id !== data.id
+                      );
+                    } else if (basicSelected.length === 0) {
+                      updatedSelection = [data];
+                    } else if (
+                      basicSelected.length === 1 &&
+                      basicSelected[0].small === "BANGS"
+                    ) {
+                      updatedSelection = [...basicSelected, data];
+                    } else {
+                      updatedSelection = [data];
+                    }
                   } else {
-                    updatedSelection = [data];
+                    const bangsSelected = basicSelected.some(
+                      (item) => item.small === "BANGS"
+                    );
+                    if (isAlreadySelected) {
+                      updatedSelection = basicSelected.filter(
+                        (item) => item.id !== data.id
+                      );
+                    } else if (bangsSelected && basicSelected.length === 1) {
+                      updatedSelection = [...basicSelected, data];
+                    } else {
+                      updatedSelection = [data];
+                    }
                   }
-                } else {
-                  const bangsSelected = basicSelected.some(
+
+                  setBasicSelected(updatedSelection);
+
+                  const hasBangs = updatedSelection.some(
                     (item) => item.small === "BANGS"
                   );
-
-                  if (isAlreadySelected) {
-                    // Deselect current item
-                    updatedSelection = basicSelected.filter(
-                      (item) => item.id !== data.id
+                  if (hasBangs) {
+                    const freeOption = PREMIUM_MEMBERSHIP.find(
+                      (item) => item.small === "MIDDLE"
                     );
-                  } else if (bangsSelected && basicSelected.length === 1) {
-                    // Add non-bangs alongside BANGS
-                    updatedSelection = [...basicSelected, data];
+                    if (freeOption) setPremiumSelected(freeOption);
                   } else {
-                    // Replace all with new non-bangs
-                    updatedSelection = [data];
+                    setPremiumSelected(null);
                   }
-                }
 
-                setBasicSelected(updatedSelection);
-
-                // Handle FREE premium item when BANGS is selected
-                const hasBangs = updatedSelection.some(
-                  (item) => item.small === "BANGS"
-                );
-                if (hasBangs) {
-                  const freeOption = PREMIUM_MEMBERSHIP.find(
-                    (item) => item.small === "MIDDLE"
+                  setIsCardSelected(
+                    updatedSelection.length > 0 &&
+                      (hasBangs || premiumSelected !== null)
                   );
-                  if (freeOption) setPremiumSelected(freeOption);
-                } else {
-                  // Optional: clear FREE item if BANGS is removed
-                  setPremiumSelected(null);
-                }
-              }}
-            />
-          ))}
+                }}
+                className={`border relative w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+                  ${isSelected ? "border-[#EB1C24]" : "border-black"} bg-white mb-3 sm:mb-0`}
+              >
+                <p className="text-[10px] md:text-sm text-black font-covered">
+                  {data.text}
+                </p>
+                <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                  <Image
+                    src={data.image}
+                    alt="Card image"
+                    width={100}
+                    height={100}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
+                <p
+                  className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
+                    isSelected ? "text-[#EB1C24]" : "text-black"
+                  }`}
+                >
+                  {data.small}
+                </p>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -233,17 +281,20 @@ export const RightSidebarFirst = ({
         <div className="flex items-center gap-3 mx-auto justify-evenly">
           {PREMIUM_MEMBERSHIP.map((data, index) => {
             const isSelected = premiumSelected?.id === data.id;
-            const isDisabled = !basicSelected;
+            const isDisabled = basicSelected.length === 0;
 
             return (
               <div
                 key={index}
                 onClick={() => {
-                  if (!isDisabled) setPremiumSelected(data);
+                  if (!isDisabled) {
+                    setPremiumSelected(data);
+                    setIsCardSelected(true);
+                  }
                 }}
-                className={`border relative  w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col bg-white items-center text-center cursor-pointer ${
+                className={`border relative w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer ${
                   isSelected ? "border-[#EB1C24]" : "border-black"
-                }  bg-white`}
+                }`}
               >
                 <p className="text-[10px] md:text-sm text-black font-covered">
                   {data.text}
@@ -272,6 +323,7 @@ export const RightSidebarFirst = ({
     </div>
   );
 };
+
 
 const BASIC_MEMBERSHIP = [
   {

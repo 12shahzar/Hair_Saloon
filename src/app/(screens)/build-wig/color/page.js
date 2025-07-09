@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
   color1,
@@ -100,8 +100,18 @@ const BuildAWigPage = () => {
 export default BuildAWigPage;
 
 export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSelected,}) => {
-  const router = useRouter(); // add this inside RightSidebarThird
-
+  const router = useRouter(); 
+  const cartItems = useSelector((state) => state.wigCart.items); 
+    useEffect(() => {
+      const matchedCard = COLOR_DATA.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+    
+      if (matchedCard) {
+        setSelectedCard(matchedCard);      // ✅ Select the matched card
+        setIsCardSelected(true);           // ✅ Enable confirm button
+      }
+    }, [cartItems]);
   const handleBack = () => {
     router.push("/build-wig");
   };
@@ -144,7 +154,7 @@ const COLOR_DATA = [
     id: 2,
     image: color2,
     text: "COLOR",
-    small: "OFF BLACK",
+    small: "OFFBLACK",
     price:200,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT."
   },
