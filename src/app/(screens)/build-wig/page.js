@@ -94,9 +94,7 @@ useEffect(() => {
   setOrder(isDifferent);
 }, [cartItems]);
 
-  console.log('====================================');
-  console.log(showOrder);
-  console.log('====================================');
+  
   const totalPrice = cartItems.length
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
@@ -152,7 +150,7 @@ useEffect(() => {
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
-              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium my-6 w-[90%] sm:hidden block mx-auto ">
+              <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold my-6 w-[90%] sm:hidden block mx-auto ">
                 PLEASE NOTE: EACH CUSTOM UNIT IS MADE TO ORDER. <br /> WE ENSURE
                 ALL DETAILS ARE ACCURATE + PRECISE. <br /> EXPECT 6 - 8 WEEKS OF
                 PROCESSING TIME FOR THIS UNIT.
@@ -332,7 +330,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[8px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-4px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >

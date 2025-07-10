@@ -148,7 +148,7 @@ export const RightSidebarSecond = ({
         {["XXS: 19”", "XS: 20”", "S: 21”", "M: 22”", "L: 23”"].map((text, idx) => (
           <p
             key={idx}
-            className="text-[9px] font-medium text-[#EB1C24] font-futura"
+            className="text-[9px] font-semibold text-[#EB1C24] font-futura"
           >
             {text}
           </p>

@@ -171,7 +171,7 @@ export const RightSidebarSecond = ({
       </div>
 
       <div className="flex mx-auto gap-5 my-4">
-        <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium w-[100%]">
+        <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold w-[100%]">
           {showCustomPara
             ? "HAIRLINE HAS A WIDOW’S PEAK WITH LOW TEMPLES ON BOTH SIDES."
             : selectedCards[0]?.para}

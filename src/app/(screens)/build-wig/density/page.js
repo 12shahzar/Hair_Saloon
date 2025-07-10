@@ -120,7 +120,7 @@ export const RightSidebarSecond = ({
       <div className="flex mx-auto flex-col gap-1 my-4 ">
         {density_data.map((item, index) => (
           <p
-            className="text-[9px] sm:text-xs font-medium text-[#EB1C24] font-futura"
+            className="text-[9px] sm:text-xs font-semibold text-[#EB1C24] font-futura"
             key={index}
           >
             {item}

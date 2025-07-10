@@ -181,7 +181,7 @@ export const RightSidebarSecond = ({
         </div>
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4 w-[100%]">
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
         {/* */}
          {selectedCapCards[selectedCapCards.length - 1]?.para }
       </p>

@@ -118,7 +118,7 @@ export const RightSidebarSecond = ({
         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4 w-[80%] mx-auto">
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[80%] mx-auto">
         {/*  */}
         {selectedCard?.para}
       </p>

@@ -82,7 +82,7 @@ const BuildAWigPage = () => {
               setIsCardSelected={setIsCardSelected}
             />
 
-            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-medium mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
+            <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
               {(() => {
                 const hasBangs = basicSelected.some(
                   (item) => item.small === "BANGS"

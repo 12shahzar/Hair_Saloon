@@ -134,7 +134,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         />
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-medium my-4  w-[80%] mx-auto">
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4  w-[80%] mx-auto">
        {selectedCard?.para }
       </p>
     </div>
@@ -146,7 +146,7 @@ const COLOR_DATA = [
     id: 1,
     image: color1,
     text: "COLOR",
-    small: "JET BLACK",
+    small: "JETBLACK",
     price:100,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
