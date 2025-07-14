@@ -157,9 +157,13 @@ export const RightSidebarSecond = ({
   };
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-      <div className="flex items-center justify-between  ml-[25px] md:ml-0">
+      {/* <div className="flex items-center justify-between w-[70%] mx-auto md:ml-0">
+        <BackBtn onClick={handleBack} />
+      </div> */}
+       <div className="fixed left-[19%]  md:ml-0">
         <BackBtn onClick={handleBack} />
       </div>
+      
       <Heading head="CUSTOMIZATION KIT" className="mt-5"/>
 
       <div className="flex flex-col gap-5  mx-auto mt-2 ">

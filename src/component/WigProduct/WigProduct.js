@@ -20,9 +20,9 @@ const WigProduct = () => {
         <Image
           src={selectedImage}
           alt="Selected Wig"
-          width={230}
-          height={375}
-          className="absolute left-1/2 top-[59%] -translate-x-1/2 -translate-y-1/2 z-10"
+          width={240}
+          height={390}
+          className="absolute left-1/2 top-[57%] -translate-x-1/2 -translate-y-1/2 z-10"
         />
       </div>
 
