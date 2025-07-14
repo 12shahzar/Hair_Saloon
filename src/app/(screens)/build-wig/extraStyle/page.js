@@ -165,7 +165,16 @@ export const RightSidebarFirst = ({
       setIsCardSelected(true);
     }
   }, [cartItems]);
+  useEffect(() => {
+  // Auto-select "MIDDLE" part on first load
+  const middlePart = PREMIUM_MEMBERSHIP.find(
+    (item) => item.small === "MIDDLE"
+  );
 
+  if (middlePart) {
+    setPremiumSelected(middlePart);
+  }
+}, []);
   const handleBack = () => {
     router.push("/build-wig");
   };
