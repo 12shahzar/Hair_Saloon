@@ -37,7 +37,7 @@ const BuildAWigPage = () => {
       image: selectedCapCards[0]?.image,
     };
 
-    confirmItem(dispatch, finalObject,"addOn");
+    confirmItem(dispatch, finalObject, "addOn");
     router.push("/build-wig");
   };
   return (
@@ -99,7 +99,7 @@ const GAP_DATA = [
     text: "ADD-ON",
     small: "BLEACH",
     price: 100,
-    para:"KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para: "KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
   },
   {
     id: 2,
@@ -107,7 +107,7 @@ const GAP_DATA = [
     text: "ADD-ON",
     small: "PLUCK",
     price: 200,
-    para:"HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para: "HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
   },
   {
     id: 3,
@@ -115,10 +115,9 @@ const GAP_DATA = [
     text: "ADD-ON",
     small: "CLIP ENDS",
     price: 300,
-    para:"ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH."
+    para: "ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH.",
   },
 ];
-
 
 export const RightSidebarSecond = ({
   selectedCapCards,
@@ -133,14 +132,13 @@ export const RightSidebarSecond = ({
   useScrollOnPathChange(cardRef);
 
   useEffect(() => {
-   
     const matchedCard = GAP_DATA.find((card) =>
-    cartItems.some((item) => item.id === card.id && item.text === card.text)
-  );
-  
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+
     if (matchedCard) {
-      setSelectedCapCards(matchedCard);      // ✅ Select the matched card
-      setIsCardSelected(true);           // ✅ Enable confirm button
+      setSelectedCapCards(matchedCard); // ✅ Select the matched card
+      setIsCardSelected(true); // ✅ Enable confirm button
     }
   }, [cartItems]);
 
@@ -160,11 +158,11 @@ export const RightSidebarSecond = ({
       {/* <div className="flex items-center justify-between w-[70%] mx-auto md:ml-0">
         <BackBtn onClick={handleBack} />
       </div> */}
-       <div className="fixed left-[19%]  md:ml-0">
+      {/* <div className="fixed left-[15%] md:ml-0 mb-4"> */}
         <BackBtn onClick={handleBack} />
-      </div>
-      
-      <Heading head="CUSTOMIZATION KIT" className="mt-5"/>
+      {/* </div> */}
+
+      <Heading head="CUSTOMIZATION KIT" className="mt-5" />
 
       <div className="flex flex-col gap-5  mx-auto mt-2 ">
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
@@ -187,7 +185,7 @@ export const RightSidebarSecond = ({
 
       <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
         {/* */}
-         {selectedCapCards[selectedCapCards.length - 1]?.para }
+        {selectedCapCards[selectedCapCards.length - 1]?.para}
       </p>
     </div>
   );
