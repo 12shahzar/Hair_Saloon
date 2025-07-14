@@ -282,7 +282,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[7px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-4px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
@@ -330,7 +330,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[7px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-4px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
@@ -394,7 +394,7 @@ const PREMIUM_MEMBERSHIP = [
     id: 6,
     image: color1,
     text: "COLOR",
-    small: "OFFBLACK",
+    small: "OFF BLACK",
     uniqueId: "color_2",
     link: "/color",
   },

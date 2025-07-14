@@ -51,7 +51,7 @@ const initialState = {
       id: 2,
       image: color1,
       text: "COLOR",
-      small: "OFFBLACK",
+      small: "OFF BLACK",
       uniqueId: "color_2",
     },
     {

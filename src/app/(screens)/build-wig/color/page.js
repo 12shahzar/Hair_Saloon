@@ -146,7 +146,7 @@ const COLOR_DATA = [
     id: 1,
     image: color1,
     text: "COLOR",
-    small: "JETBLACK",
+    small: "JET BLACK",
     price:100,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },
@@ -154,7 +154,7 @@ const COLOR_DATA = [
     id: 2,
     image: color2,
     text: "COLOR",
-    small: "OFFBLACK",
+    small: "OFF BLACK",
     price:200,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT."
   },
