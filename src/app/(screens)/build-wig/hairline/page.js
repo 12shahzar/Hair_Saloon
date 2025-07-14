@@ -147,9 +147,9 @@ export const RightSidebarSecond = ({
 
   return (
     <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0">
-      <div className="flex items-center justify-between ml-[25px] md:ml-0">
+     
         <BackBtn onClick={handleBack} />
-      </div>
+     
 
       <Heading head="VENTILLATION EFFECT" className="mt-5" />
 

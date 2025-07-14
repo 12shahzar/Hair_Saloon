@@ -119,9 +119,9 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col mt-3 lg:mt-0 lg:h-[700px]">
-        <div className="flex items-center justify-between  ml-[25px] md:ml-0">
+        
         <BackBtn onClick={handleBack} />
-      </div>
+      
       <Heading head="SINGLE COLOR DYE" className="mt-5"/>
     
       <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">

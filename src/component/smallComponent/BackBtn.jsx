@@ -3,7 +3,7 @@ import React from 'react'
 const BackBtn = ({onClick}) => {
   return (
       <button
-          className="text-[9px] font-medium text-black font-futura cursor-pointer mb-4 fixed left-[-30%] w-full"
+          className="text-[9px] font-medium text-black font-futura cursor-pointer mb-5 fixed left-[-30%] w-full"
           onClick={onClick}
         >
           {"< BACK"}
