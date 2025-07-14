@@ -159,7 +159,7 @@ export const RightSidebarSecond = ({
         <BackBtn onClick={handleBack} />
    
 
-      <Heading head="CUSTOMIZATION KIT" className="mt-5" />
+      <Heading head="CUSTOMIZATION KIT" className="mt-10" />
 
       <div className="flex flex-col gap-5  mx-auto mt-2 ">
         <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">

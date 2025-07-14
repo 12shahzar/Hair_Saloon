@@ -123,7 +123,7 @@ export const RightSidebarSecond = ({
         <BackBtn onClick={handleBack} />
      
 
-      <Heading head="CUSTOM SIZING" className="mt-5" />
+      <Heading head="CUSTOM SIZING" className="mt-10" />
 
       <MembershipSection
         data={CAP_DATA}

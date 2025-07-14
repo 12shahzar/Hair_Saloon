@@ -107,7 +107,7 @@ export const RightSidebarSecond = ({
       
         <BackBtn onClick={handleBack} />
      
-      <Heading head="HAIR TYPE" className="mt-5" />
+      <Heading head="HAIR TYPE" className="mt-10" />
 
       <MembershipSection
         data={GAP_DATA}

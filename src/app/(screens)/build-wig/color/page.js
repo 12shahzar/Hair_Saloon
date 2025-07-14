@@ -122,7 +122,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
         
         <BackBtn onClick={handleBack} />
       
-      <Heading head="SINGLE COLOR DYE" className="mt-5"/>
+      <Heading head="SINGLE COLOR DYE" className="mt-10"/>
     
       <div className="flex-1 lg:overflow-y-auto space-y-5 px-2 scrollbar-hidden">
         <MembershipSection

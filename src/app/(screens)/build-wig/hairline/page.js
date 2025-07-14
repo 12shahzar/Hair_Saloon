@@ -151,7 +151,7 @@ export const RightSidebarSecond = ({
         <BackBtn onClick={handleBack} />
      
 
-      <Heading head="VENTILLATION EFFECT" className="mt-5" />
+      <Heading head="VENTILLATION EFFECT" className="mt-10" />
 
       <div className="flex flex-col gap-5 mx-auto mt-2">
         <div className="mx-auto justify-evenly xl:grid-cols-3 gap-3 md:gap-8 flex flex-wrap">

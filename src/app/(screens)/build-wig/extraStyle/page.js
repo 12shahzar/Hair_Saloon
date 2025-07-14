@@ -190,7 +190,7 @@ export const RightSidebarFirst = ({
 
       {/* BASIC MEMBERSHIP */}
       <div className="flex flex-col gap-2 mx-auto">
-        <Heading head="SALON TREATMENTS" className="mt-5" />
+        <Heading head="SALON TREATMENTS" className="mt-10" />
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-8 mx-auto justify-evenly">
           {BASIC_MEMBERSHIP.map((data, index) => {
             const isSelected = basicSelected.some(

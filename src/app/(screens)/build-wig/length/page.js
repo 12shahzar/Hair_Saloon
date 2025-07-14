@@ -107,7 +107,7 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         
         <BackBtn onClick={handleBack} />
       
-      <Heading head="HAIR MEASUREMENTS" className="mt-5"/>
+      <Heading head="HAIR MEASUREMENTS" className="mt-10"/>
    
       <MembershipSection
         data={GAP_DATA}

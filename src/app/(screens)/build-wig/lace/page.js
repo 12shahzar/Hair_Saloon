@@ -108,7 +108,7 @@ export const RightSidebarSecond = ({
       
         <BackBtn onClick={handleBack} />
   
-      <Heading head="HD TOPPER SIZE" className="mt-5" />
+      <Heading head="HD TOPPER SIZE" className="mt-10" />
 
       <MembershipSection
         data={GAP_DATA}
