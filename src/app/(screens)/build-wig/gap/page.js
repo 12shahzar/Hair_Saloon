@@ -118,7 +118,7 @@ export const RightSidebarSecond = ({
 
 
   return (
-    <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col lg:mt-0">
+    <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col lg:mt-0 mt-3">
     
         <BackBtn onClick={handleBack} />
      
