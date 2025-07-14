@@ -212,7 +212,7 @@ const COLOR_DATA = [
     id: 9,
     image: color11,
     text: "COLOR",
-    small: "SANGRA",
+    small: "SANGRIA",
     price:100,
     para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
   },

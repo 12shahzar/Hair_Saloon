@@ -42,9 +42,9 @@ const WigProduct = () => {
               <Image
                 src={img}
                 alt={`Thumbnail ${index + 1}`}
-                width={40}
-                height={60}
-                className="absolute left-1/2 top-[66%] -translate-x-1/2 -translate-y-1/2 z-10"
+                width={60}
+                height={80}
+                className="absolute left-1/2 top-[54%] -translate-x-1/2 -translate-y-1/2 z-10"
               />
             </div>
             {/* <p className="text-xs text-center mt-1">Style {index + 1}</p> */}

@@ -247,10 +247,10 @@ export const RightSidebarFirst = ({
                       (hasBangs || premiumSelected !== null)
                   );
                 }}
-                className={`border relative w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+                className={`border relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center justify-center cursor-pointer 
                   ${isSelected ? "border-[#EB1C24]" : "border-black"} bg-white mb-3 sm:mb-0`}
               >
-                <p className="text-[10px] md:text-sm text-black font-covered">
+                <p className="text-[10px] md:text-sm text-black font-covered  absolute top-0">
                   {data.text}
                 </p>
                 <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
@@ -263,7 +263,7 @@ export const RightSidebarFirst = ({
                   />
                 </div>
                 <p
-                  className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
+                  className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
                     isSelected ? "text-[#EB1C24]" : "text-black"
                   }`}
                 >
@@ -292,11 +292,11 @@ export const RightSidebarFirst = ({
                     setIsCardSelected(true);
                   }
                 }}
-                className={`border relative w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer ${
+                className={`border bg-white relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center  cursor-pointer ${
                   isSelected ? "border-[#EB1C24]" : "border-black"
                 }`}
               >
-                <p className="text-[10px] md:text-sm text-black font-covered">
+                <p className="text-[10px] md:text-sm text-black font-covered ">
                   {data.text}
                 </p>
                 <div
@@ -309,7 +309,7 @@ export const RightSidebarFirst = ({
                   </p>
                 </div>
                 <p
-                  className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
+                  className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
                     isSelected ? "text-[#EB1C24]" : "text-black"
                   }`}
                 >
@@ -346,7 +346,7 @@ const BASIC_MEMBERSHIP = [
     id: 3,
     image: style3,
     text: "STYLING",
-    small: "FLATIRON",
+    small: "FLAT IRON",
     price: 100,
     para: "HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
   },

@@ -122,31 +122,7 @@ useEffect(() => {
                     ${totalPrice > 0 ? totalPrice : 860} USD
                   </p>
                 </div>
-                <div className=" w-[90%] my-5  sm:block hidden">
-                  <div className="overflow-y-auto scrollbar-hidden h-[100px]">
-                    {cartItems.length === 0 ? (
-                      <p></p>
-                    ) : (
-                      cartItems.map((item, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-1 my-2"
-                        >
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">Service: </span>
-                            {item.text || "N/A"}
-                          </p>
-                          <p className="text-[9px] text-[#EB1C24] font-semibold font-futura">
-                            <span className="text-black">
-                              {item.text || null}:{" "}
-                            </span>
-                            {item.small || "N/A"}
-                          </p>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                </div>
+              
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
@@ -164,28 +140,7 @@ useEffect(() => {
                 </p>
               </div>
 
-              <div className=" w-[100%] my-2  sm:hidden block">
-                <div className="flex flex-col items-center">
-                  {showOrder &&
-                    cartItems.map((item, index) => (
-                      <div
-                        key={index}
-                        className="flex items-center gap-3 my-1 text-center"
-                      >
-                        <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
-                          <span className="text-black">SERVICE: </span>
-                          {item.text || "N/A"}
-                        </p>
-                        <p className="text-[9px] text-[#EB1C24] font-semibold font-futura text-center">
-                          <span className="text-black">
-                            {item.text || null}:{" "}
-                          </span>
-                          {item.small || "N/A"}
-                        </p>
-                      </div>
-                    ))}
-                </div>
-              </div>
+          
             </div>
 
             <Buttons text="ADD TO BAG" />
@@ -260,12 +215,12 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                   <div
                     key={index}
                     onClick={() => handleNext(data)}
-                    className={`border relative pt-[0.5px] w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+                    className={`border relative pt-[0.5px] w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center justify-center cursor-pointer 
         border-black bg-white
       `}
                   >
                     {/* Top Label */}
-                    <p className="text-[10px] md:text-sm text-black font-covered">
+                    <p className="text-[10px] md:text-sm text-black font-covered absolute top-0">
                       {data.text}
                     </p>
 
@@ -282,7 +237,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-4px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
@@ -308,12 +263,12 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                   <div
                     key={index}
                     onClick={() => handleNext(data)}
-                    className={`border relative  w-[52px] h-[63px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center cursor-pointer 
+                    className={`border relative  w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center justify-center text-center cursor-pointer 
         border-black bg-white
       `}
                   >
                     {/* Top Label */}
-                    <p className="text-[10px] md:text-sm text-black font-covered">
+                    <p className="text-[10px] md:text-sm text-black font-covered absolute top-0">
                       {data.text}
                     </p>
 
@@ -330,7 +285,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-4px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[5px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
