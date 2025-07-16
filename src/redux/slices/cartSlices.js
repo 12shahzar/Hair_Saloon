@@ -61,6 +61,20 @@ const initialState = {
       small: "NATURAL",
       uniqueId: "hairline_1",
     },
+      {
+    id: 8,
+    image: image8,
+    text: "STYLING",
+    small: "NONE",
+    uniqueId: "extraStyle_0",
+  },
+  {
+    id: 9,
+    image: image8,
+    text: "ADD-ON",
+    small: "NONE",
+    uniqueId: "addOn_0",
+  },
   ],
 };
 
