@@ -96,7 +96,7 @@ const GAP_DATA = [
   {
     id: 1,
     image: addOn1,
-    text: "ADD-ON",
+    text: "ADD-ONS",
     small: "BLEACH",
     price: 100,
     para: "KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
@@ -104,7 +104,7 @@ const GAP_DATA = [
   {
     id: 2,
     image: addOn2,
-    text: "ADD-ON",
+    text: "ADD-ONS",
     small: "PLUCK",
     price: 200,
     para: "HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
@@ -112,7 +112,7 @@ const GAP_DATA = [
   {
     id: 3,
     image: addOn3,
-    text: "ADD-ON",
+    text: "ADD-ONS",
     small: "CLIP ENDS",
     price: 300,
     para: "ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH.",
