@@ -301,19 +301,19 @@ export const RightSidebarFirst = ({
                     setIsCardSelected(true);
                   }
                 }}
-                className={`border bg-white relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center  cursor-pointer ${
+                className={`border bg-white relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex items-center text-center justify-center  cursor-pointer ${
                   isSelected ? "border-[#EB1C24]" : "border-black"
                 }`}
               >
-                <p className="text-[10px] md:text-sm text-black font-covered ">
+                <p className="text-[10px] md:text-sm text-black font-covered  absolute top-0 ">
                   {data.text}
                 </p>
                 <div
-                  className={`flex items-center justify-center w-full h-full ${
+                  className={`flex items-center justify-center w-full h-full  ${
                     isSelected ? "text-[#EB1C24]" : "text-black"
                   }`}
                 >
-                  <p className="text-xl font-futura font-light mb-5">
+                  <p className="text-xl font-futura font-light ">
                     {data.image}
                   </p>
                 </div>
