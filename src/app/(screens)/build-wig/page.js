@@ -237,7 +237,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[7px] w-full md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >
@@ -285,7 +285,7 @@ export const RightSidebarFirst = ({ setShowModal }) => {
 
                     {/* Bottom Value */}
                     <p
-                      className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium ${
+                      className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[7px] w-full md:text-xs font-futura font-medium ${
                         isInCart ? "text-[#EB1C24]" : "text-black"
                       }`}
                     >

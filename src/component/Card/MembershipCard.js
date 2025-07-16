@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 
 const MembershipCard = ({ data, isSelected, onSelect }) => {
-  
   return (
     <div
       onClick={onSelect}
@@ -16,21 +15,20 @@ const MembershipCard = ({ data, isSelected, onSelect }) => {
       </p>
 
       {/* Center Image */}
-      <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+      <div className="relative w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
         <Image
           src={data.image}
           alt="Card image"
-          width={100}
-          height={100}
-          className="object-contain w-full h-full"
+          layout="fill"
+          objectFit="contain"
         />
       </div>
 
       {/* Bottom Value */}
       <p
-        className={`absolute bottom-[-5px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[6px] md:text-xs font-futura font-medium  ${
-        isSelected ? "text-[#EB1C24]" : "text-black"
-      }`}
+        className={`absolute bottom-[-6px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 text-[7px] md:text-xs font-futura font-medium  w-full ${
+          isSelected ? "text-[#EB1C24]" : "text-black"
+        }`}
       >
         {data.small}
       </p>
