@@ -22,11 +22,10 @@ const BuildAWigPage = () => {
   const router = useRouter();
   const [selectedCapCard, setSelectedCapCard] = useState(null);
   const [isCardSelected, setIsCardSelected] = useState(false);
-  
-const handleConfirm = () => {
-    confirmItem(dispatch, selectedCapCard,"length"); 
+
+  const handleConfirm = () => {
+    confirmItem(dispatch, selectedCapCard, "length");
     router.push("/build-wig");
-    
   };
   return (
     <main className="container mx-auto">
@@ -51,26 +50,26 @@ const handleConfirm = () => {
                 </p>
               </div>
             </div>
-          <RightSidebarSecond
-                       selectedCard={selectedCapCard}
-                       setSelectedCard={setSelectedCapCard}
-                       setIsCardSelected={setIsCardSelected}
-                     />
+            <RightSidebarSecond
+              selectedCard={selectedCapCard}
+              setSelectedCard={setSelectedCapCard}
+              setIsCardSelected={setIsCardSelected}
+            />
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
               </p>
               <p className="font-futura text-[13px] text-black font-medium">
-                 ${selectedCapCard?.price || 0} USD
+                ${selectedCapCard?.price || 0} USD
               </p>
             </div>
           </div>
 
-            <Buttons
-                    text="CONFIRM SELECTION"
-                    onClick={handleConfirm}
-                  disabled={!isCardSelected}
-                  />
+          <Buttons
+            text="CONFIRM SELECTION"
+            onClick={handleConfirm}
+            disabled={!isCardSelected}
+          />
         </div>
 
         <RightSection />
@@ -81,20 +80,23 @@ const handleConfirm = () => {
 
 export default BuildAWigPage;
 
-export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSelected, }) => {
-  
+export const RightSidebarSecond = ({
+  selectedCard,
+  setSelectedCard,
+  setIsCardSelected,
+}) => {
   const router = useRouter();
-    const cartItems = useSelector((state) => state.wigCart.items); 
-      useEffect(() => {
-        const matchedCard = GAP_DATA.find((card) =>
-        cartItems.some((item) => item.id === card.id && item.text === card.text)
-      );
-      
-        if (matchedCard) {
-          setSelectedCard(matchedCard);      // ✅ Select the matched card
-          setIsCardSelected(true);           // ✅ Enable confirm button
-        }
-      }, [cartItems]);
+  const cartItems = useSelector((state) => state.wigCart.items);
+  useEffect(() => {
+    const matchedCard = GAP_DATA.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
+
+    if (matchedCard) {
+      setSelectedCard(matchedCard); // ✅ Select the matched card
+      setIsCardSelected(true); // ✅ Enable confirm button
+    }
+  }, [cartItems]);
   const handleBack = () => {
     router.push("/build-wig");
   };
@@ -103,12 +105,14 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
   useScrollOnPathChange(cardRef);
 
   return (
-    <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col  mt-3 lg:mt-0">
-        
-        <BackBtn onClick={handleBack} />
-      
-      <Heading head="HAIR MEASUREMENTS" className="mt-10"/>
-   
+    <div
+      ref={cardRef}
+      className="w-full lg:w-[40%] flex flex-col  mt-3 lg:mt-0"
+    >
+      <BackBtn onClick={handleBack} />
+
+      <Heading head="HAIR MEASUREMENTS" className="mt-10" />
+
       <MembershipSection
         data={GAP_DATA}
         selectedCard={selectedCard}
@@ -116,10 +120,9 @@ export const RightSidebarSecond = ({ selectedCard, setSelectedCard,setIsCardSele
         setIsCardSelected={setIsCardSelected}
         className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3  "
       />
-     <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
-  {selectedCard?.para }
-</p>
-
+      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
+        {selectedCard?.para}
+      </p>
     </div>
   );
 };
@@ -130,96 +133,131 @@ const GAP_DATA = [
     image: length,
     text: "LENGTH",
     small: "16”",
-    price:100,
-    para :`  3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 100,
+    para: `  3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "39px",
+    height: "38px",
+    top: "50%",
   },
   {
     id: 2,
     image: length,
     text: "LENGTH",
     small: "18”",
-    price:200,
-      para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 200,
+    para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "39px",
+    height: "38px",
+    top: "50%",
   },
   {
     id: 3,
     image: length,
     text: "LENGTH",
     small: "20”",
-    price:100,
-     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 100,
+    para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "39px",
+    height: "38px",
+    top: "50%",
   },
   {
     id: 4,
     image: length,
     text: "LENGTH",
     small: "22”",
-    price:100,
-     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 100,
+    para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "39px",
+    height: "38px",
+    top: "50%",
   },
   {
     id: 5,
     image: image2,
     text: "LENGTH",
     small: "24”",
-    price:100,
-     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 100,
+    para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 6,
     image: image2,
     text: "LENGTH",
     small: "26”",
-    price:100,
-     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 100,
+    para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 7,
     image: image2,
     text: "LENGTH",
     small: "28”",
-    price:100,
-     para :` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    price: 100,
+    para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 8,
     image: image2,
     text: "LENGTH",
     small: "30”",
-    price:100,
-     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    price: 100,
+    para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 9,
     image: length2,
     text: "LENGTH",
     small: "32”",
-    price:100,
-     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    price: 100,
+    para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 10,
     image: length2,
     text: "LENGTH",
     small: "34”",
-    price:100,
-     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    price: 100,
+    para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 11,
     image: length2,
     text: "LENGTH",
     small: "36”",
-    price:100,
-     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
-    
+    price: 100,
+    para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 12,
     image: length2,
     text: "LENGTH",
     small: "40”",
-    price:100,
-     para :`3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    price: 100,
+    para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
 ];

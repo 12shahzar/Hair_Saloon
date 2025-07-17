@@ -105,9 +105,8 @@ export const RightSidebarSecond = ({
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-     
-        <BackBtn onClick={handleBack} />
-    
+      <BackBtn onClick={handleBack} />
+
       <Heading head="HAIR VOLUME" className="mt-10" />
 
       <MembershipSection
@@ -148,6 +147,9 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "150%",
     price: 100,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
   {
     id: 2,
@@ -155,6 +157,9 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "180%",
     price: 200,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
   {
     id: 3,
@@ -162,6 +167,9 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "200%",
     price: 300,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
   {
     id: 4,
@@ -169,6 +177,9 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "250%",
     price: 500,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
   {
     id: 5,
@@ -176,6 +187,9 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "300%",
     price: 100,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
   {
     id: 6,
@@ -183,6 +197,9 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "350%",
     price: 100,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
   {
     id: 7,
@@ -190,5 +207,8 @@ const GAP_DATA = [
     text: "DENSITY",
     small: "400%",
     price: 100,
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
 ];

@@ -100,6 +100,9 @@ const GAP_DATA = [
     small: "BLEACH",
     price: 100,
     para: "KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width:"15px",
+    height:"30px",
+    top:"50%"
   },
   {
     id: 2,
@@ -108,6 +111,9 @@ const GAP_DATA = [
     small: "PLUCK",
     price: 200,
     para: "HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+       width:"25px",
+    height:"30px",
+    top:"50%"
   },
   {
     id: 3,
@@ -116,6 +122,9 @@ const GAP_DATA = [
     small: "CLIP ENDS",
     price: 300,
     para: "ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH.",
+       width:"28px",
+    height:"30px",
+    top:"50%"
   },
 ];
 

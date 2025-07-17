@@ -190,6 +190,9 @@ const CAP_DATA = [
     small: "NATURAL",
     price: 100,
     para: "HAIRLINE IS ROUNDED & SOFT.",
+     width: "68px",
+    height: "49px",
+    top: "50%",
   },
   {
     id: 2,
@@ -198,6 +201,9 @@ const CAP_DATA = [
     small: "PEAK",
     price: 200,
     para: "HAIRLINE HAS A WIDOW’S PEAK.",
+     width: "68px",
+    height: "49px",
+    top: "50%",
   },
   {
     id: 3,
@@ -206,5 +212,8 @@ const CAP_DATA = [
     small: "LAGOS",
     price: 300,
     para: "NATURAL HAIRLINE WITH LOW TEMPLES ON BOTH SIDES.",
+     width: "68px",
+    height: "49px",
+    top: "50%",
   },
 ];

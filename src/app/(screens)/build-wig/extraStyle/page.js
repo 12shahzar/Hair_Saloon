@@ -166,15 +166,15 @@ export const RightSidebarFirst = ({
     }
   }, [cartItems]);
   useEffect(() => {
-  // Auto-select "MIDDLE" part on first load
-  const middlePart = PREMIUM_MEMBERSHIP.find(
-    (item) => item.small === "MIDDLE"
-  );
+    // Auto-select "MIDDLE" part on first load
+    const middlePart = PREMIUM_MEMBERSHIP.find(
+      (item) => item.small === "MIDDLE"
+    );
 
-  if (middlePart) {
-    setPremiumSelected(middlePart);
-  }
-}, []);
+    if (middlePart) {
+      setPremiumSelected(middlePart);
+    }
+  }, []);
   const handleBack = () => {
     router.push("/build-wig");
   };
@@ -184,9 +184,7 @@ export const RightSidebarFirst = ({
       ref={cardRef}
       className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0 lg:h-[700px]"
     >
-     
-        <BackBtn onClick={handleBack} />
-     
+      <BackBtn onClick={handleBack} />
 
       {/* BASIC MEMBERSHIP */}
       <div className="flex flex-col gap-2 mx-auto">
@@ -257,12 +255,21 @@ export const RightSidebarFirst = ({
                   );
                 }}
                 className={`border relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center justify-center cursor-pointer 
-                  ${isSelected ? "border-[#EB1C24]" : "border-black"} bg-white mb-3 sm:mb-0`}
+                  ${
+                    isSelected ? "border-[#EB1C24]" : "border-black"
+                  } bg-white mb-3 sm:mb-0`}
               >
                 <p className="text-[10px] md:text-sm text-black font-covered  absolute top-0">
                   {data.text}
                 </p>
-                <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                <div
+                  className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99999]"
+                  style={{
+                    width: data.width,
+                    height: data.height,
+                    top: data.top,
+                  }}
+                >
                   <Image
                     src={data.image}
                     alt="Card image"
@@ -333,7 +340,6 @@ export const RightSidebarFirst = ({
   );
 };
 
-
 const BASIC_MEMBERSHIP = [
   {
     id: 1,
@@ -342,6 +348,9 @@ const BASIC_MEMBERSHIP = [
     small: "BANGS",
     price: 100,
     para: "CURTAIN BANGS WITH FACE FRAMING LAYERS.",
+    width: "31px",
+    height: "28px",
+    top: "50%",
   },
   {
     id: 2,
@@ -350,6 +359,9 @@ const BASIC_MEMBERSHIP = [
     small: "CRIMPS",
     price: 100,
     para: "TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width: "30px",
+    height: "29px",
+    top: "50%",
   },
   {
     id: 3,
@@ -358,6 +370,9 @@ const BASIC_MEMBERSHIP = [
     small: "FLAT IRON",
     price: 100,
     para: "HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width: "29px",
+    height: "29px",
+    top: "50%",
   },
   {
     id: 4,
@@ -366,6 +381,9 @@ const BASIC_MEMBERSHIP = [
     small: "LAYERS",
     price: 100,
     para: "BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width: "30px",
+    height: "27px",
+    top: "50%",
   },
 ];
 

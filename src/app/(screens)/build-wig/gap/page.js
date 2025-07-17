@@ -166,6 +166,9 @@ const CAP_DATA = [
     text: "CAP SIZE",
     small: "XS",
     price: 100,
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
   {
     id: 2,
@@ -173,6 +176,9 @@ const CAP_DATA = [
     text: "CAP SIZE",
     small: "S",
     price: 200,
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
   {
     id: 3,
@@ -180,6 +186,9 @@ const CAP_DATA = [
     text: "CAP SIZE",
     small: "M",
     price: 400,
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
   {
     id: 4,
@@ -187,6 +196,9 @@ const CAP_DATA = [
     text: "CAP SIZE",
     small: "L",
     price: 100,
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
 ];
 
@@ -197,6 +209,9 @@ const CAP_DATA_2 = [
     text: "CAP SIZE",
     small: "XXS/XS/S",
     price: 100,
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
   {
     id: 6,
@@ -204,6 +219,9 @@ const CAP_DATA_2 = [
     text: "CAP SIZE",
     small: "S/M/L",
     price: 200,
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
 
 ];

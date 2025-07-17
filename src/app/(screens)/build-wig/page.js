@@ -83,18 +83,17 @@ const BuildAWigPage = () => {
     },
   ];
 
-useEffect(() => {
-  const extractEssentials = (arr) =>
-    arr.map((item) => ({ text: item.text, small: item.small }));
+  useEffect(() => {
+    const extractEssentials = (arr) =>
+      arr.map((item) => ({ text: item.text, small: item.small }));
 
-  const simplifiedCart = extractEssentials(cartItems);
-  const simplifiedDefault = extractEssentials(defaultCartItems);
+    const simplifiedCart = extractEssentials(cartItems);
+    const simplifiedDefault = extractEssentials(defaultCartItems);
 
-  const isDifferent = !isEqual(simplifiedCart, simplifiedDefault);
-  setOrder(isDifferent);
-}, [cartItems]);
+    const isDifferent = !isEqual(simplifiedCart, simplifiedDefault);
+    setOrder(isDifferent);
+  }, [cartItems]);
 
-  
   const totalPrice = cartItems.length
     ? cartItems.reduce((acc, item) => acc + (item.price || 0), 0)
     : 0;
@@ -122,7 +121,6 @@ useEffect(() => {
                     ${totalPrice > 0 ? totalPrice : 860} USD
                   </p>
                 </div>
-              
               </div>
               <RightSidebarFirst setShowModal={setShowModal} />
 
@@ -139,8 +137,6 @@ useEffect(() => {
                   ${totalPrice > 0 ? totalPrice : 860} USD
                 </p>
               </div>
-
-          
             </div>
 
             <Buttons text="ADD TO BAG" />
@@ -215,17 +211,22 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                   <div
                     key={index}
                     onClick={() => handleNext(data)}
-                    className={`border relative pt-[0.5px] w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center justify-center cursor-pointer 
-        border-black bg-white
-      `}
+                    className={`border relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] text-center cursor-pointer border-black bg-white`}
                   >
                     {/* Top Label */}
-                    <p className="text-[10px] md:text-sm text-black font-covered absolute top-0">
+                    <p className="text-[10px] md:text-sm text-black font-covered absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
                       {data.text}
                     </p>
 
-                    {/* Center Image */}
-                    <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                    {/* Image Box Centered */}
+                    <div
+                      className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99999]"
+                      style={{
+                        width: data.width,
+                        height: data.height,
+                        top: data.top,
+                      }}
+                    >
                       <Image
                         src={data.image}
                         alt="Card image"
@@ -273,7 +274,14 @@ export const RightSidebarFirst = ({ setShowModal }) => {
                     </p>
 
                     {/* Center Image */}
-                    <div className="w-[40px] h-[35px] md:w-[50px] md:h-[45px]">
+                    <div
+                      className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[99999]"
+                      style={{
+                        width: data.width,
+                        height: data.height,
+                        top: data.top,
+                      }}
+                    >
                       <Image
                         src={data.image}
                         alt="Card image"
@@ -310,6 +318,9 @@ const BASIC_MEMBERSHIP = [
     small: "M",
     uniqueId: "cap_3",
     link: "/gap",
+    width: "78px",
+    height: "53px",
+    top: "60%",
   },
   {
     id: 2,
@@ -318,6 +329,9 @@ const BASIC_MEMBERSHIP = [
     small: "24”",
     uniqueId: "length_5",
     link: "/length",
+    width: "37px",
+    height: "34px",
+    top: "50%",
   },
   {
     id: 3,
@@ -326,6 +340,9 @@ const BASIC_MEMBERSHIP = [
     small: "200%",
     uniqueId: "density_3",
     link: "/density",
+    width: "73px",
+    height: "50px",
+    top: "55%",
   },
 ];
 const PREMIUM_MEMBERSHIP = [
@@ -336,6 +353,9 @@ const PREMIUM_MEMBERSHIP = [
     small: "13X6",
     uniqueId: "lace_6",
     link: "/lace",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 5,
@@ -344,6 +364,9 @@ const PREMIUM_MEMBERSHIP = [
     small: "SILKY",
     uniqueId: "texture_1",
     link: "/texture",
+    width: "22px",
+    height: "26px",
+    top: "50%",
   },
   {
     id: 6,
@@ -352,6 +375,9 @@ const PREMIUM_MEMBERSHIP = [
     small: "OFF BLACK",
     uniqueId: "color_2",
     link: "/color",
+    width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 7,
@@ -360,6 +386,9 @@ const PREMIUM_MEMBERSHIP = [
     small: "NATURAL",
     uniqueId: "hairline_1",
     link: "/hairline",
+    width: "68px",
+    height: "49px",
+    top: "50%",
   },
   {
     id: 8,
@@ -368,6 +397,9 @@ const PREMIUM_MEMBERSHIP = [
     small: "NONE",
     uniqueId: "extraStyle_0",
     link: "/extraStyle",
+    width: "24px",
+    height: "24px",
+    top: "50%",
   },
   {
     id: 9,
@@ -376,5 +408,8 @@ const PREMIUM_MEMBERSHIP = [
     small: "NONE",
     uniqueId: "addOn_0",
     link: "/addOn",
+    width: "24px",
+    height: "24px",
+    top: "50%",
   },
 ];

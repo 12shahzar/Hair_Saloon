@@ -105,9 +105,8 @@ export const RightSidebarSecond = ({
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-      
-        <BackBtn onClick={handleBack} />
-  
+      <BackBtn onClick={handleBack} />
+
       <Heading head="HD TOPPER SIZE" className="mt-10" />
 
       <MembershipSection
@@ -134,6 +133,9 @@ const GAP_DATA = [
     small: "4X4",
     price: 200,
     para: "GLUELESS CLOSURE UNIT MEASURING 4 INCHES EAR TO EAR + 4 INCHES FRONT TO BACK.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 2,
@@ -142,6 +144,9 @@ const GAP_DATA = [
     small: "5X5",
     price: 300,
     para: "GLUELESS CLOSURE UNIT MEASURING 5 INCHES EAR TO EAR + 5 INCHES FRONT TO BACK.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 3,
@@ -150,6 +155,9 @@ const GAP_DATA = [
     small: "6X6",
     price: 500,
     para: "GLUELESS CLOSURE UNIT MEASURING 6 INCHES EAR TO EAR + 6 INCHES FRONT TO BACK.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 4,
@@ -158,6 +166,9 @@ const GAP_DATA = [
     small: "7X7",
     price: 100,
     para: "GLUELESS CLOSURE UNIT MEASURING 7 INCHES EAR TO EAR + 7 INCHES FRONT TO BACK.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 5,
@@ -166,6 +177,9 @@ const GAP_DATA = [
     small: "13X4",
     price: 100,
     para: "FRONTAL UNIT MEASURING 13 INCHES EAR TO EAR + 4 INCHES FRONT TO BACK.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 6,
@@ -174,6 +188,9 @@ const GAP_DATA = [
     small: "13X6",
     price: 100,
     para: "FRONTAL UNIT MEASURING 13 INCHES EAR TO EAR + 6 INCHES FRONT TO BACK.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 7,
@@ -182,6 +199,9 @@ const GAP_DATA = [
     small: "360",
     price: 100,
     para: "FRONTAL UNIT WITH LACE AROUND THE PERIMETER. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
   {
     id: 8,
@@ -190,5 +210,8 @@ const GAP_DATA = [
     small: "FULL",
     price: 100,
     para: "HD LACE THROUGHOUT THE ENTIRE CAP. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width: "58px",
+    height: "39px",
+    top: "50%",
   },
 ];

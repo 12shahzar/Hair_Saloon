@@ -148,7 +148,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "JET BLACK",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 2,
@@ -156,7 +159,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "OFF BLACK",
     price:200,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 3,
@@ -164,7 +170,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "ESPRESSO",
     price:300,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 4,
@@ -172,7 +181,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "CHESTNUT",
     price:400,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 5,
@@ -180,7 +192,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "HONEY",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 6,
@@ -188,7 +203,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "AUBURN",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
 
   },
   {
@@ -197,7 +215,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "COPPER",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
 
   {
@@ -206,7 +227,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "GINGER",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 9,
@@ -214,7 +238,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "SANGRIA",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 10,
@@ -222,7 +249,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "CHERRY",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 11,
@@ -230,7 +260,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "RASPBERRY",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 12,
@@ -238,7 +271,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "PLUM",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 13,
@@ -246,7 +282,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "COBALT",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 14,
@@ -254,7 +293,10 @@ const COLOR_DATA = [
     text: "COLOR",
    small: "TEAL",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
   {
     id: 15,
@@ -262,7 +304,10 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "CITRINE",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
     {
     id: 16,
@@ -270,6 +315,9 @@ const COLOR_DATA = [
     text: "COLOR",
     small: "SLIME",
     price:100,
-    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME."
+    para:"COLOR MATCH IS PROXIMATE, BUT NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+     width: "34px",
+    height: "33px",
+    top: "50%",
   },
 ];
