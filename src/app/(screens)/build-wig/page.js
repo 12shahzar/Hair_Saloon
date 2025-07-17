@@ -388,7 +388,7 @@ const PREMIUM_MEMBERSHIP = [
     link: "/hairline",
     width: "68px",
     height: "49px",
-    top: "50%",
+    top: "35%",
   },
   {
     id: 8,
