@@ -181,7 +181,7 @@ const GAP_DATA = [
     para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 6,
@@ -192,7 +192,7 @@ const GAP_DATA = [
     para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 7,
@@ -203,7 +203,7 @@ const GAP_DATA = [
     para: ` 3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. `,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 8,
@@ -214,7 +214,7 @@ const GAP_DATA = [
     para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 9,
@@ -225,7 +225,7 @@ const GAP_DATA = [
     para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 10,
@@ -236,7 +236,7 @@ const GAP_DATA = [
     para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 11,
@@ -247,7 +247,7 @@ const GAP_DATA = [
     para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
   {
     id: 12,
@@ -258,6 +258,6 @@ const GAP_DATA = [
     para: `3D MODEL IS FOR VISUAL PURPOSES ONLY, MEASUREMEANTS ARE NOT EXACT. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.`,
     width: "37px",
     height: "34px",
-    top: "50%",
+    top: "55%",
   },
 ];

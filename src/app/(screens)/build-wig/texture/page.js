@@ -132,9 +132,9 @@ const GAP_DATA = [
     small: "SILKY",
     price: 100,
     para: "HAIR STRANDS ARE SILKY WITH MEDIUM TO HIGH GLOSS & LUSTER.",
-    width: "22px",
-    height: "26px",
-    top: "50%",
+  width: "25px",
+    height: "35px",
+    top: "55%",
   },
 
   {
@@ -144,8 +144,8 @@ const GAP_DATA = [
     small: "KINKY",
     price: 200,
     para: "HAIR STRANDS ARE COARSE WITH LOW TO MEDIUM GLOSS & LUSTRE.",
-    width: "22px",
-    height: "26px",
-    top: "50%",
+    width: "25px",
+    height: "35px",
+    top: "55%",
   },
 ];

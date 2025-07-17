@@ -199,44 +199,41 @@ export const RightSidebarFirst = ({
               <div
                 key={index}
                 onClick={() => {
+                  const isBangs = data.small === "BANGS";
+                  const isStyleOption = [
+                    "CRIMPS",
+                    "FLAT IRON",
+                    "LAYERS",
+                  ].includes(data.small);
                   const isAlreadySelected = basicSelected.some(
                     (item) => item.id === data.id
                   );
-                  const isBangs = data.small === "BANGS";
+                  const bangsSelected = basicSelected.find(
+                    (item) => item.small === "BANGS"
+                  );
                   let updatedSelection = [];
 
-                  if (isBangs) {
-                    if (isAlreadySelected) {
-                      updatedSelection = basicSelected.filter(
-                        (item) => item.id !== data.id
-                      );
-                    } else if (basicSelected.length === 0) {
-                      updatedSelection = [data];
-                    } else if (
-                      basicSelected.length === 1 &&
-                      basicSelected[0].small === "BANGS"
-                    ) {
-                      updatedSelection = [...basicSelected, data];
-                    } else {
-                      updatedSelection = [data];
-                    }
-                  } else {
-                    const bangsSelected = basicSelected.some(
-                      (item) => item.small === "BANGS"
+                  if (isAlreadySelected) {
+                    updatedSelection = basicSelected.filter(
+                      (item) => item.id !== data.id
                     );
-                    if (isAlreadySelected) {
-                      updatedSelection = basicSelected.filter(
-                        (item) => item.id !== data.id
-                      );
-                    } else if (bangsSelected && basicSelected.length === 1) {
-                      updatedSelection = [...basicSelected, data];
-                    } else {
-                      updatedSelection = [data];
-                    }
+                  } else if (isBangs) {
+                    updatedSelection = basicSelected.filter(
+                      (item) =>
+                        !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
+                    );
+                    updatedSelection.push(data); 
+                  } else if (isStyleOption && bangsSelected) {
+                    updatedSelection = basicSelected.filter(
+                      (item) =>
+                        !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
+                    );
+                    updatedSelection.push(data);
+                  } else {
+                    updatedSelection = [data];
                   }
 
                   setBasicSelected(updatedSelection);
-
                   const hasBangs = updatedSelection.some(
                     (item) => item.small === "BANGS"
                   );
@@ -296,7 +293,10 @@ export const RightSidebarFirst = ({
         <Heading head="PART SELECTION" />
         <div className="flex items-center gap-3 mx-auto justify-evenly">
           {PREMIUM_MEMBERSHIP.map((data, index) => {
-            const isSelected = premiumSelected?.id === data.id;
+            const isSelected =
+              premiumSelected?.id === data.id ||
+              (!premiumSelected &&
+                index === Math.floor(PREMIUM_MEMBERSHIP.length / 2));
             const isDisabled = basicSelected.length === 0;
 
             return (
@@ -312,17 +312,17 @@ export const RightSidebarFirst = ({
                   isSelected ? "border-[#EB1C24]" : "border-black"
                 }`}
               >
-                <p className="text-[10px] md:text-sm text-black font-covered  absolute top-0 ">
+                <p className="text-[10px] md:text-sm text-black font-covered absolute top-0">
                   {data.text}
                 </p>
                 <div
-                  className={`flex items-center justify-center w-full h-full  ${
-                    isSelected ? "text-[#EB1C24]" : "text-black"
+                  className={`flex items-center justify-center w-full h-full ${
+                    isSelected
+                      ? "text-[#EB1C24] font-medium"
+                      : "text-black font-light"
                   }`}
                 >
-                  <p className="text-xl font-futura font-light ">
-                    {data.image}
-                  </p>
+                  <p className="text-xl font-futura ">{data.image}</p>
                 </div>
                 <p
                   className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 w-full text-[9px] md:text-xs font-futura font-medium ${
@@ -350,7 +350,7 @@ const BASIC_MEMBERSHIP = [
     para: "CURTAIN BANGS WITH FACE FRAMING LAYERS.",
     width: "31px",
     height: "28px",
-    top: "50%",
+    top: "53%",
   },
   {
     id: 2,
@@ -361,7 +361,7 @@ const BASIC_MEMBERSHIP = [
     para: "TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width: "30px",
     height: "29px",
-    top: "50%",
+    top: "53%",
   },
   {
     id: 3,
@@ -372,7 +372,7 @@ const BASIC_MEMBERSHIP = [
     para: "HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width: "29px",
     height: "29px",
-    top: "50%",
+    top: "53%",
   },
   {
     id: 4,
@@ -383,7 +383,7 @@ const BASIC_MEMBERSHIP = [
     para: "BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width: "30px",
     height: "27px",
-    top: "50%",
+    top: "53%",
   },
 ];
 

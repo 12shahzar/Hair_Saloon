@@ -102,7 +102,7 @@ const GAP_DATA = [
     para: "KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width:"15px",
     height:"30px",
-    top:"50%"
+    top:"53%"
   },
   {
     id: 2,
@@ -113,7 +113,7 @@ const GAP_DATA = [
     para: "HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
        width:"25px",
     height:"30px",
-    top:"50%"
+    top:"53%"
   },
   {
     id: 3,
@@ -124,7 +124,7 @@ const GAP_DATA = [
     para: "ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH.",
        width:"28px",
     height:"30px",
-    top:"50%"
+    top:"53%"
   },
 ];
 

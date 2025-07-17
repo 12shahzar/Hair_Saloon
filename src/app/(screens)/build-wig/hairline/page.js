@@ -84,8 +84,6 @@ const BuildAWigPage = () => {
 
 export default BuildAWigPage;
 
-
-
 export const RightSidebarSecond = ({
   selectedCards,
   setSelectedCards,
@@ -98,17 +96,17 @@ export const RightSidebarSecond = ({
   const handleBack = () => {
     router.push("/build-wig");
   };
-    const cartItems = useSelector((state) => state.wigCart.items);
- useEffect(() => {
-  const matchedCard = CAP_DATA.find((card) =>
-    cartItems.some((item) => item.id === card.id && item.text === card.text)
-  );
+  const cartItems = useSelector((state) => state.wigCart.items);
+  useEffect(() => {
+    const matchedCard = CAP_DATA.find((card) =>
+      cartItems.some((item) => item.id === card.id && item.text === card.text)
+    );
 
-  if (matchedCard) {
-    setSelectedCards([matchedCard]); // ✅ Fix here
-    setIsCardSelected(true);
-  }
-}, [cartItems]);
+    if (matchedCard) {
+      setSelectedCards([matchedCard]); // ✅ Fix here
+      setIsCardSelected(true);
+    }
+  }, [cartItems]);
 
   const showCustomPara =
     selectedCards.some((c) => c.small === "LAGOS") &&
@@ -125,19 +123,28 @@ export const RightSidebarSecond = ({
     let updatedSelection = [];
 
     if (isAlreadySelected) {
+      // Deselect if already selected
       updatedSelection = selectedCards.filter((c) => c.id !== card.id);
-    } else if (isLagos || isPeak) {
-      if ((isLagos && hasPeak) || (isPeak && hasLagos)) {
+    } else if (isLagos) {
+      // Lagos selected
+      if (hasPeak) {
+        // Peak was selected first → ignore Peak, only Lagos stays
+        updatedSelection = [card];
+      } else {
+        // Select Lagos
+        updatedSelection = [...selectedCards, card];
+      }
+    } else if (isPeak) {
+      // Peak selected
+      if (hasLagos) {
+        // Lagos already selected → allow Lagos + Peak
         updatedSelection = [...selectedCards, card];
       } else {
-        updatedSelection = [
-          ...selectedCards.filter(
-            (c) => c.small === "LAGOS" || c.small === "PEAK"
-          ),
-          card,
-        ];
+        // Peak selected first → only Peak stays
+        updatedSelection = [card];
       }
     } else {
+      // Normal card selection (not Lagos or Peak)
       updatedSelection = [card];
     }
 
@@ -147,9 +154,7 @@ export const RightSidebarSecond = ({
 
   return (
     <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0">
-     
-        <BackBtn onClick={handleBack} />
-     
+      <BackBtn onClick={handleBack} />
 
       <Heading head="VENTILLATION EFFECT" className="mt-10" />
 
@@ -181,7 +186,6 @@ export const RightSidebarSecond = ({
   );
 };
 
-
 const CAP_DATA = [
   {
     id: 1,
@@ -190,7 +194,7 @@ const CAP_DATA = [
     small: "NATURAL",
     price: 100,
     para: "HAIRLINE IS ROUNDED & SOFT.",
-     width: "68px",
+    width: "68px",
     height: "49px",
     top: "50%",
   },
@@ -201,7 +205,7 @@ const CAP_DATA = [
     small: "PEAK",
     price: 200,
     para: "HAIRLINE HAS A WIDOW’S PEAK.",
-     width: "68px",
+    width: "68px",
     height: "49px",
     top: "50%",
   },
@@ -212,7 +216,7 @@ const CAP_DATA = [
     small: "LAGOS",
     price: 300,
     para: "NATURAL HAIRLINE WITH LOW TEMPLES ON BOTH SIDES.",
-     width: "68px",
+    width: "68px",
     height: "49px",
     top: "50%",
   },
