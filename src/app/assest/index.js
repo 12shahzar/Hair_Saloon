@@ -5,29 +5,21 @@ import search from "./images/search.png";
 import heart from "./images/heart.png";
 import head from "./images/head.png";
 import tv from "./images/tv.png";
-import imagehair1 from "./images/imagehair1.png";
-import imagehair2 from "./images/imagehair2.png";
-import imagehair3 from "./images/imagehair3.png";
-// import image1 from "./images/image1.png";
+import imagehair1 from "./images/imagehair1.svg";
+import imagehair2 from "./images/imagehair2.svg";
+import imagehair3 from "./images/imagehair3.svg";
 import image1 from "./images/image1.svg";
-// import image2 from "./images/image2.png";
 import image2 from "./images/image2.svg";
-// import image3 from "./images/image3.png";
 import image3 from "./images/image3.svg";
-// import image8 from "./images/image8.png";
 import image8 from "./images/image8.svg";
-// import image4 from "./images/image4.png";
 import image4 from "./images/image4.svg";
-// import image5 from "./images/image5.png";
 import image5 from "./images/image5.svg";
-// import image7 from "./images/image7.png";
 import image7 from "./images/image7.svg";
 import twitter from "./images/twitter.png";
 import insta from "./images/insta.png";
 import tittok from "./images/tittok.png";
 import facebook from "./images/facebook.png";
 import cardimage from "./images/cardimage.png";
-// import color1 from "./images/color1.png";
 import color1 from "./images/color1.svg";
 import color2 from "./images/color2.png";
 import color3 from "./images/color3.png";
@@ -45,27 +37,18 @@ import color14 from "./images/color14.png";
 import color15 from "./images/color15.png";
 import color16 from "./images/color16.png";
 import color17 from "./images/color17.png";
-// import length from "./images/length.png";
 import length from "./images/length.svg";
-import cart from "./images/cart.png";
-import menu from "./images/menu.png";
+import cart from "./images/cart.svg";
+import menu from "./images/menu.svg";
 import back from "./images/BACK.png"
 import leaf from "./images/leaf.png"
-// import addOn1 from "./images/addOn1.png"
 import addOn1 from "./images/addon1.svg"
-// import addOn2 from "./images/addOn2.png"
 import addOn2 from "./images/addon2.svg"
-// import addOn3 from "./images/addOn3.png"
 import addOn3 from "./images/addon3.svg"
-// import style1 from "./images/style1.png"
 import style1 from "./images/style1.svg"
-// import style2 from "./images/style2.png"
 import style2 from "./images/style2.svg"
-// import style3 from "./images/style3.png"
 import style3 from "./images/style3.svg"
-// import style4 from "./images/style4.png"
 import style4 from "./images/style4.svg"
-// import length2 from "./images/length2.png"
 import length2 from "./images/length2.svg"
 import Vectotmenu1 from "./images/Vectormenu1.png"
 import Vectotmenu2 from "./images/Vectormenu2.png"

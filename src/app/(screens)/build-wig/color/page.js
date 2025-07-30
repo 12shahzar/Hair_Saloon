@@ -120,7 +120,7 @@ export const RightSidebarThird = ({ selectedCard, setSelectedCard ,setIsCardSele
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col mt-3 lg:mt-0 lg:h-[700px]">
         
-        <BackBtn onClick={handleBack} />
+        {/* <BackBtn onClick={handleBack} /> */}
       
       <Heading head="SINGLE COLOR DYE" className="mt-10"/>
     

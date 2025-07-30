@@ -109,7 +109,7 @@ export const RightSidebarSecond = ({
       ref={cardRef}
       className="w-full lg:w-[40%] flex flex-col  mt-3 lg:mt-0"
     >
-      <BackBtn onClick={handleBack} />
+      {/* <BackBtn onClick={handleBack} /> */}
 
       <Heading head="HAIR MEASUREMENTS" className="mt-10" />
 

@@ -112,49 +112,55 @@ export const RightSidebarSecond = ({
     selectedCards.some((c) => c.small === "LAGOS") &&
     selectedCards.some((c) => c.small === "PEAK");
 
-  const handleSelect = (card) => {
-    const isLagos = card.small === "LAGOS";
-    const isPeak = card.small === "PEAK";
+const handleSelect = (card) => {
+  const isLagos = card.small === "LAGOS";
+  const isPeak = card.small === "PEAK";
+  const isNatural = card.small === "NATURAL";
 
-    const hasLagos = selectedCards.some((c) => c.small === "LAGOS");
-    const hasPeak = selectedCards.some((c) => c.small === "PEAK");
-    const isAlreadySelected = selectedCards.some((c) => c.id === card.id);
+  const hasLagos = selectedCards.some((c) => c.small === "LAGOS");
+  const hasPeak = selectedCards.some((c) => c.small === "PEAK");
+  const isAlreadySelected = selectedCards.some((c) => c.id === card.id);
 
-    let updatedSelection = [];
+  let updatedSelection = [];
 
-    if (isAlreadySelected) {
-      // Deselect if already selected
-      updatedSelection = selectedCards.filter((c) => c.id !== card.id);
-    } else if (isLagos) {
-      // Lagos selected
-      if (hasPeak) {
-        // Peak was selected first → ignore Peak, only Lagos stays
-        updatedSelection = [card];
-      } else {
-        // Select Lagos
-        updatedSelection = [...selectedCards, card];
-      }
-    } else if (isPeak) {
-      // Peak selected
-      if (hasLagos) {
-        // Lagos already selected → allow Lagos + Peak
-        updatedSelection = [...selectedCards, card];
-      } else {
-        // Peak selected first → only Peak stays
-        updatedSelection = [card];
-      }
+  if (isAlreadySelected) {
+    // Deselect card if already selected
+    updatedSelection = selectedCards.filter((c) => c.id !== card.id);
+  } else if (isLagos) {
+    // Always allow selecting LAGOS
+    updatedSelection = [card];
+  } else if (isPeak) {
+    if (hasLagos && selectedCards.length === 1) {
+      // Allow PEAK only if LAGOS is already selected and it's the only selected card
+      updatedSelection = [...selectedCards, card];
     } else {
-      // Normal card selection (not Lagos or Peak)
+      // PEAK selected first or with invalid combo → only PEAK
       updatedSelection = [card];
     }
+  } else if (isNatural) {
+    // NATURAL always alone
+    updatedSelection = [card];
+  } else {
+    // Any other card type → only that card selected
+    updatedSelection = [card];
+  }
 
-    setSelectedCards(updatedSelection);
-    setIsCardSelected(updatedSelection.length > 0);
-  };
+  // Filter out invalid combinations (extra safety)
+  const smalls = updatedSelection.map((c) => c.small);
+  const isValid =
+    (smalls.length === 1) ||
+    (smalls.includes("LAGOS") && smalls.includes("PEAK") && smalls.length === 2);
+
+  const finalSelection = isValid ? updatedSelection : [];
+
+  setSelectedCards(finalSelection);
+  setIsCardSelected(finalSelection.length > 0);
+};
+
 
   return (
     <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0">
-      <BackBtn onClick={handleBack} />
+      {/* <BackBtn onClick={handleBack} /> */}
 
       <Heading head="VENTILLATION EFFECT" className="mt-10" />
 

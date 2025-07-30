@@ -105,7 +105,7 @@ export const RightSidebarSecond = ({
   useScrollOnPathChange(cardRef);
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-      <BackBtn onClick={handleBack} />
+      {/* <BackBtn onClick={handleBack} /> */}
 
       <Heading head="HD TOPPER SIZE" className="mt-10" />
 

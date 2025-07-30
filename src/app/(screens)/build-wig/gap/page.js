@@ -120,10 +120,10 @@ export const RightSidebarSecond = ({
   return (
     <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col lg:mt-0 mt-3">
     
-        <BackBtn onClick={handleBack} />
+        {/* <BackBtn onClick={handleBack} /> */}
      
 
-      <Heading head="CUSTOM SIZING" className="mt-10" />
+      <Heading head="CUSTOM SIZING"  />
 
       <MembershipSection
         data={CAP_DATA}

@@ -184,7 +184,7 @@ export const RightSidebarFirst = ({
       ref={cardRef}
       className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0 lg:h-[700px]"
     >
-      <BackBtn onClick={handleBack} />
+      {/* <BackBtn onClick={handleBack} /> */}
 
       {/* BASIC MEMBERSHIP */}
       <div className="flex flex-col gap-2 mx-auto">
@@ -316,13 +316,11 @@ export const RightSidebarFirst = ({
                   {data.text}
                 </p>
                 <div
-                  className={`flex items-center justify-center w-full h-full ${
-                    isSelected
-                      ? "text-[#EB1C24] font-medium"
-                      : "text-black font-light"
-                  }`}
+                  className={`flex items-center justify-center w-full h-full `}
                 >
-                  <p className="text-xl font-futura ">{data.image}</p>
+                  <p className={`text-xl font-futura ${ isSelected
+                      ? "text-[#EB1C24] font-normal"
+                      : "text-black font-light"}`}>{data.image}</p>
                 </div>
                 <p
                   className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 w-full text-[9px] md:text-xs font-futura font-medium ${
