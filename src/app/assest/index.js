@@ -42,7 +42,8 @@ import color14 from "./images/color14.png";
 import color15 from "./images/color15.png";
 import color16 from "./images/color16.png";
 import color17 from "./images/color17.png";
-import length from "./images/length.svg";
+import length from "./images/length.png";
+// import length from "./images/length.svg";
 import cart from "./images/cart.svg";
 import menu from "./images/menu.svg";
 import back from "./images/BACK.png"
