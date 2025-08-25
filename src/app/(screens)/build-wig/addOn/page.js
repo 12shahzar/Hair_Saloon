@@ -201,7 +201,7 @@ export const RightSidebarSecond = ({
 
     // ✅ No option selected
     if (selectedCapCards.length === 0) {
-      return "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES.";
+      return "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES. ";
     }
 
     // ✅ Only one option selected → directly return that card's para
