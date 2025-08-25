@@ -99,10 +99,10 @@ const GAP_DATA = [
     text: "ADD-ONS",
     small: "BLEACH",
     price: 100,
-    para: "KNOTS WILL BE LIFTED + TONED USING SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
-    width:"15px",
-    height:"30px",
-    top:"53%"
+    para: "KNOTS WILL BE LIFTED + TONED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    width: "15px",
+    height: "30px",
+    top: "53%",
   },
   {
     id: 2,
@@ -110,10 +110,10 @@ const GAP_DATA = [
     text: "ADD-ONS",
     small: "PLUCK",
     price: 200,
-    para: "HAIRLINE WILL BE TWEEZED + FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
-       width:"25px",
-    height:"30px",
-    top:"53%"
+    para: "HAIRLINE WILL BE FULLY CUSTOMIZED. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME",
+    width: "25px",
+    height: "30px",
+    top: "53%",
   },
   {
     id: 3,
@@ -121,10 +121,10 @@ const GAP_DATA = [
     text: "ADD-ONS",
     small: "CLIP ENDS",
     price: 300,
-    para: "ENDS WILL BE CUT BLUNT. REMOVES 2-4 INCHES BUT HAIR WILL MAINTAIN ITS LENGTH.",
-       width:"28px",
-    height:"30px",
-    top:"53%"
+    para: "ENDS WILL BE CUT BLUNT BUT MAINTAIN ITS LENGTH. STANDARD PROCESSING TIME APPLIES.",
+    width: "28px",
+    height: "30px",
+    top: "53%",
   },
 ];
 
@@ -164,9 +164,7 @@ export const RightSidebarSecond = ({
   };
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-    
-        {/* <BackBtn onClick={handleBack} /> */}
-   
+      {/* <BackBtn onClick={handleBack} /> */}
 
       <Heading head="CUSTOMIZATION KIT" className="mt-10" />
 
@@ -189,10 +187,50 @@ export const RightSidebarSecond = ({
         </div>
       </div>
 
-      <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
-        {/* */}
-        {selectedCapCards[selectedCapCards.length - 1]?.para}
-      </p>
+      {/* <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
+        {selectedCapCards.length > 0
+          ? selectedCapCards[selectedCapCards.length - 1]?.para
+          : "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES."}
+      </p> */}
+
+  <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
+  {(() => {
+    const hasBleach = selectedCapCards.some((item) => item.small === "BLEACH");
+    const hasPluck = selectedCapCards.some((item) => item.small === "PLUCK");
+    const hasClip = selectedCapCards.some((item) => item.small === "CLIP ENDS");
+
+    // ✅ No option selected
+    if (selectedCapCards.length === 0) {
+      return "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES.";
+    }
+
+    // ✅ Only one option selected → directly return that card's para
+    if (selectedCapCards.length === 1) {
+      return selectedCapCards[0].para;
+    }
+
+    // ✅ BLEACH + PLUCK
+    if (hasBleach && hasPluck) {
+      return "FULLY CUSTOMIZED LACE. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+    }
+
+    // ✅ BLEACH + CLIP ENDS
+    if (hasBleach && hasClip) {
+      return "KNOTS WILL BE LIFTED + TONED WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+    }
+
+    // ✅ PLUCK + CLIP ENDS
+    if (hasPluck && hasClip) {
+      return "FULLY CUSTOMIZED HAIRLINE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+    }
+    if (hasPluck && hasClip && hasClip) {
+      return "FULLY CUSTOMIZED LACE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+    }
+
+    return "";
+  })()}
+</p>
+
     </div>
   );
 };

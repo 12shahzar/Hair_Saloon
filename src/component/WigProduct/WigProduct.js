@@ -22,13 +22,13 @@ const WigProduct = () => {
           NOIR
         </p>
 
-        <Image
-          src={selectedImage}
-          alt="Selected Wig"
-          width={230}
-          height={380}
-          className="absolute left-1/2 top-[51.5%] -translate-x-1/2 -translate-y-1/2 z-10"
-        />
+        <img 
+  src={selectedImage.src} 
+  alt="Selected Wig"
+  className="absolute left-1/2 top-[49%] -translate-x-1/2 -translate-y-1/2 z-10"
+  style={{ width: "230px", height: "355px", objectFit: "cover" }}
+/>
+
       </div>
 
       <div className="flex justify-center space-x-2 mb-3 mt-2">
@@ -57,9 +57,18 @@ const WigProduct = () => {
         ))}
       </div>
 
+
       
        {pathname !== "/build-wig" && (
         <div>
+          {/* 
+        <Image
+          src={selectedImage}
+          alt="Selected Wig"
+          width={230}
+          height={380}
+          className="absolute left-1/2 top-[51.5%] -translate-x-1/2 -translate-y-1/2 z-10"
+        /> */}
       <BackBtn onClick={handleBack} />
       </div>
       )}

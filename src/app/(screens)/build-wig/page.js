@@ -375,8 +375,8 @@ const PREMIUM_MEMBERSHIP = [
     small: "OFF BLACK",
     uniqueId: "color_2",
     link: "/color",
-    width: "44px",
-    height: "43px",
+    width: "38px",
+    height: "37px",
     top: "53%",
   },
   {
@@ -388,7 +388,7 @@ const PREMIUM_MEMBERSHIP = [
     link: "/hairline",
     width: "68px",
     height: "49px",
-    top: "35%",
+    top: "39%",
   },
   {
     id: 8,

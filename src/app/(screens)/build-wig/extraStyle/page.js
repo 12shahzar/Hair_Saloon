@@ -81,7 +81,6 @@ const BuildAWigPage = () => {
               setPremiumSelected={setPremiumSelected}
               setIsCardSelected={setIsCardSelected}
             />
-
             <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
               {(() => {
                 const hasBangs = basicSelected.some(
@@ -91,22 +90,33 @@ const BuildAWigPage = () => {
                   (item) => item.small !== "BANGS"
                 );
 
+                // ✅ No option selected
+                if (basicSelected.length === 0) {
+                  return "UNIT COMES CO-WASHED IN ITS NATURAL STATE. STANDARD PROCESSING TIME APPLIES.";
+                }
+
+                // ✅ Only one option selected
                 if (basicSelected.length === 1) {
                   return basicSelected[0].para;
                 }
 
+                // ✅ Bangs + Another option
                 if (hasBangs && other) {
-                  if (other.small === "FLATIRON") {
-                    return "CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+                  if (other.small === "FLAT IRON") {
+                    return "CURTAIN BANGS WITH BONE STRAIGHT HAIR. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
                   }
                   if (other.small === "LAYERS") {
-                    return "CURTAIN BANGS WITH BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+                    return "CURTAIN BANGS WITH LAYERED CURLS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+                  }
+                  if (other.small === "CRIMPS") {
+                    return "TEXTURED DEEP WAVES USING HOT TOOLS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
                   }
                 }
 
                 return "";
               })()}
             </p>
+
             <div className="text-center block md:hidden md:mt-0 ">
               <p className="font-futura text-[12px] text-[#909090] font-medium">
                 TOTAL DUE
@@ -222,7 +232,7 @@ export const RightSidebarFirst = ({
                       (item) =>
                         !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
                     );
-                    updatedSelection.push(data); 
+                    updatedSelection.push(data);
                   } else if (isStyleOption && bangsSelected) {
                     updatedSelection = basicSelected.filter(
                       (item) =>
@@ -318,9 +328,15 @@ export const RightSidebarFirst = ({
                 <div
                   className={`flex items-center justify-center w-full h-full `}
                 >
-                  <p className={`text-xl font-futura ${ isSelected
-                      ? "text-[#EB1C24] font-normal"
-                      : "text-black font-light"}`}>{data.image}</p>
+                  <p
+                    className={`text-xl font-futura ${
+                      isSelected
+                        ? "text-[#EB1C24] font-normal"
+                        : "text-black font-light"
+                    }`}
+                  >
+                    {data.image}
+                  </p>
                 </div>
                 <p
                   className={`absolute bottom-[-6.9px] md:bottom-[-10px] left-1/2 transform -translate-x-1/2 w-full text-[9px] md:text-xs font-futura font-medium ${
@@ -345,7 +361,7 @@ const BASIC_MEMBERSHIP = [
     text: "STYLING",
     small: "BANGS",
     price: 100,
-    para: "CURTAIN BANGS WITH FACE FRAMING LAYERS.",
+    para: "CURTAIN BANGS WITH FACE FRAMING LAYERS USING HOT TOOLS. STANDARD PROCESSING TIME APPLIES.",
     width: "31px",
     height: "28px",
     top: "53%",
@@ -356,7 +372,7 @@ const BASIC_MEMBERSHIP = [
     text: "STYLING",
     small: "CRIMPS",
     price: 100,
-    para: "TEXTURED DEEP WAVES USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    para: "CURTAIN BANGS WITH TEXTURED WAVES. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width: "30px",
     height: "29px",
     top: "53%",
@@ -367,7 +383,7 @@ const BASIC_MEMBERSHIP = [
     text: "STYLING",
     small: "FLAT IRON",
     price: 100,
-    para: "HAIR IS PRESSED BONE STRAIGHT USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    para: "PRESSED BONE STRAIGHT USING HOT TOOLS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width: "29px",
     height: "29px",
     top: "53%",
@@ -378,7 +394,7 @@ const BASIC_MEMBERSHIP = [
     text: "STYLING",
     small: "LAYERS",
     price: 100,
-    para: "BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
+    para: "BOUNCY, LAYERED CURLS USING HOT TOOLS. PLEASE EXPECT AN ADDITIO",
     width: "30px",
     height: "27px",
     top: "53%",
