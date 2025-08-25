@@ -394,7 +394,7 @@ const BASIC_MEMBERSHIP = [
     text: "STYLING",
     small: "LAYERS",
     price: 100,
-    para: "BOUNCY, LAYERED CURLS USING HOT TOOLS. PLEASE EXPECT AN ADDITIO",
+    para: "BOUNCY, LAYERED CURLS USING HOT TOOLS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.",
     width: "30px",
     height: "27px",
     top: "53%",
