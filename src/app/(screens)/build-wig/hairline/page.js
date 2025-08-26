@@ -97,14 +97,34 @@ export const RightSidebarSecond = ({
     router.push("/build-wig");
   };
   const cartItems = useSelector((state) => state.wigCart.items);
-  useEffect(() => {
-    const matchedCard = CAP_DATA.find((card) =>
-      cartItems.some((item) => item.id === card.id && item.text === card.text)
-    );
 
-    if (matchedCard) {
-      setSelectedCards([matchedCard]); // ✅ Fix here
+  useEffect(() => {
+    const hasMixed = cartItems.some((item) => item.small === "MIXED");
+
+    if (hasMixed) {
+      setSelectedCards([
+        {
+          id: "mixed-1",
+          image: image7, // ya card.image jo aap chaho
+          text: "HAIRLINE",
+          small: "MIXED",
+          price: 500,
+          para: "HAIRLINE HAS A WIDOW’S PEAK WITH LOW TEMPLES ON BOTH SIDES.",
+          width: "68px",
+          height: "49px",
+          top: "39%",
+        },
+      ]);
       setIsCardSelected(true);
+    } else {
+      const matchedCard = CAP_DATA.find((card) =>
+        cartItems.some((item) => item.id === card.id && item.text === card.text)
+      );
+
+      if (matchedCard) {
+        setSelectedCards([matchedCard]);
+        setIsCardSelected(true);
+      }
     }
   }, [cartItems]);
 
@@ -112,62 +132,59 @@ export const RightSidebarSecond = ({
     selectedCards.some((c) => c.small === "LAGOS") &&
     selectedCards.some((c) => c.small === "PEAK");
 
-const handleSelect = (card) => {
-  const isLagos = card.small === "LAGOS";
-  const isPeak = card.small === "PEAK";
-  const isNatural = card.small === "NATURAL";
+  const handleSelect = (card) => {
+    const isLagos = card.small === "LAGOS";
+    const isPeak = card.small === "PEAK";
+    const isNatural = card.small === "NATURAL";
 
-  const hasLagos = selectedCards.some((c) => c.small === "LAGOS");
-  const hasPeak = selectedCards.some((c) => c.small === "PEAK");
-  const isAlreadySelected = selectedCards.some((c) => c.id === card.id);
+    const hasLagos = selectedCards.some((c) => c.small === "LAGOS");
+    const isAlreadySelected = selectedCards.some((c) => c.id === card.id);
 
-  let updatedSelection = [];
+    let updatedSelection = [];
 
-  if (isAlreadySelected) {
-    // Deselect card if already selected
-    updatedSelection = selectedCards.filter((c) => c.id !== card.id);
-  } else if (isLagos) {
-    // Always allow selecting LAGOS
-    updatedSelection = [card];
-  } else if (isPeak) {
-    if (hasLagos && selectedCards.length === 1) {
-      // Allow PEAK only if LAGOS is already selected and it's the only selected card
-      updatedSelection = [...selectedCards, card];
+    if (isAlreadySelected) {
+      updatedSelection = selectedCards.filter((c) => c.id !== card.id);
+    } else if (isLagos) {
+      updatedSelection = [card];
+    } else if (isPeak) {
+      if (hasLagos && selectedCards.length === 1) {
+        const combineCard = {
+          id: "mixed-1",
+          image: card.image,
+          text: "HAIRLINE",
+          small: "MIXED",
+          price: 500,
+          para: "HAIRLINE HAS A WIDOW’S PEAK WITH LOW TEMPLES ON BOTH SIDES.",
+          width: "68px",
+          height: "49px",
+          top: "39%",
+        };
+        updatedSelection = [combineCard];
+      } else {
+        updatedSelection = [card];
+      }
+    } else if (isNatural) {
+      updatedSelection = [card];
     } else {
-      // PEAK selected first or with invalid combo → only PEAK
       updatedSelection = [card];
     }
-  } else if (isNatural) {
-    // NATURAL always alone
-    updatedSelection = [card];
-  } else {
-    // Any other card type → only that card selected
-    updatedSelection = [card];
-  }
 
-  // Filter out invalid combinations (extra safety)
-  const smalls = updatedSelection.map((c) => c.small);
-  const isValid =
-    (smalls.length === 1) ||
-    (smalls.includes("LAGOS") && smalls.includes("PEAK") && smalls.length === 2);
-
-  const finalSelection = isValid ? updatedSelection : [];
-
-  setSelectedCards(finalSelection);
-  setIsCardSelected(finalSelection.length > 0);
-};
-
+    setSelectedCards(updatedSelection);
+    setIsCardSelected(updatedSelection.length > 0);
+  };
 
   return (
     <div ref={cardRef} className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0">
-      {/* <BackBtn onClick={handleBack} /> */}
-
       <Heading head="VENTILLATION EFFECT" className="mt-10" />
 
       <div className="flex flex-col gap-5 mx-auto mt-2">
         <div className="mx-auto justify-evenly xl:grid-cols-3 gap-3 md:gap-8 flex flex-wrap">
           {CAP_DATA.map((card, index) => {
-            const isSelected = selectedCards.some((c) => c.id === card.id);
+            const isMixed = selectedCards.some((c) => c.small === "MIXED");
+
+            const isSelected =
+              selectedCards.some((c) => c.id === card.id) ||
+              (isMixed && (card.small === "LAGOS" || card.small === "PEAK"));
 
             return (
               <MembershipCard
@@ -200,7 +217,7 @@ const CAP_DATA = [
     small: "NATURAL",
     price: 100,
     para: "HAIRLINE IS ROUNDED & SOFT.",
- width: "68px",
+    width: "68px",
     height: "49px",
     top: "39%",
   },
@@ -211,7 +228,7 @@ const CAP_DATA = [
     small: "PEAK",
     price: 200,
     para: "HAIRLINE HAS A WIDOW’S PEAK.",
-   width: "68px",
+    width: "68px",
     height: "49px",
     top: "39%",
   },
@@ -222,7 +239,7 @@ const CAP_DATA = [
     small: "LAGOS",
     price: 300,
     para: "NATURAL HAIRLINE WITH LOW TEMPLES ON BOTH SIDES.",
-   width: "68px",
+    width: "68px",
     height: "49px",
     top: "39%",
   },

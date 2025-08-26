@@ -134,9 +134,7 @@ export const RightSidebarSecond = ({
 }) => {
   const router = useRouter();
   const cartItems = useSelector((state) => state.wigCart.items);
-  const handleBack = () => {
-    router.push("/build-wig");
-  };
+
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
 
@@ -164,8 +162,6 @@ export const RightSidebarSecond = ({
   };
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
-      {/* <BackBtn onClick={handleBack} /> */}
-
       <Heading head="CUSTOMIZATION KIT" className="mt-10" />
 
       <div className="flex flex-col gap-5  mx-auto mt-2 ">
@@ -187,50 +183,49 @@ export const RightSidebarSecond = ({
         </div>
       </div>
 
-      {/* <p className="font-futura text-[9px] md:text-xs text-[#EB1C24] text-center font-semibold my-4 w-[100%]">
-        {selectedCapCards.length > 0
-          ? selectedCapCards[selectedCapCards.length - 1]?.para
-          : "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES."}
-      </p> */}
+      <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
+        {(() => {
+          const hasBleach = selectedCapCards.some(
+            (item) => item.small === "BLEACH"
+          );
+          const hasPluck = selectedCapCards.some(
+            (item) => item.small === "PLUCK"
+          );
+          const hasClip = selectedCapCards.some(
+            (item) => item.small === "CLIP ENDS"
+          );
 
-  <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
-  {(() => {
-    const hasBleach = selectedCapCards.some((item) => item.small === "BLEACH");
-    const hasPluck = selectedCapCards.some((item) => item.small === "PLUCK");
-    const hasClip = selectedCapCards.some((item) => item.small === "CLIP ENDS");
+          // ✅ No option selected
+          if (selectedCapCards.length === 0) {
+            return "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES. ";
+          }
 
-    // ✅ No option selected
-    if (selectedCapCards.length === 0) {
-      return "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES. ";
-    }
+          // ✅ Only one option selected → directly return that card's para
+          if (selectedCapCards.length === 1) {
+            return selectedCapCards[0].para;
+          }
 
-    // ✅ Only one option selected → directly return that card's para
-    if (selectedCapCards.length === 1) {
-      return selectedCapCards[0].para;
-    }
+          // ✅ BLEACH + PLUCK
+          if (hasBleach && hasPluck) {
+            return "FULLY CUSTOMIZED LACE. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+          }
 
-    // ✅ BLEACH + PLUCK
-    if (hasBleach && hasPluck) {
-      return "FULLY CUSTOMIZED LACE. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
-    }
+          // ✅ BLEACH + CLIP ENDS
+          if (hasBleach && hasClip) {
+            return "KNOTS WILL BE LIFTED + TONED WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+          }
 
-    // ✅ BLEACH + CLIP ENDS
-    if (hasBleach && hasClip) {
-      return "KNOTS WILL BE LIFTED + TONED WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
-    }
+          // ✅ PLUCK + CLIP ENDS
+          if (hasPluck && hasClip) {
+            return "FULLY CUSTOMIZED HAIRLINE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+          }
+          if (hasPluck && hasClip && hasClip) {
+            return "FULLY CUSTOMIZED LACE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
+          }
 
-    // ✅ PLUCK + CLIP ENDS
-    if (hasPluck && hasClip) {
-      return "FULLY CUSTOMIZED HAIRLINE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
-    }
-    if (hasPluck && hasClip && hasClip) {
-      return "FULLY CUSTOMIZED LACE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
-    }
-
-    return "";
-  })()}
-</p>
-
+          return "";
+        })()}
+      </p>
     </div>
   );
 };
