@@ -30,6 +30,9 @@ const BuildAWigPage = () => {
   const [showOrder, setOrder] = useState(false);
   const cartItems = useSelector((state) => state.wigCart.items);
 
+  console.log('====================================');
+  console.log("items",cartItems);
+  console.log('====================================');
   // Default cart items (example, adjust as needed)
   const defaultCartItems = [
     {

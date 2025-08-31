@@ -39,7 +39,7 @@ const BuildAWigPage = () => {
 
     const finalObject = {
       text: "STYLING",
-      // small: selectedCapCards.map((c) => c.small).join(", "),
+      
       small: basicSelected.length === 1 ? basicSelected[0].small : "MIXED",
 
       price: totalPrice,
@@ -407,14 +407,4 @@ const PREMIUM_MEMBERSHIP = [
   { id: 3, image: "R", text: "STYLING", small: "RIGHT", price: 100 },
 ];
 
-// bangs:
 
-// crimps:
-
-// flat iron:
-
-// layers:
-
-// bangs + flat iron: CURTAIN BANGS WITH BONE STRAIGHT HAIR USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.
-
-// bangs + layers: CURTAIN BANGS WITH BOUNCY, LAYERED CURLS USING HOT TOOLS + SALON PRODUCTS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.

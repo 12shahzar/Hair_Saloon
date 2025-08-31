@@ -93,9 +93,7 @@ export const RightSidebarSecond = ({
   const cardRef = React.useRef();
   useScrollOnPathChange(cardRef);
 
-  const handleBack = () => {
-    router.push("/build-wig");
-  };
+
   const cartItems = useSelector((state) => state.wigCart.items);
 
   useEffect(() => {

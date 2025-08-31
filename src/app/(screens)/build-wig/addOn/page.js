@@ -26,15 +26,17 @@ const BuildAWigPage = () => {
 
   const handleConfirm = () => {
     if (selectedCapCards.length === 0) return;
-
     const finalObject = {
-      text: "ADD-ON",
-      // small: selectedCapCards.map((c) => c.small).join(", "),
+      id: selectedCapCards.length === 1 ? selectedCapCards[0].id : "MIXED",
+      text: "ADD-ONS",
       small:
         selectedCapCards.length === 1 ? selectedCapCards[0].small : "MIXED",
-
       price: selectedCapCards.reduce((sum, c) => sum + c.price, 0),
       image: selectedCapCards[0]?.image,
+      uniqueId:
+        selectedCapCards.length === 1
+          ? `addOn_${selectedCapCards[0].id}`
+          : `addOn_mixed_${Date.now()}`,
     };
 
     confirmItem(dispatch, finalObject, "addOn");
@@ -138,17 +140,18 @@ export const RightSidebarSecond = ({
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
 
+  // ✅ Redux se agar card pehle se select hai tu usko array ke andar daalo
   useEffect(() => {
     const matchedCard = GAP_DATA.find((card) =>
       cartItems.some((item) => item.id === card.id && item.text === card.text)
     );
 
     if (matchedCard) {
-      setSelectedCapCards(matchedCard); // ✅ Select the matched card
-      setIsCardSelected(true); // ✅ Enable confirm button
+      setSelectedCapCards([matchedCard]); // ✅ array me wrap
     }
   }, [cartItems]);
 
+  // ✅ toggle card
   const toggleCard = (card) => {
     setSelectedCapCards((prev) => {
       const exists = prev.find((item) => item.id === card.id);
