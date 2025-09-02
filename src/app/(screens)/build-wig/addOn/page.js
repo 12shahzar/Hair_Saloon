@@ -2,17 +2,14 @@
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { addOn1, addOn2, addOn3, image1, image5, image7 } from "@/app/assest";
+import { addOn1, addOn2, addOn3 } from "@/app/assest";
 import {
-  MembershipSection,
   Buttons,
   HeaderBar,
   WigProduct,
   Heading,
-  BackBtn,
-  NextBtn,
-  MembershipCard,
   useScrollOnPathChange,
+  MembershipCard,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +35,7 @@ const BuildAWigPage = () => {
       uniqueId: isMixed
         ? `addOn_mixed_${Date.now()}`
         : `addOn_${selectedCapCards[0].id}`,
-      selectedAddOns: selectedCapCards.map(({ id, small }) => ({ id, small })), // ⭐ hamesha array save karo
+      selectedAddOns: selectedCapCards.map(({ id, small }) => ({ id, small })),
     };
 
     confirmItem(dispatch, finalObject, "addOn");
@@ -142,6 +139,7 @@ export const RightSidebarSecond = ({
 
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
+
   useEffect(() => {
     if (!cartItems?.length) {
       setSelectedCapCards([]);
@@ -151,20 +149,14 @@ export const RightSidebarSecond = ({
     const addOnItem = cartItems.find((it) => it.text === "ADD-ONS");
 
     if (addOnItem?.selectedAddOns?.length) {
-      // ⭐ agar selectedAddOns mila to unke ids nikal ke GAP_DATA filter karo
       const ids = new Set(addOnItem.selectedAddOns.map((s) => s.id));
       const toSelect = GAP_DATA.filter((card) => ids.has(card.id));
       setSelectedCapCards(toSelect);
     } else {
-      // ⭐ fallback for old data
-      const matchedCards = GAP_DATA.filter((card) =>
-        cartItems.some((item) => item.text === "ADD-ONS" && item.id === card.id)
-      );
-      setSelectedCapCards(matchedCards);
+      setSelectedCapCards([]);
     }
   }, [cartItems]);
 
-  // ✅ toggle card
   const toggleCard = (card) => {
     setSelectedCapCards((prev) => {
       const exists = prev.find((item) => item.id === card.id);
@@ -176,6 +168,7 @@ export const RightSidebarSecond = ({
       return prev;
     });
   };
+
   return (
     <div ref={cardRef} className="w-full lg:w-1/2 flex flex-col  mt-3 lg:mt-0">
       <Heading head="CUSTOMIZATION KIT" className="mt-10" />
@@ -211,31 +204,27 @@ export const RightSidebarSecond = ({
             (item) => item.small === "CLIP ENDS"
           );
 
-          // ✅ No option selected
           if (selectedCapCards.length === 0) {
             return "LACE IS PRE-PLUCKED WITH LIGHTLY BLEACHED KNOTS. STANDARD PROCESSING TIME APPLIES. ";
           }
 
-          // ✅ Only one option selected → directly return that card's para
           if (selectedCapCards.length === 1) {
             return selectedCapCards[0].para;
           }
 
-          // ✅ BLEACH + PLUCK
           if (hasBleach && hasPluck) {
             return "FULLY CUSTOMIZED LACE. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
           }
 
-          // ✅ BLEACH + CLIP ENDS
           if (hasBleach && hasClip) {
             return "KNOTS WILL BE LIFTED + TONED WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
           }
 
-          // ✅ PLUCK + CLIP ENDS
           if (hasPluck && hasClip) {
             return "FULLY CUSTOMIZED HAIRLINE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
           }
-          if (hasPluck && hasClip && hasClip) {
+
+          if (hasBleach && hasPluck && hasClip) {
             return "FULLY CUSTOMIZED LACE WITH BLUNT ENDS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
           }
 

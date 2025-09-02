@@ -45,7 +45,7 @@ const BuildAWigPage = () => {
     const finalObject = {
       id: basicSelected.length === 1 ? basicSelected[0].id : "MIXED",
       text: "STYLING",
-      small: basicSelected.length === 1 ? basicSelected[0].small : "MIXED",
+      small: basicSelected.length === 1 ? basicSelected[0].small : "BANGS + 1",
       price:
         basicSelected.reduce((sum, c) => sum + c.price, 0) +
         (hasBangs ? 0 : premiumSelected?.price || 0),
