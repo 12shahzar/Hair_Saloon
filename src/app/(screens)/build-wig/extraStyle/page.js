@@ -2,14 +2,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  MembershipSection,
   Buttons,
   HeaderBar,
   WigProduct,
   Heading,
-  MembershipCard,
-  NextBtn,
-  BackBtn,
   useScrollOnPathChange,
 } from "@/component";
 import RightSection from "@/component/Section/RightSection";
@@ -21,29 +17,47 @@ import Image from "next/image";
 const BuildAWigPage = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-  const [basicSelected, setBasicSelected] = useState([]); // array instead of null
-
+  const [basicSelected, setBasicSelected] = useState([]);
   const [premiumSelected, setPremiumSelected] = useState(null);
   const [isCardSelected, setIsCardSelected] = useState(false);
+  const cardRef = useRef();
+  useScrollOnPathChange(cardRef);
 
   const totalPrice =
     basicSelected.reduce((sum, item) => sum + item.price, 0) +
-    (premiumSelected?.price || 0);
+    (basicSelected.some((item) => item.small === "BANGS")
+      ? 0
+      : premiumSelected?.price || 0);
 
+  // 🔥 Fix isCardSelected logic
   useEffect(() => {
-    setIsCardSelected(basicSelected !== null && premiumSelected !== null);
+    const hasBangs = basicSelected.some((item) => item.small === "BANGS");
+    setIsCardSelected(
+      basicSelected.length > 0 && (hasBangs || premiumSelected !== null)
+    );
   }, [basicSelected, premiumSelected]);
 
   const handleConfirm = () => {
     if (basicSelected.length === 0 || !premiumSelected) return;
 
-    const finalObject = {
-      text: "STYLING",
-      
-      small: basicSelected.length === 1 ? basicSelected[0].small : "MIXED",
+    const hasBangs = basicSelected.some((item) => item.small === "BANGS");
 
-      price: totalPrice,
+    const finalObject = {
+      id: basicSelected.length === 1 ? basicSelected[0].id : "MIXED",
+      text: "STYLING",
+      small: basicSelected.length === 1 ? basicSelected[0].small : "MIXED",
+      price:
+        basicSelected.reduce((sum, c) => sum + c.price, 0) +
+        (hasBangs ? 0 : premiumSelected?.price || 0),
       image: basicSelected[0]?.image,
+      uniqueId:
+        basicSelected.length === 1
+          ? `style_${basicSelected[0].id}`
+          : `style_mixed_${Date.now()}`,
+      selectedStyles: [
+        ...basicSelected.map(({ id, small }) => ({ id, small })),
+        { id: premiumSelected.id, small: premiumSelected.small },
+      ],
     };
 
     confirmItem(dispatch, finalObject, "extraStyle");
@@ -55,7 +69,6 @@ const BuildAWigPage = () => {
       <div className="flex flex-col lg:flex-row gap-5 py-5">
         <div className="flex basis-[70%] flex-col ">
           <HeaderBar />
-
           <div className="border border-black flex flex-col lg:flex-row pt-10 pb-4 px-5 mb-2 lg:h-[800px] overflow-hidden custom-gradient">
             <div className="w-full lg:w-[60%] flex items-center flex-col">
               <WigProduct />
@@ -81,6 +94,7 @@ const BuildAWigPage = () => {
               setPremiumSelected={setPremiumSelected}
               setIsCardSelected={setIsCardSelected}
             />
+
             <p className="font-futura text-[9px] leading-[15px] uppercase text-[#EB1C24] text-center font-semibold mt-7 mb-4 w-[90%] sm:hidden block mx-auto ">
               {(() => {
                 const hasBangs = basicSelected.some(
@@ -90,17 +104,12 @@ const BuildAWigPage = () => {
                   (item) => item.small !== "BANGS"
                 );
 
-                // ✅ No option selected
                 if (basicSelected.length === 0) {
                   return "UNIT COMES CO-WASHED IN ITS NATURAL STATE. STANDARD PROCESSING TIME APPLIES.";
                 }
-
-                // ✅ Only one option selected
                 if (basicSelected.length === 1) {
                   return basicSelected[0].para;
                 }
-
-                // ✅ Bangs + Another option
                 if (hasBangs && other) {
                   if (other.small === "FLAT IRON") {
                     return "CURTAIN BANGS WITH BONE STRAIGHT HAIR. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
@@ -112,7 +121,6 @@ const BuildAWigPage = () => {
                     return "TEXTURED DEEP WAVES USING HOT TOOLS. PLEASE EXPECT AN ADDITIONAL WEEK OF PROCESSING TIME.";
                   }
                 }
-
                 return "";
               })()}
             </p>
@@ -126,14 +134,12 @@ const BuildAWigPage = () => {
               </p>
             </div>
           </div>
-
           <Buttons
             text="CONFIRM SELECTION"
             onClick={handleConfirm}
             disabled={!isCardSelected}
           />
         </div>
-
         <RightSection />
       </div>
     </main>
@@ -141,6 +147,8 @@ const BuildAWigPage = () => {
 };
 
 export default BuildAWigPage;
+
+// ================= RightSidebarFirst =================
 
 export const RightSidebarFirst = ({
   basicSelected,
@@ -152,75 +160,53 @@ export const RightSidebarFirst = ({
   const router = useRouter();
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
+
   const cartItems = useSelector((state) => state.wigCart.items);
 
   useEffect(() => {
-    const matchedBasic = BASIC_MEMBERSHIP.find((card) =>
-      cartItems.some((item) => item.id === card.id && item.text === card.text)
-    );
+    const styleItem = cartItems.find((it) => it.text === "STYLING");
 
-    const matchedPremium = PREMIUM_MEMBERSHIP.find((card) =>
-      cartItems.some((item) => item.id === card.id && item.text === card.text)
-    );
+    if (styleItem?.selectedStyles?.length) {
+      const ids = new Set(styleItem.selectedStyles.map((s) => s.id));
 
-    if (matchedBasic) {
-      setBasicSelected([{ ...matchedBasic }]);
-    }
+      const matchedBasic = BASIC_MEMBERSHIP.filter((card) => ids.has(card.id));
+      const matchedPremium = PREMIUM_MEMBERSHIP.find((card) => ids.has(card.id));
 
-    if (matchedPremium) {
-      setPremiumSelected({ ...matchedPremium });
-    }
+      setBasicSelected(matchedBasic);
+      if (matchedPremium) setPremiumSelected(matchedPremium);
 
-    if (matchedBasic && (matchedPremium || matchedBasic.small === "BANGS")) {
-      setIsCardSelected(true);
+      if (matchedBasic.length > 0 && matchedPremium) {
+        setIsCardSelected(true);
+      }
     }
   }, [cartItems]);
-  useEffect(() => {
-    // Auto-select "MIDDLE" part on first load
-    const middlePart = PREMIUM_MEMBERSHIP.find(
-      (item) => item.small === "MIDDLE"
-    );
-
-    if (middlePart) {
-      setPremiumSelected(middlePart);
-    }
-  }, []);
-  const handleBack = () => {
-    router.push("/build-wig");
-  };
 
   return (
     <div
       ref={cardRef}
       className="w-full lg:w-[40%] flex flex-col mt-3 lg:mt-0 lg:h-[700px]"
     >
-      {/* <BackBtn onClick={handleBack} /> */}
-
       {/* BASIC MEMBERSHIP */}
       <div className="flex flex-col gap-2 mx-auto">
         <Heading head="SALON TREATMENTS" className="mt-10" />
         <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-3 md:gap-8 mx-auto justify-evenly">
           {BASIC_MEMBERSHIP.map((data, index) => {
-            const isSelected = basicSelected.some(
-              (item) => item.id === data.id
-            );
-
+            const isSelected = basicSelected.some((item) => item.id === data.id);
             return (
               <div
                 key={index}
                 onClick={() => {
                   const isBangs = data.small === "BANGS";
-                  const isStyleOption = [
-                    "CRIMPS",
-                    "FLAT IRON",
-                    "LAYERS",
-                  ].includes(data.small);
+                  const isStyleOption = ["CRIMPS", "FLAT IRON", "LAYERS"].includes(
+                    data.small
+                  );
                   const isAlreadySelected = basicSelected.some(
                     (item) => item.id === data.id
                   );
                   const bangsSelected = basicSelected.find(
                     (item) => item.small === "BANGS"
                   );
+
                   let updatedSelection = [];
 
                   if (isAlreadySelected) {
@@ -229,14 +215,12 @@ export const RightSidebarFirst = ({
                     );
                   } else if (isBangs) {
                     updatedSelection = basicSelected.filter(
-                      (item) =>
-                        !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
+                      (item) => !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
                     );
                     updatedSelection.push(data);
                   } else if (isStyleOption && bangsSelected) {
                     updatedSelection = basicSelected.filter(
-                      (item) =>
-                        !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
+                      (item) => !["CRIMPS", "FLAT IRON", "LAYERS"].includes(item.small)
                     );
                     updatedSelection.push(data);
                   } else {
@@ -244,6 +228,7 @@ export const RightSidebarFirst = ({
                   }
 
                   setBasicSelected(updatedSelection);
+
                   const hasBangs = updatedSelection.some(
                     (item) => item.small === "BANGS"
                   );
@@ -255,18 +240,12 @@ export const RightSidebarFirst = ({
                   } else {
                     setPremiumSelected(null);
                   }
-
-                  setIsCardSelected(
-                    updatedSelection.length > 0 &&
-                      (hasBangs || premiumSelected !== null)
-                  );
                 }}
-                className={`border relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center justify-center cursor-pointer 
-                  ${
-                    isSelected ? "border-[#EB1C24]" : "border-black"
-                  } bg-white mb-3 sm:mb-0`}
+                className={`border relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex flex-col items-center text-center justify-center cursor-pointer ${
+                  isSelected ? "border-[#EB1C24]" : "border-black"
+                } bg-white mb-3 sm:mb-0`}
               >
-                <p className="text-[10px] md:text-sm text-black font-covered  absolute top-0">
+                <p className="text-[10px] md:text-sm text-black font-covered absolute top-0">
                   {data.text}
                 </p>
                 <div
@@ -303,10 +282,7 @@ export const RightSidebarFirst = ({
         <Heading head="PART SELECTION" />
         <div className="flex items-center gap-3 mx-auto justify-evenly">
           {PREMIUM_MEMBERSHIP.map((data, index) => {
-            const isSelected =
-              premiumSelected?.id === data.id ||
-              (!premiumSelected &&
-                index === Math.floor(PREMIUM_MEMBERSHIP.length / 2));
+            const isSelected = premiumSelected?.id === data.id;
             const isDisabled = basicSelected.length === 0;
 
             return (
@@ -318,16 +294,14 @@ export const RightSidebarFirst = ({
                     setIsCardSelected(true);
                   }
                 }}
-                className={`border bg-white relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex items-center text-center justify-center  cursor-pointer ${
+                className={`border bg-white relative w-[60px] h-[70px] md:w-[80px] md:h-[100px] flex items-center text-center justify-center cursor-pointer ${
                   isSelected ? "border-[#EB1C24]" : "border-black"
                 }`}
               >
                 <p className="text-[10px] md:text-sm text-black font-covered absolute top-0">
                   {data.text}
                 </p>
-                <div
-                  className={`flex items-center justify-center w-full h-full `}
-                >
+                <div className="flex items-center justify-center w-full h-full">
                   <p
                     className={`text-xl font-futura ${
                       isSelected
@@ -353,6 +327,8 @@ export const RightSidebarFirst = ({
     </div>
   );
 };
+
+// ================= DATA =================
 
 const BASIC_MEMBERSHIP = [
   {
@@ -406,5 +382,3 @@ const PREMIUM_MEMBERSHIP = [
   { id: 2, image: "M", text: "STYLING", small: "MIDDLE", price: 100 },
   { id: 3, image: "R", text: "STYLING", small: "RIGHT", price: 100 },
 ];
-
-

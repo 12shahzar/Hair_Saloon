@@ -26,22 +26,25 @@ const BuildAWigPage = () => {
 
   const handleConfirm = () => {
     if (selectedCapCards.length === 0) return;
+
+    const isMixed = selectedCapCards.length > 1;
+
     const finalObject = {
-      id: selectedCapCards.length === 1 ? selectedCapCards[0].id : "MIXED",
+      id: isMixed ? "MIXED" : selectedCapCards[0].id,
       text: "ADD-ONS",
-      small:
-        selectedCapCards.length === 1 ? selectedCapCards[0].small : "MIXED",
+      small: isMixed ? "MIXED" : selectedCapCards[0].small,
       price: selectedCapCards.reduce((sum, c) => sum + c.price, 0),
       image: selectedCapCards[0]?.image,
-      uniqueId:
-        selectedCapCards.length === 1
-          ? `addOn_${selectedCapCards[0].id}`
-          : `addOn_mixed_${Date.now()}`,
+      uniqueId: isMixed
+        ? `addOn_mixed_${Date.now()}`
+        : `addOn_${selectedCapCards[0].id}`,
+      selectedAddOns: selectedCapCards.map(({ id, small }) => ({ id, small })), // ⭐ hamesha array save karo
     };
 
     confirmItem(dispatch, finalObject, "addOn");
     router.push("/build-wig");
   };
+
   return (
     <main className="container mx-auto">
       <div className="flex flex-col lg:flex-row gap-5 py-5">
@@ -139,15 +142,25 @@ export const RightSidebarSecond = ({
 
   const cardRef = useRef();
   useScrollOnPathChange(cardRef);
-
-  // ✅ Redux se agar card pehle se select hai tu usko array ke andar daalo
   useEffect(() => {
-    const matchedCard = GAP_DATA.find((card) =>
-      cartItems.some((item) => item.id === card.id && item.text === card.text)
-    );
+    if (!cartItems?.length) {
+      setSelectedCapCards([]);
+      return;
+    }
 
-    if (matchedCard) {
-      setSelectedCapCards([matchedCard]); // ✅ array me wrap
+    const addOnItem = cartItems.find((it) => it.text === "ADD-ONS");
+
+    if (addOnItem?.selectedAddOns?.length) {
+      // ⭐ agar selectedAddOns mila to unke ids nikal ke GAP_DATA filter karo
+      const ids = new Set(addOnItem.selectedAddOns.map((s) => s.id));
+      const toSelect = GAP_DATA.filter((card) => ids.has(card.id));
+      setSelectedCapCards(toSelect);
+    } else {
+      // ⭐ fallback for old data
+      const matchedCards = GAP_DATA.filter((card) =>
+        cartItems.some((item) => item.text === "ADD-ONS" && item.id === card.id)
+      );
+      setSelectedCapCards(matchedCards);
     }
   }, [cartItems]);
 
