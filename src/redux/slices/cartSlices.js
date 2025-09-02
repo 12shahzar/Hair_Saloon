@@ -95,7 +95,7 @@ const initialState = {
     {
       id: 9,
       image: image8,
-      text: "ADD-ON",
+      text: "ADD-ONS",
       small: "NONE",
       uniqueId: "addOn_0",
       width: "34px",
